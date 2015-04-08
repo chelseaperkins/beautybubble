@@ -1,9 +1,8 @@
 html, body{
     height: 100%;
 }
-
-h2{
-    text-align: center;
+h2.page_heading {
+    text-align: center!important;
 }
 
 hr.page_title {
@@ -34,28 +33,33 @@ hr.contact_heading{
     width: 90%;
 }
 
+/*about page css*/
 
 .about_content{
     color: #fff;
     font-size: 1.3em;
     margin-top: 30px;
-    margin-bottom: -13%;
+    margin-bottom: 35px;
 }
 
 .about_background{
     background: rgba(255,255,255,0.8);
     padding: 30px;
-    margin-left: 16px;
+    margin-left: 15px;
     margin-right: 15px;
-
-    
-}
+    }
 
 .about_text{
     color: #242d64;
     font-family: 'Caudex';
     font-size: 1.2em;
 }
+
+#karina_image{
+    padding-top: 200px;
+}
+
+/*appoinment form page css*/
 
 .appointment > form{
     margin-left: 50%;
@@ -88,6 +92,18 @@ hr.contact_heading{
 
 }
 
+.form_submit.btn-default{
+    background-color: #fff !important;
+    background-image: none;
+    color: #242d64;
+    border-color: #242d64;
+    padding: 6px 50px 6px 50px;
+    float: right;
+}
+
+
+/*default template background image */
+
 .background_image{
     position: fixed;
     top: 183px;
@@ -103,6 +119,8 @@ hr.contact_heading{
 
 }
 
+/*call to action for front-end pages*/
+
 .call_to_action_background{
     height: 25%;
     width: 600px;
@@ -111,30 +129,22 @@ hr.contact_heading{
     position: relative;
 }
 
-.call_to_action_treatments{
-    height: 100px;
-    width: 300px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-}
-
 .call_to_action_buttons {
     position:absolute;
     margin-top: -35px;
-
 }
+
 .call_to_action_line{
     background-color: #fff;
     height: 10px;
 }
 
-.call_to_action_bar {
-    margin-top: -50px;    
+.call_to_action_wrap {
     background-color: #c3d6ee;
+    height: 90px;
 }
 
-//Contact details/form on contact page
+/*Contact details/form on contact page*/
 .contact_page a:link {
     color: #242d64!important;
     text-decoration: none!important; 
@@ -184,7 +194,7 @@ hr.contact_heading{
 
 }
 
-//Contact details on default layout
+/*Contact details on default layout*/
 
 .contact_info a:link{
     color: #fff;
@@ -220,15 +230,18 @@ hr.contact_heading{
     color: #c3d6ee;
 }
 
+.google_map_wrapper{
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+}
+
 .container{
     padding-bottom: 100px;
 }
 
-.copyright_info{
-    margin-top: 80px;
-    float: right;
-}
-
+/*dashboard simple template css*/
 .dash_appointment_cell{
     margin: 5px;
     border: 1px solid black;
@@ -298,6 +311,7 @@ hr.contact_heading{
     
 }
 
+/*dashboard home page ($output)*/
 .dashbd_home_content{
     color: #242d64;
     text-shadow: 0 1px 0 #fff;
@@ -318,12 +332,11 @@ hr.contact_heading{
 
 }
 
-.form_submit.btn-default{
-    background-color: #fff !important;
-    background-image: none;
-    color: #242d64;
-    border-color: #242d64;
-    padding: 6px 50px 6px 50px;
+
+
+/*footer css*/
+.copyright_info{
+    margin-top: 80px;
     float: right;
 }
 
@@ -334,25 +347,20 @@ hr.contact_heading{
 
 }
 
-.google_map_wrapper{
-    width: 1150px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-}
+/*main home page /default controller*/
+
 
 .home_content{
     color: #fff;
     font-size: 2.3em;
     margin-top: 10%;
-    margin-bottom: -11%;
+    margin-bottom: 5%;
 
 }
 
 .home_background{
     background: rgba(255,255,255,0.2);
-    height: 290px;
-    margin-top: 400px;
+    margin-top: 18%;
 
 }
 
@@ -363,16 +371,7 @@ hr.contact_heading{
 
 }
 
-#karina_image{
-    padding-top: 200px;
-}
-
-.nail_treament_para{
-    font-size: 15px;
-
-}
-
-//Nav bar
+/*Nav bar*/
 
 nav navbar-nav navbar-right{
     position: absolute;
@@ -434,6 +433,21 @@ nav navbar-nav navbar-right{
     width: 100%;
 }
 
+/*treatments page*/
+
+.call_to_action_treatments{
+    height: 100px;
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+.nail_treament_para{
+    font-size: 15px;
+
+}
+
 .treatments_content{
     color: #fff;
     font-size: 1.3em;
@@ -464,6 +478,7 @@ nav navbar-nav navbar-right{
     float: right;
 }
 
+/*page wrap template for output*/
 .wrap{
     position: relative;
     min-height: 100%;

@@ -78,7 +78,7 @@
                     <ul class="nav nav-pills nav-stacked dash_nav">
                         <li class="active"><a href="<?php echo site_url('/dashboard/index'); ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                         <li><a href="<?php echo site_url('/dashboard/status'); ?>"><span class="glyphicon glyphicon-tasks"></span> View current appointments</a></li>
-                        <li><a href="<?php echo site_url('/dashboard/status'); ?>"><span class="glyphicon glyphicon-plus-sign"></span> View expired appointments</a></li>
+                        <li><a href="<?php echo site_url('/dashboard/status'); ?>"><span class="glyphicon glyphicon-ban-circle"></span> View expired appointments</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
                 <!-- /.container-fluid -->

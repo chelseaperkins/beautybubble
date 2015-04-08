@@ -4,7 +4,7 @@
     <div class="row appointment_content appointment_background">
         <div class="appointment_text">
 
-            <h2><strong><?php echo"Request Appointment"; ?></strong></h2>
+            <h2 class="page_heading"><strong><?php echo"Request Appointment"; ?></strong></h2>
             <hr class="page_title">
             <br />
             <div class="col-md-2">
@@ -162,7 +162,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="call_to_action_bar">
+    <div class="call_to_action_wrap">
         <div class="call_to_action_line"></div>
         <div class="call_to_action_background">
             <div class="call_to_action_buttons">

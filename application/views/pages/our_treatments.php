@@ -3,7 +3,7 @@
 
     <div class="row treatments_content treatments_background">
         <div class="treatments_text">
-            <h2><strong><?php echo"Our Treatments"; ?></strong></h2>
+            <h2 class="page_heading"><strong><?php echo"Our Treatments"; ?></strong></h2>
                 <hr class="page_title">
                 <br />
             <div class="col-md-4 treatment_text_box_side">
@@ -99,7 +99,7 @@ prepared and polished."; ?></span>
 
     </div>
     <div class="row">
-        <div class="call_to_action_bar">
+        <div class="call_to_action_wrap">
             <div class="call_to_action_line"></div>
             <div class="call_to_action_treatments">
                 <div class="call_to_action_buttons">

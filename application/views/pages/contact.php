@@ -4,7 +4,7 @@
     <div class="row contact_content contact_background">
         <div class="contact_text">
 
-            <h2><strong><?php echo"Contact"; ?></strong></h2>
+            <h2 class="page_heading"><strong><?php echo"Contact"; ?></strong></h2>
             <hr class="page_title">
             <br />
             <div class="row google_map_wrapper">
@@ -45,7 +45,7 @@
 
             </div>
             <div class="row contact_us_form">
-                <h2><strong><?php echo"Send us a Message"; ?></h2>
+                <h2 class="page_heading"><strong><?php echo"Send us a Message"; ?></h2>
                 </strong></h3></label><hr class="page_title"> 
                 <div class="col-md-2">
                 </div>
@@ -86,7 +86,7 @@
     </div>   
 </div>
 <div class="row">
-    <div class="call_to_action_bar">
+    <div class="call_to_action_wrap">
         <div class="call_to_action_line"></div>
         <div class="call_to_action_background">
             <div class="call_to_action_buttons">

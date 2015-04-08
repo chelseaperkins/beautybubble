@@ -9,7 +9,7 @@
     </div>
 </div>       
 <div class="row">
-    <div class="call_to_action_bar">
+    <div class="call_to_action_wrap">
         <div class="call_to_action_line"></div>
         <div class="call_to_action_background">
             <div class="call_to_action_buttons">

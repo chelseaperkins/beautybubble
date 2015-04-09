@@ -78,8 +78,8 @@
 
     <body>
 
-        <nav class="navbar navbar-fixed-top">
-            <div class="container-fluid">
+        <header class="navbar navbar-fixed-top">
+            <nav class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -111,15 +111,15 @@
                         <li><a href="<?php echo site_url('/site/contact'); ?>">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-        </nav>    
+            </nav><!-- /.container-fluid -->
+        </header>    
 
 
-        <div class="container-fluid">
+        <section class="container-fluid">
 
             <?php echo $output; ?>
 
-        </div>
+        </section>
         <!-- /container -->
         <footer class="container-fluid footer">
             <div class="row">

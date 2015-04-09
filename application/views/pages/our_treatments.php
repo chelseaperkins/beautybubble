@@ -56,7 +56,7 @@ cuticles carefully tended and nails are
 prepared and polished."; ?></span>
                 <br />
                 <br />
-                <span><?php echo"File and Polish"; ?></span><span class="treatment_price"><?php echo"$15"; ?></span><br />
+                <span><?php echo"File & Polish"; ?></span><span class="treatment_price"><?php echo"$15"; ?></span><br />
                 <span><?php echo"Deluxe Pedicure - 60 minutes"; ?></span><span class="treatment_price"><?php echo"$50"; ?></span><br />
                 <span><?php echo"Mini Pedicure - 30 minutes"; ?></span><span class="treatment_price"><?php echo"$35"; ?></span><br />
                 <span><?php echo"Shallac Gel Polish Removel"; ?></span><span class="treatment_price"><?php echo"$10"; ?></span><br />
@@ -72,7 +72,7 @@ prepared and polished."; ?></span>
 
                 <span><?php echo"Underarm wax"; ?></span><span class="treatment_price"><?php echo"$15"; ?></span><br />
                 <span><?php echo"Forearm wax"; ?></span><span class="treatment_price"><?php echo"$20"; ?></span><br />
-                <span><?php echo"Back or Chest wax"; ?></span><span class="treatment_price"><?php echo"$35"; ?></span><br />
+                <span><?php echo"Back wax or Chest wax"; ?></span><span class="treatment_price"><?php echo"$35"; ?></span><br />
                 <span><?php echo"1/2 Leg wax"; ?></span><span class="treatment_price"><?php echo"$20"; ?></span><br />
                 <span><?php echo"Full leg wax"; ?></span><span class="treatment_price"><?php echo"$30"; ?></span><br />
                 <span><?php echo"Bikini wax"; ?></span><span class="treatment_price"><?php echo"$20"; ?></span><br />

@@ -41,8 +41,9 @@
         <link href="<?php echo base_url(); ?>assets/themes/default/css/layout.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/themes/default/css/chosen.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Caudex">
+        
 
-
+ 
         <!-- Latest compiled and minified Jquery -->
         
         <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-1.11.2.min.js"></script>
@@ -80,8 +81,10 @@
 
         <header class="navbar navbar-fixed-top">
             <nav class="container-fluid">
+                
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
+                    
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
@@ -91,16 +94,19 @@
                     <a class="navbar-brand" href="<?php echo site_url(); ?>">
                         <img class="logo" src="<?php echo base_url(); ?>assets/themes/default/images/logo.png" alt="logo"/>
                     </a>
-                </div>
-
-                <div class="contact_info_wrapper">
+                    <div class="nav_contact_info">
                     <p>
-                        <a class="hidden-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><?php echo"karina@beautybubble.co.nz"; ?></a> 
-                        <a class="visible-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><?php echo"Email"; ?></a><br />
+                        
+                        <a class="visible-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><?php echo"Email"; ?></a>
+                        <a class="hidden-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><?php echo"karina@beautybubble.co.nz"; ?></a> <br />
                         <a class="contact_info" href="tel+6433442245"><?php echo"(03) 344 2245"; ?></a><br />
                         <a class="contact_info" href="tel+64273810095"><?php echo"027 3810095"; ?></a>
                     </p>
                 </div>
+                    
+                </div>
+
+                
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
@@ -112,6 +118,7 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav><!-- /.container-fluid -->
+                    
         </header>    
 
 

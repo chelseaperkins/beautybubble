@@ -7,13 +7,12 @@
             <h2 class="page_heading"><strong><?php echo"Request Appointment"; ?></strong></h2>
             <hr class="page_title">
             <br />
-            <div class="col-md-2">
+            <div class="col-sm-0 col-md-2">
 
             </div>
             <div class="col-md-6">
                 
- 
-                <div class="contact">
+                 <div class="appointment">
                     <form>
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Contact details"; ?></strong></h3></label>
                         <hr class="appointment_heading">
@@ -156,7 +155,7 @@
                 </form>     
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-sm-0 col-md-2">
 
         </div>
     </div>

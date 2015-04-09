@@ -12,7 +12,7 @@
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2890.40253429756!2d172.6132585!3d-43.577331199999996!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6d3220f19fd198ef%3A0xd5675afcff9d652c!2s36+Waiau+St%2C+Cracroft%2C+Christchurch+8025!5e0!3m2!1sen!2snz!4v1428282712745" width="100%" height="25%" frameborder="0"></iframe> 
             </div>
             <div class="row contact_details">
-                <div class="col-md-3 ">
+                <div class="col-sm-1 col-md-3 ">
                     <h3><strong><?php echo"Address"; ?></strong></h3>
                     <hr class="contact_heading">
 
@@ -22,7 +22,7 @@
                                 Christchurch 8025 <br /> "; ?>
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-sm-1 col-md-3">
                     <h3><strong><?php echo"Contact details"; ?></strong></h3>
                     <hr class="contact_heading"> 
 
@@ -33,7 +33,7 @@
                     </p>
 
                 </div>
-                <div class="col-md-3">
+                <div class="col-sm-1 col-md-3">
                     <div>
                         <h3><strong><?php echo"Hours"; ?></strong></h3>
                         <hr class="contact_heading"> 
@@ -47,11 +47,11 @@
             <div class="row contact_us_form">
                 <h2 class="page_heading"><strong><?php echo"Send us a Message"; ?></h2>
                 </strong></h3></label><hr class="page_title"> 
-                <div class="col-md-2">
+                <div class="col-sm-0 col-md-2">
                 </div>
                 <div class="col-md-6">
 
-                    <div class="appointment">
+                    <div class="contact">
 
                         <form>                         
                             <div class="form-group">
@@ -79,7 +79,7 @@
 
                 </div>
             </div>
-            <div class="col-md-2">
+            <div class="col-sm-0 col-md-2">
 
             </div>
         </div>

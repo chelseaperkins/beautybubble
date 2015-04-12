@@ -60,7 +60,8 @@
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.jquery.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-beauty_bubble.js"></script>
-        <!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>
+        
+        <!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>-->
         <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>-->
 
 

@@ -103,7 +103,7 @@ hr.contact_heading {
 /*default template background image */
 .background_image {
   position: fixed;
-  top: 27%;
+  top: 0%;
   height: 100%;
   width: 100%;
   background-image: url('../images/beauty_bubble_background.jpg');
@@ -112,6 +112,7 @@ hr.contact_heading {
   background-size: 100%;
   z-index: -99;
   overflow: auto;
+  
 }
 /*call to action for front-end pages*/
 .call_to_action_background {
@@ -285,7 +286,7 @@ hr.contact_heading {
 }
 .home_text_background {
   background: rgba(255, 255, 255, 0.2);
-  margin-top: 70%;
+  margin-top: 35%;
 }
 .home_welcome_text {
   padding: 5px;
@@ -333,7 +334,7 @@ hr.contact_heading {
   text-align: center;
 }
 .nav_contact_info a {
-  margin-top: 60%;
+  margin-top: 5%;
   text-decoration: none;
   color: #fff!important;
 }
@@ -969,7 +970,7 @@ hr.contact_heading {
   }
   .treatments_content {
     color: #fff;
-    font-size: 1.3em;
+    
     margin-top: 30px;
   }
   .treatments_background {
@@ -982,7 +983,7 @@ hr.contact_heading {
   .treatments_text {
     color: #242d64;
     font-family: 'Caudex';
-    font-size: 1.2em;
+    font-size: 1.3em!important;
   }
   .treatment_text_box_side {
     margin-top: 31px;

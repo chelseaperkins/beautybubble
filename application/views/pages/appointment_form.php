@@ -1,5 +1,6 @@
 <div class="under_nav_line"></div>
 <div ng-app="beautyBubbleApp" ng-controller="AppointmentCtrl" class="wrap">
+   
 
     <div class="row appointment_content appointment_background">
         <div class="appointment_text">
@@ -148,6 +149,9 @@
                             <label for="appointment_time"><?php echo"Appointment Time"; ?></label>                                                          
                             <timepicker ng-model="time" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
                         </div>
+                        
+                        
+                        
 
                         <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button>
                         

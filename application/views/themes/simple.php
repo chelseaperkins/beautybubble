@@ -20,26 +20,41 @@
                 ?><meta name="<?php echo $name; ?>" content="<?php echo is_array($content) ? implode(", ", $content) : $content; ?>" /><?php
             }
         ?>
-        <link href="<?php echo base_url(); ?>assets/themes/default/css/bootstrap.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/themes/default/css/bootstrap-theme.min.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/themes/default/css/general.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/themes/default/css/custom.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/themes/default/css/layout.css" rel="stylesheet">
-        <link href="<?php echo base_url(); ?>assets/themes/default/css/chosen.css" rel="stylesheet">
+        <!-- Le styles -->
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/general.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/custom.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/layout.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/chosen.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Caudex">
+        
 
-
+ 
         <!-- Latest compiled and minified Jquery -->
-        <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script> 
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+        
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-1.11.2.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/angular.min.js"></script> 
+        
         <!-- Latest compiled and minified JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.12.1/ui-bootstrap-tpls.min.js"></script>
+       
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/ui-bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/ui-bootstrap-tpls.min.js"></script>
+             
+        
+        
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.jquery.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-beauty_bubble.js"></script>
+        <!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>-->
+
+
+        <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+          <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
 
         <!-- Le fav and touch icons -->
         <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/themes/default/images/favicon.ico" type="image/x-icon"/>
@@ -72,6 +87,7 @@
                 </ul>
             </header>
             
+             
             <div class="row dash_wrapper">
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="col-md-6 collapse navbar-collapse dash_nav_wrapper " id="bs-example-navbar-collapse-1">

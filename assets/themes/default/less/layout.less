@@ -7,11 +7,12 @@ and open the template in the editor.
     Created on : 9/04/2015, 7:25:17 PM
     Author     : Chelsea
 */
+@import "bootstrap.less";
 
 @dark_blue: #242d64;
 @light_blue: #c3d6ee;
 @font_headings: 'Caudex';
-@font_text: "Helvetica Neue",'Helvetica','Arial','sans-serif';
+
 
 
 
@@ -34,7 +35,7 @@ h3{
 }
 
 hr.page_title {
-    
+
     border-top: 1px solid @dark_blue;
     border-width: thin;
 }
@@ -80,12 +81,13 @@ hr.contact_heading{
 
 .about_text{
     color: @dark_blue;
-    font-family: @font_text;
+    font-family: @font-family-sans-serif;
     font-size: 1em;
 }
 
 #karina_image{
     padding-top: 10%;
+    height: 60%;
 }
 
 /*appoinment form page css*/
@@ -117,7 +119,7 @@ hr.contact_heading{
 
 .appointment_text{
     color: @dark_blue;
-    font-family: @font_text;
+    font-family: @font-family-sans-serif;
     font-size: 1.2em;
 
 }
@@ -145,7 +147,7 @@ hr.contact_heading{
     background-size: 100%;
     z-index: -99;
     overflow: auto;
-    
+
 }
 
 /*call to action for front-end pages*/
@@ -220,7 +222,7 @@ hr.contact_heading{
 
 .contact_text{
     color: @dark_blue;
-    font-family: 'Caudex';
+    font-family: @font-family-sans-serif;
     font-size: 1.2em;
 
 }
@@ -348,7 +350,7 @@ hr.contact_heading{
 .footer{
     background-color: @light_blue;
     color: @dark_blue;
-    font-family: 'Caudex';
+    font-family: @font-family-sans-serif;
 
 }
 
@@ -407,7 +409,6 @@ hr.contact_heading{
     background-color:  #fff!important;
 }
 
-
 .navbar .container-fluid{
     background-color: @dark_blue;
     background-image: none;
@@ -423,7 +424,7 @@ hr.contact_heading{
 }
 
 .nav_contact_info a{
-    margin-top: 5%;
+    margin-top: 0%;
     text-decoration: none;
     color: #fff!important;
 }
@@ -433,11 +434,11 @@ hr.contact_heading{
 }
 
 
-.logo{
-    margin-left: 0x;
+img.logo{
+    margin-right: 0x;
     max-width: 450px;
     width: 60%;
-
+    float: none!important;
 }
 
 /*treatments page*/
@@ -502,50 +503,50 @@ hr.contact_heading{
 }
 
 /*Screens between 480px and 768px (tablets) */
-@media (min-width: 480px){
+@media (min-width: 480px @screen-xs-min){
 
     h1.home_welcome_text{
-    font-size: 1.5em;
-    font-family: @font_headings;
-}
+        font-size: 1.5em;
+        font-family: @font_headings;
+    }
 
-h2.page_heading {
-    text-align: center!important;
-    font-family: @font_headings;
-}
+    h2.page_heading {
+        text-align: center!important;
+        font-family: @font_headings;
+    }
 
-h3{
-    font-family: @font_headings;
-}
+    h3{
+        font-family: @font_headings;
+    }
 
-hr.page_title {
-    width: 60%;
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-}
+    hr.page_title {
+        width: 60%;
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+    }
 
-hr.treatment_heading{
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-}
+    hr.treatment_heading{
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+    }
 
-hr.appointment_heading{
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-    width: 155%;
-    margin-left: -250px;
-    margin-top: 5px;
+    hr.appointment_heading{
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+        width: 155%;
+        margin-left: -250px;
+        margin-top: 5px;
 
-}
+    }
 
-hr.contact_heading{
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-    margin-top: 5px;
-    margin-left: -5px;
-    width: 90%;
-}
-    
+    hr.contact_heading{
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+        margin-top: 5px;
+        margin-left: -5px;
+        width: 90%;
+    }
+
     /*about page css*/
 
     .about_content{
@@ -564,7 +565,7 @@ hr.contact_heading{
 
     .about_text{
         color: @dark_blue;
-        font-family: 'Caudex';
+        font-family: @font-family-sans-serif;
         font-size: 1.2em;
     }
 
@@ -598,67 +599,67 @@ hr.contact_heading{
 
     .appointment_text{
         color: @dark_blue;
-        font-family: @font_text;
+        font-family: @font-family-sans-serif;
         font-size: 1.2em;
 
     }
 
     /*Contact details/form on contact page*/
-.contact_page a:link {
-    color: @dark_blue!important;
-    text-decoration: none!important; 
-}
+    .contact_page a:link {
+        color: @dark_blue!important;
+        text-decoration: none!important; 
+    }
 
-.contact_page a:visited {
-    color: @dark_blue;
-    text-decoration: none; 
-}
+    .contact_page a:visited {
+        color: @dark_blue;
+        text-decoration: none; 
+    }
 
-.contact_page a:hover{
-    color: #fff!important;
-    text-decoration: none!important; 
-}
+    .contact_page a:hover{
+        color: #fff!important;
+        text-decoration: none!important; 
+    }
 
-.contact > form{
-    margin-left: 50%;
-}
+    .contact > form{
+        margin-left: 50%;
+    }
 
-.contact_us_form{
-    margin-top: 50px;
-}
+    .contact_us_form{
+        margin-top: 50px;
+    }
 
-.contact_details{
-    margin-left: 23%;
-}
+    .contact_details{
+        margin-left: 23%;
+    }
 
-.contact_content{
-    color: #fff;
-    font-size: 1em;
-    margin-top: 30px;
+    .contact_content{
+        color: #fff;
+        font-size: 1em;
+        margin-top: 30px;
 
-}
+    }
 
-.contact_background{
-    background: rgba(255,255,255,0.9);
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 80px;
-    padding: 30px;
-}
+    .contact_background{
+        background: rgba(255,255,255,0.9);
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 80px;
+        padding: 30px;
+    }
 
-.contact_text{
-    color: @dark_blue;
-    font-family: 'Caudex';
-    font-size: 1.2em;
+    .contact_text{
+        color: @dark_blue;
+        font-family: @font-family-sans-serif;
+        font-size: 1.2em;
 
-}
+    }
 
-.google_map_wrapper{
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-} 
+    .google_map_wrapper{
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    } 
 
     /*Nav and contact info in header*/
 
@@ -688,7 +689,6 @@ hr.contact_heading{
     }
 
     .navbar .nav >li > a {
-        margin-top: 145px;
         margin-left:10px;
         margin-right:0px;
         padding: 9px 10px 9px 10px;
@@ -706,6 +706,7 @@ hr.contact_heading{
     .navbar-brand{
         height: auto;
         padding: 0px;
+        float: none!important;
     } 
 
     .navbar-toggle .icon-bar {
@@ -731,11 +732,11 @@ hr.contact_heading{
         margin-left: 0px;
         max-width: 450px;
         width: 100%;
+        float: none!important;
     }
 
     .nav_contact_info{
         font-size: 1.5em;
-        margin-top: 190px;
     }
 
     .nav_contact_info a{
@@ -859,7 +860,7 @@ hr.contact_heading{
 
     .treatments_text{
         color: @dark_blue;
-        font-family: 'Caudex';
+        font-family: @font-family-sans-serif;
         font-size: 15px;;
     }
 
@@ -878,46 +879,46 @@ hr.contact_heading{
 @media (min-width: 768px) {
 
     h1.home_welcome_text{
-    font-size: 1.5em;
-    font-family: @font_headings;
-}
+        font-size: 1.5em;
+        font-family: @font_headings;
+    }
 
-h2.page_heading {
-    text-align: center!important;
-    font-family: @font_headings;
-}
+    h2.page_heading {
+        text-align: center!important;
+        font-family: @font_headings;
+    }
 
-h3{
-    font-family: @font_headings;
-}
+    h3{
+        font-family: @font_headings;
+    }
 
-hr.page_title {
-    width: 60%;
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-}
+    hr.page_title {
+        width: 60%;
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+    }
 
-hr.treatment_heading{
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-}
+    hr.treatment_heading{
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+    }
 
-hr.appointment_heading{
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-    width: 155%;
-    margin-left: -250px;
-    margin-top: 5px;
+    hr.appointment_heading{
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+        width: 155%;
+        margin-left: -250px;
+        margin-top: 5px;
 
-}
+    }
 
-hr.contact_heading{
-    border-top: 1px solid @dark_blue;
-    border-width: thin;
-    margin-top: 5px;
-    margin-left: -5px;
-    width: 90%;
-}
+    hr.contact_heading{
+        border-top: 1px solid @dark_blue;
+        border-width: thin;
+        margin-top: 5px;
+        margin-left: -5px;
+        width: 90%;
+    }
 
     /*about page css*/
 
@@ -937,7 +938,7 @@ hr.contact_heading{
 
     .about_text{
         color: @dark_blue;
-        font-family: 'Caudex';
+        font-family: @font-family-sans-serif;
         font-size: 1.2em;
     }
 
@@ -971,67 +972,67 @@ hr.contact_heading{
 
     .appointment_text{
         color: @dark_blue;
-        font-family: @font_text;
+        font-family: @font-family-sans-serif;
         font-size: 1.2em;
 
     }
-    
+
     /*Contact details/form on contact page*/
-.contact_page a:link {
-    color: @dark_blue!important;
-    text-decoration: none!important; 
-}
+    .contact_page a:link {
+        color: @dark_blue!important;
+        text-decoration: none!important; 
+    }
 
-.contact_page a:visited {
-    color: @dark_blue;
-    text-decoration: none; 
-}
+    .contact_page a:visited {
+        color: @dark_blue;
+        text-decoration: none; 
+    }
 
-.contact_page a:hover{
-    color: #fff!important;
-    text-decoration: none!important; 
-}
+    .contact_page a:hover{
+        color: #fff!important;
+        text-decoration: none!important; 
+    }
 
-.contact > form{
-    margin-left: 50%;
-}
+    .contact > form{
+        margin-left: 50%;
+    }
 
-.contact_us_form{
-    margin-top: 50px;
-}
+    .contact_us_form{
+        margin-top: 50px;
+    }
 
-.contact_details{
-    margin-left: 23%;
-}
+    .contact_details{
+        margin-left: 23%;
+    }
 
-.contact_content{
-    color: #fff;
-    font-size: 1em;
-    margin-top: 30px;
+    .contact_content{
+        color: #fff;
+        font-size: 1em;
+        margin-top: 30px;
 
-}
+    }
 
-.contact_background{
-    background: rgba(255,255,255,0.9);
-    margin-left: 15px;
-    margin-right: 15px;
-    margin-bottom: 80px;
-    padding: 30px;
-}
+    .contact_background{
+        background: rgba(255,255,255,0.9);
+        margin-left: 15px;
+        margin-right: 15px;
+        margin-bottom: 80px;
+        padding: 30px;
+    }
 
-.contact_text{
-    color: @dark_blue;
-    font-family: 'Caudex';
-    font-size: 1.2em;
+    .contact_text{
+        color: @dark_blue;
+        font-family: @font-family-sans-serif;
+        font-size: 1.2em;
 
-}
+    }
 
-.google_map_wrapper{
-    width: 60%;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 30px;
-}
+    .google_map_wrapper{
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+    }
 
     /*Nav bar and contact info in header*/
 
@@ -1079,6 +1080,7 @@ hr.contact_heading{
     .navbar-brand{
         height: auto;
         padding: 0px;
+        float: none!important;
     } 
 
     .navbar-toggle .icon-bar {
@@ -1122,6 +1124,7 @@ hr.contact_heading{
         margin-left: 30%;
         max-width: 450px;
         width: 100%;
+        float: none!important;
     }
 
     .nav_contact_info{
@@ -1245,7 +1248,7 @@ hr.contact_heading{
 
     .treatments_text{
         color: @dark_blue;
-        font-family: 'Caudex';
+        font-family: @font-family-sans-serif;
         font-size: 1.2em;
     }
 

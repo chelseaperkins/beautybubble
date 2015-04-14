@@ -16,13 +16,7 @@ class Site extends CI_controller {
         
         private function _init() {
         $this->output->set_template('default');
-
-        
-//        $this->load->js('assets/themes/default/js/jquery-ui-1.8.16.custom.min.js');
-//        
-//        //bootstrap
-//	$this->load->js('assets/themes/default/js/bootstrap.min.js');
-//        $this->load->js('assets/themes/default/js/script.js');
+           
     }
     
     public function index() {
@@ -40,24 +34,7 @@ class Site extends CI_controller {
 	{
 		$this->load->view('pages/our_treatments');
 	}
-
-	public function appointment_form()
-	{
-//            $this->load->library('form_validation');
-//            
-//            $this->form_validation->set_rules('firstname', 'First Name', 'required|alpha|xss_clean');
-//            $this->form_validation->set_rules('lastname', 'Last Name', 'required|alpha|xss_clean');
-//            $this->form_validation->set_rules('email', 'Email Address', 'required|valid_email|xss_clean');
-            
-            
-            
-		$this->load->view('pages/appointment_form');
-	}
-        
-        public function send_email(){
-            
-        }
-
+       
 	public function contact()
 	{
 		

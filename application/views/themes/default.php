@@ -114,7 +114,7 @@
                         <li class="active"><a href="<?php echo site_url(); ?>">Home</a></li>
                         <li><a href="<?php echo site_url('/site/about_us'); ?>">About Us</a></li>
                         <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
-                        <li><a href="<?php echo site_url('/site/appointment_form'); ?>">Request Appointment</a></li>
+                        <li><a href="<?php echo site_url('/appointments/request'); ?>">Request Appointment</a></li>
                         <li><a href="<?php echo site_url('/site/contact'); ?>">Contact</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

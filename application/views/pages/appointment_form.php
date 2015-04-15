@@ -35,23 +35,23 @@
 
                     <div class="form-group">
                         <label><?php echo form_label('Last Name', 'last_name'); ?></label>
-                        <?php echo form_input('Last Name', set_value('last_name'), 'class=form-control'); ?>
+                        <?php echo form_input('last_name', set_value('last_name'), 'class=form-control'); ?>
 
                     </div>
                     <div class="form-group">
                         <?php echo form_label('Email', 'email'); ?>
-                        <?php echo form_input('Email', set_value('email'), 'class=form-control'); ?>
+                        <?php echo form_input('email', set_value('email'), 'class=form-control'); ?>
 
                     </div>
 
                     <div class="form-group">
                         <?php echo form_label('Phone Number', 'ph_number'); ?>
-                        <?php echo form_input('Phone Number', set_value('ph_number'), 'class=form-control'); ?>                            
+                        <?php echo form_input('ph_Number', set_value('ph_number'), 'class=form-control'); ?>                            
                     </div>
 
                     <div class="form-group">
                         <?php echo form_label('Mobile Number', 'mobile_number'); ?>
-                        <?php echo form_input('Mobile Number', set_value('mobile_number'), 'class=form-control', 'placeholder="Enter Home Phone Number"'); ?>
+                        <?php echo form_input('mobile_Number', set_value('mobile_number'), 'class=form-control', 'placeholder="Enter Home Phone Number"'); ?>
                     </div>
 
                     <div class=" form-group">
@@ -62,6 +62,7 @@
                     <label><h3 class="appointment_form_heading"><strong><?php echo"Appointment details"; ?></strong></h3></label>
                     <hr class="appointment_heading"> 
 
+                    
                     <div class="form-group">
                         <label for="facial_treatments"><?php echo"Facial Treatments"; ?></label>
                         <select name="facial_treatments" multiple ng-model="facialTreatments" chosen style="width:100%;">
@@ -154,12 +155,12 @@
 
                     <div class="form-group">
                         <?php echo form_label('Appointment Date', 'date_time'); ?>
-                        <input type="date" class="form-control" id="appointment_date" placeholder="dd/mm/yyyy" required>
+                        <input name='date' type="date" class="form-control" id="appointment_date" placeholder="dd/mm/yyyy" required>
                     </div>
 
                     <div class="form-group">
                         <?php echo form_label('Appointment Time', 'date_time'); ?>                                                          
-                        <timepicker ng-model="time" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
+                        <timepicker name='time' type="time" ng-model="time" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
                     </div>                   
 
                     <?php echo form_submit('submit', 'Submit', 'class="btn btn-default form_submit"'); ?>

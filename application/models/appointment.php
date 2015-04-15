@@ -16,17 +16,7 @@ class Appointment extends MY_Model {
         
    /** @var int */
     public $id;
-    /** @var string */
-    public $first_name;
-    /** @var string */
-    public $last_name;
-    /** @var string */
-    public $email;
    /** @var string */
-    public $ph_number;
-    /** @var string */
-    public $mobile_number;
-    /** @var string */
     public $facial_treatments;
     /** @var string */
     public $eye_treatments;
@@ -41,7 +31,9 @@ class Appointment extends MY_Model {
     /** @var string */
     public $electrolysis;
     /** @var string */
-    public $date_time;
+    public $date;
+    /** @var datetime */
+    public $time;
     /** @var datetime */
     public $status;
     /** @var boolean */

@@ -104,7 +104,7 @@ prepared and polished."; ?></span>
             <div class="call_to_action_treatments">
                 <div class="call_to_action_buttons">
 
-                    <a href="http://localhost/The_Beauty_Bubble/site/request_appointment"><img src="<?php echo base_url(); ?>assets/themes/default/images/request_appointment_button.png" alt="request appointment button"/></a>
+                    <a href="http://localhost/The_Beauty_Bubble/appointments/request"><img src="<?php echo base_url(); ?>assets/themes/default/images/request_appointment_button.png" alt="request appointment button"/></a>
                 </div>
             </div>
         </div>

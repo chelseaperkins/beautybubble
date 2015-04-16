@@ -31,9 +31,7 @@ class Appointment extends MY_Model {
     /** @var string */
     public $electrolysis;
     /** @var string */
-    public $date;
-    /** @var datetime */
-    public $time;
+    public $date_time;
     /** @var datetime */
     public $status;
     /** @var boolean */

@@ -28,7 +28,7 @@ class Appointments extends CI_Controller {
     public function request($id = NULL) {
         
         $this->load->helper('form');
-                
+            $this->load->helper('date');    
         //populate from post
         
         $this->load->model('User');
@@ -52,8 +52,7 @@ class Appointments extends CI_Controller {
         $appointment->nail_treatments = $this->input->post('nail_treatments');
         $appointment->waxing_treatments = $this->input->post('waxing_treatments');
         $appointment->electrolysis = $this->input->post('electrolysis');
-        $appointment->date = $this->input->post('date');
-        $appointment->time = $this->input->post('time');
+        $appointment->date_time = $this->input->post('date_time');
         $appointment->status = $this->input->post('status');
 
         // validation
@@ -77,12 +76,12 @@ class Appointments extends CI_Controller {
             array(
                 'field' => 'ph_number',
                 'label' => 'Phone Number',
-                'rules' => 'required|is_numeric|xss_clean',
+                'rules' => 'required|xss_clean',
             ),
             array(
                 'field' => 'mobile_number',
                 'label' => 'Mobile Number',
-                'rules' => 'required|is_numeric|xss_clean',
+                'rules' => 'required|xss_clean',
             ),
             
             array(

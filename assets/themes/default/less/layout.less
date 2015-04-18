@@ -13,9 +13,6 @@ and open the template in the editor.
 @light_blue: #c3d6ee;
 @font_headings: 'Caudex';
 
-
-
-
 html, body{
     height: 100%;
 }
@@ -30,6 +27,8 @@ h2.page_heading {
     font-family: @font_headings;
 }
 
+h2{font-family: @font_headings;
+}
 h3{
     font-family: @font_headings;
 }
@@ -61,7 +60,11 @@ hr.contact_heading{
     margin-left: -5px;
     width: 90%;
 }
-
+hr.message_heading{
+    border-top: 1px solid #242d64;
+    border-width: thin;
+   
+}
 
 /*about page css*/
 
@@ -176,11 +179,10 @@ hr.contact_heading{
 }
 
 /*Contact details/form on contact page*/
-
-.contact > form{
-    margin-left: 0%;
-    vertical-align: middle;
+.contact > h2{
+    margin-left: 20%;
 }
+
 
 .contact_page a:link {
     color: @dark_blue!important;
@@ -342,9 +344,16 @@ hr.contact_heading{
 }
 
 /*footer css*/
+
+.guarantee_para{
+    
+}
+.facebook_plugin{
+    
+}
 .copyright_info{
     margin-top: 80px;
-    float: right;
+    
 }
 
 .footer{
@@ -434,7 +443,7 @@ hr.contact_heading{
 }
 
 
-img.logo{
+.logo{
     margin-right: 0x;
     max-width: 450px;
     width: 60%;
@@ -495,7 +504,7 @@ img.logo{
 }
 
 .under_nav_line{
-    margin-top: 183px;
+     margin-top: 8.7%;
     background-color: #fff;
     height: 10px;
     margin-left: -15px;
@@ -943,7 +952,7 @@ img.logo{
     }
 
     #karina_image{
-        padding-top: 200px;
+        padding-top: 90%;
     }
 
     .appointment > form{
@@ -994,7 +1003,7 @@ img.logo{
     }
 
     .contact > form{
-        margin-left: 50%;
+        vertical-align: middle;
     }
 
     .contact_us_form{
@@ -1053,7 +1062,6 @@ img.logo{
         color:@dark_blue;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
-
     }
 
     .navbar-fixed-top .container, .navbar-fixed-bottom .container {
@@ -1123,7 +1131,7 @@ img.logo{
     .logo{
         margin-left: 30%;
         max-width: 450px;
-        width: 100%;
+        width: 80%;
         float: none!important;
     }
 
@@ -1132,8 +1140,9 @@ img.logo{
         right: 0px;
         text-align: right;
         font-size: 1.5em;
-        padding: 30px 20px 0px 0px;
-        margin-top: -1%;
+        padding: 0px 20px 0px 0px;
+        margin-top: -150px;
+        z-index: 100;
     }
 
     .nav_contact_info a{

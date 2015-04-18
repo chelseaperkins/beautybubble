@@ -6568,6 +6568,9 @@ h2.page_heading {
   text-align: center!important;
   font-family: 'Caudex';
 }
+h2 {
+  font-family: 'Caudex';
+}
 h3 {
   font-family: 'Caudex';
 }
@@ -6592,6 +6595,10 @@ hr.contact_heading {
   margin-top: 5px;
   margin-left: -5px;
   width: 90%;
+}
+hr.message_heading {
+  border-top: 1px solid #242d64;
+  border-width: thin;
 }
 /*about page css*/
 .about_content {
@@ -6682,9 +6689,8 @@ hr.contact_heading {
   background-color: #c3d6ee;
 }
 /*Contact details/form on contact page*/
-.contact > form {
-  margin-left: 0%;
-  vertical-align: middle;
+.contact > h2 {
+  margin-left: 20%;
 }
 .contact_page a:link {
   color: #242d64 !important;
@@ -6820,7 +6826,6 @@ hr.contact_heading {
 /*footer css*/
 .copyright_info {
   margin-top: 80px;
-  float: right;
 }
 .footer {
   background-color: #c3d6ee;
@@ -6890,7 +6895,7 @@ hr.contact_heading {
 .nav_contact_info a:hover {
   color: #c3d6ee;
 }
-img.logo {
+.logo {
   margin-right: 0x;
   max-width: 450px;
   width: 60%;
@@ -6937,7 +6942,7 @@ img.logo {
   width: 100%;
 }
 .under_nav_line {
-  margin-top: 183px;
+  margin-top: 8.7%;
   background-color: #fff;
   height: 10px;
   margin-left: -15px;
@@ -7291,7 +7296,7 @@ img.logo {
     font-size: 1.2em;
   }
   #karina_image {
-    padding-top: 200px;
+    padding-top: 90%;
   }
   .appointment > form {
     margin-left: 50%;
@@ -7331,7 +7336,7 @@ img.logo {
     text-decoration: none!important;
   }
   .contact > form {
-    margin-left: 50%;
+    vertical-align: middle;
   }
   .contact_us_form {
     margin-top: 50px;
@@ -7435,7 +7440,7 @@ img.logo {
   .logo {
     margin-left: 30%;
     max-width: 450px;
-    width: 100%;
+    width: 80%;
     float: none!important;
   }
   .nav_contact_info {
@@ -7443,8 +7448,9 @@ img.logo {
     right: 0px;
     text-align: right;
     font-size: 1.5em;
-    padding: 30px 20px 0px 0px;
-    margin-top: -1%;
+    padding: 0px 20px 0px 0px;
+    margin-top: -150px;
+    z-index: 100;
   }
   .nav_contact_info a {
     margin: 0px;

@@ -39,48 +39,50 @@
                         <hr class="contact_heading"> 
                         <?php echo"7 Days a week by appointment only"; ?>
                     </div>
-
                 </div>
-
-
             </div>
             <div class="row contact_us_form">
-                <h2 class="page_heading"><strong><?php echo"Send us a Message"; ?></h2>
-                </strong></h3></label><hr class="page_title"> 
-                <div class="col-sm-0 col-md-2">
-                </div>
-                <div class="col-md-6">
+                <div class="col-sm-0 col-md-3"></div>
+                 <div class="col-sm-2 col-md-3">
 
                     <div class="contact">
+                        <h2><strong><?php echo"Send us a Message"; ?></strong></h2>
+                        <hr class="message_heading">
+                        <?php echo form_open(); ?>
+                        
+                        <div class="form-group">
+                            <?php echo form_label('First Name', 'first_name'); ?>
+                            <?php echo form_input('first_name', set_value('first_name'), 'class=form-control'); ?>
+                        </div>
 
-                        <form>                         
-                            <div class="form-group">
-                                <label for="first_name"><?php echo"First Name"; ?></label>
-                                <input type="text" class="form-control" id="first_name" placeholder="Enter First Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="last_name"><?php echo"Last Name"; ?></label>
-                                <input type="text" class="form-control" id="last_name" placeholder="Enter Last Name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email"><?php echo"Email Address"; ?></label>
-                                <input type="email" class="form-control" id="email" placeholder="Enter email" required>
-                            </div>
+                        <div class="form-group">
+                            <label><?php echo form_label('Last Name', 'last_name'); ?></label>
+                            <?php echo form_input('last_name', set_value('last_name'), 'class=form-control'); ?>
 
-                            <div class="form-group">
-                                <label for="comments"><?php echo"Comments"; ?></label>
+                        </div>
+                        <div class="form-group">
+                            <?php echo form_label('Email', 'email'); ?>
+                            <?php echo form_input('email', set_value('email'), 'class=form-control'); ?>
 
-                                <textarea type="text" class="form-control" rows="5" id="comments" placeholder="Comments" required></textarea><br />
-                            </div>
+                        </div>
+                       
 
-                            <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 
-                        </form>
+                        <div class="form-group">
+                            <?php echo form_label('Comments', 'comments'); ?>
+                            <textarea type="text" class="form-control" rows="5" id="comments" placeholder="Comments" required></textarea><br />
+                        </div>
+
+                        <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 
+                        <?php echo form_close(); ?>
                     </div>
 
                 </div>
-            </div>
-            <div class="col-sm-0 col-md-2">
 
+                <div class="col-sm-2 col-md-4 col-md-push-1">
+                    <div class="fb-page" data-href="https://www.facebook.com/thebeautybubbleNZ" data-height="540" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/thebeautybubbleNZ"><a href="https://www.facebook.com/thebeautybubbleNZ">The Beauty Bubble</a></blockquote></div></div>
+                </div>
+               <div class="col-sm-0 col-md-2"></div>
+            </div>
             </div>
         </div>
     </div>   

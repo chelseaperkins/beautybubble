@@ -65,7 +65,7 @@
                     
                     <div class="form-group">
                         <label for="facial_treatments"><?php echo"Facial Treatments"; ?></label>
-                        <select name="facial_treatments" multiple ng-model="facialTreatments" chosen style="width:100%;">
+                        <select name="facial_treatments" multiple ng-model="Model.facialTreatments" chosen style="width:100%;">
                             <option value="Select treatment"><?php echo "Select a treatment"; ?></option>
                             <option value="Facial - 60 minutes for $50"><?php echo "Facial - 60 minutes for $50"; ?></option>
                         </select>
@@ -75,7 +75,7 @@
 
                     <div class="form-group">
                         <?php echo form_label('Eye Treatments', 'eye_treatments'); ?>
-                        <select name="eye_treatments" multiple ng-model="eyeTreatments" chosen style="width:100%;">
+                        <select name="eye_treatments" multiple ng-model="Model.eyeTreatments" chosen style="width:100%;">
                             <option value="Select one or multiple treatments"><?php echo "Select one or multiple treatments"; ?></option>
                             <option value="Eyelash Tint for $15"><?php echo "Eyelash Tint for $15" ?></option>
                             <option value="Eyebrow Tint for $10"><?php echo "Eyebrow Tint for $10"; ?></option>
@@ -90,7 +90,7 @@
 
                     <div class="form-group">
                         <?php echo form_label('Body Treatments', 'body_treatments'); ?>
-                        <select name="body_treatments" multiple ng-model="bodyTreatments" chosen style="width:100%;">
+                        <select name="body_treatments" multiple ng-model="Model.bodyTreatments" chosen style="width:100%;">
                             <option value="Select one or multiple treatments"><?php echo "Select one or multiple treatments" ?></option>
                             <option value="Full Body Massage - 60 minutes for $80"><?php echo "Full Body Massage - 60 minutes for $80"; ?></option>
                             <option value="Back, Neck and Shoulder - 30 minutes for $40"><?php echo "Back, Neck and Shoulder - 30 minutes for $40"; ?></option>
@@ -101,7 +101,7 @@
 
                     <div class="form-group">
                         <?php echo form_label('Spray Tanning', 'spray_tanning'); ?>
-                        <select name="spray_tanning" multiple ng-model="sprayTanning" chosen style="width:100%;">
+                        <select name="spray_tanning" multiple ng-model="Model.sprayTanning" chosen style="width:100%;">
                             <option value="Select one or multiple treatments"><?php echo "Select one or multiple treatments"; ?></option>
                             <option value="Full Body for $30"><?php echo "Full Body for $30"; ?></option>
                             <option value="Half Body for $20"><?php echo "Half Body for $20"; ?></option>
@@ -110,7 +110,7 @@
 
                     <div class="form-group">
                         <?php echo form_label('Nail Treatments', 'nail_treatments'); ?>
-                        <select name="nail_treatments" multiple ng-model="nailTreatments" chosen style="width:100%;">
+                        <select name="nail_treatments" multiple ng-model="Model.nailTreatments" chosen style="width:100%;">
                             <option value="Select one or multiple treatments"><?php echo "Select one or multiple treatments"; ?></option>
                             <option value="Deluxe Manicure - 60 minutes for $45"><?php echo "Deluxe Manicure - 60 minutes for $45"; ?></option>
                             <option value="Mini Manicure - 30 minutes for $30"><?php echo "Mini Manicure - 30 minutes for $30"; ?></option>
@@ -124,7 +124,7 @@
                     <div class="form-group">
 
                         <?php echo form_label('Waxing Treatments', 'waxing_treatments'); ?>
-                        <select name="waxing_treatments" multiple ng-model="waxingTreatments" chosen style="width:100%;">
+                        <select name="waxing_treatments" multiple ng-model="Model.waxingTreatments" chosen style="width:100%;">
                             <option value="Select one or multiple treatments"><?php echo "Select one or multiple treatments"; ?></option>
                             <option value="Underarm wax for $15"><?php echo "Underarm wax for $15"; ?></option>
                             <option value="Forearm wax for $20"><?php echo "Forearm wax for $20"; ?></option>
@@ -146,7 +146,7 @@
 
                     <div class="form-group">
                         <?php echo form_label('Electrolysis', 'electrolysis'); ?>
-                        <select name="electrolysis" multiple ng-model="electrolysis" chosen style="width:100%;">
+                        <select name="electrolysis" multiple ng-model="Model.electrolysis" chosen style="width:100%;">
                             <option value="Select one or multiple treatments"><?php echo "Select one or multiple treatments"; ?></option>
                             <option value="15 minutes (minimum appointment) for $25"><?php echo "15 minutes (minimum appointment) for $25"; ?></option>
                             <option value="30 minutes for $40"><?php echo "30 minutes for $40"; ?></option>
@@ -155,16 +155,16 @@
 
                     <div class="form-group">
                         <?php echo form_label('Appointment Date', 'date_time'); ?>
-                        <input name='date_time' type="date" class="form-control" id="appointment_date" placeholder="dd/mm/yyyy" required>
+                        <input name="date" type="date" class="form-control" ng-model="Model.dateTime"  id="appointment_date" placeholder="dd/mm/yyyy" required>
                     </div>
 
                     <div class="form-group">
                         <?php echo form_label('Appointment Time', 'date_time'); ?>                                                          
-                        <timepicker value='DateTime' ng-model="time" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
+                        <timepicker name="time" value='DateTime' ng-model="Model.dateTime" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
                     </div>                   
 
-                    <?php echo form_submit('submit', 'Submit', 'class="btn btn-default form_submit"'); ?>
-
+                    <!--<?php echo form_submit('submit', 'Submit', 'class="btn btn-default form_submit"'); ?>-->
+                    <input type="button" ng-click="sendData()" value="Submit" class="btn btn-default form_submit">
                     <div>
                     </div>
                     <?php echo form_close(); ?>

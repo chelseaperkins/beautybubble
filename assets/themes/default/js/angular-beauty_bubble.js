@@ -17,11 +17,12 @@
         $scope.ModelUrl = window.location.pathname;
         //$scope.Model = pageModel;
         var now = new Date();
-        $scope.time = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+        $scope.Model = {};
+        $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
         
         $scope.isEmailSent = false;
         $scope.emailSendErrorMessage = "";
-        $scope.sendEmail = function () {
+        $scope.sendData = function () {
             // build the model
             var data = $scope.Model;
             $scope.sendPromise = $http.post($scope.ModelUrl, data)

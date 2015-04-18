@@ -16,6 +16,8 @@ class Appointment extends MY_Model {
         
    /** @var int */
     public $id;
+    /** @var int */
+    public $user_id;
    /** @var string */
     public $facial_treatments;
     /** @var string */

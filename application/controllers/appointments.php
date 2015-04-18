@@ -24,91 +24,67 @@ class Appointments extends CI_Controller {
     }
 
     public function request($id = NULL) {
-
-        $this->load->helper('form');
+        $page_model = "";
         $this->load->helper('date');
 
-        // validated so OK to save to database.
         $this->load->model('User');
-        $user = new User();
-        $user->first_name = $this->input->post('first_name');
-        $user->last_name = $this->input->post('last_name');
-        $user->email = $this->input->post('email');
-
-        $this->load->model('Client');
-        $client = new Client();
-        $client->ph_number = $this->input->post('ph_number');
-        $client->mobile_number = $this->input->post('mobile_number');
-
         $this->load->model('Appointment');
-        $appointment = new Appointment();
-
-        $appointment->facial_treatments = $this->input->post('facial_treatments');
-        $appointment->eye_treatments = $this->input->post('eye_treatments');
-        $appointment->body_treatments = $this->input->post('body_treatments');
-        $appointment->spray_tanning = $this->input->post('spray_tanning');
-        $appointment->nail_treatments = $this->input->post('nail_treatments');
-        $appointment->waxing_treatments = $this->input->post('waxing_treatments');
-        $appointment->electrolysis = $this->input->post('electrolysis');
-        $appointment->date_time = $this->input->post('date');
-        $appointment->date_time += $this->input->post('time');
-        $appointment->status = $this->input->post('status');
-
-        $date = $this->input->post('date');
-        $time = $this->input->post('time');
-
-        $postdata = file_get_contents("php://input");
-        $request = json_decode($postdata);
         
-        // validation
-        $this->load->library('form_validation');
-        $this->form_validation->set_rules(array(
-            array(
-                'field' => 'first_name',
-                'label' => 'First Name',
-                'rules' => 'required|alpha|xss_clean',
-            ),
-            array(
-                'field' => 'last_name',
-                'label' => 'Last Name',
-                'rules' => 'required|alpha|xss_clean',
-            ),
-            array(
-                'field' => 'email',
-                'label' => 'Email',
-                'rules' => 'required|valid_email|xss_clean',
-            ),
-            array(
-                'field' => 'ph_number',
-                'label' => 'Phone Number',
-                'rules' => 'required|xss_clean',
-            ),
-            array(
-                'field' => 'mobile_number',
-                'label' => 'Mobile Number',
-                'rules' => 'required|xss_clean',
-            ),
-            array(
-                'field' => 'date',
-                'label' => 'Appoinment Date',
-                'rules' => 'required|callback_date_validation',
-            ),
-            array(
-                'field' => 'time',
-                'label' => 'Apointment Time',
-                'rules' => 'required',
-            ),
-        ));
-        $this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
-        //if doesn't validate
-        if (!$this->form_validation->run() === FALSE) {
-            // validation failed so just return the page
-            $this->load->view('/pages/appointment_form');
-        } 
-        else {//if validates
-            $user->save($id);
-            $client->save($id);
-            $appointment->save($id);
+  
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //$return = $_POST;
+            $post_data = file_get_contents("php://input");
+            $request = json_decode($post_data);
+            
+            $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
+            if($query->num_rows > 0) {
+                // get the first row from the results
+                $user = new User();
+                $match = reset($query->result());
+                $user->id = $match->id;
+                $user->first_name = $match->first_name;
+                $user->last_name = $match->last_name;
+                $user->email = $match->email;
+                $user->ph_number = $match->ph_number;
+                $user->mobile_number = $match->mobile_number;
+                $user->is_admin = $match->is_admin;
+            }else {
+                // user does not exist so create
+                $user = new User();
+                $user->first_name = $request->firstName;
+                $user->last_name = $request->lastName;
+                $user->email =$request->email;
+                $user->ph_number = $request->phNumber;
+                $user->mobile_number = $request->mobilePhone;
+                $user->is_admin = false;
+                $user->save();
+            }
+                        
+            $appointment = new Appointment();
+            $appointment->user_id = $user->id;
+            if(isset ($request->facialTreatments)) {
+                $appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);
+            }
+            if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
+            if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
+            if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
+            if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
+            if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
+            if(isset ($request->electrolsis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolsis);}
+            
+            $appointment->date_time = $request->dateTime;     
+            
+            $appointment->save();
+
+            $this->output->set_header('Content-Type: application/json; charset=utf-8');
+            exit( json_encode(array(
+                'success'=> true, 
+                'message' => "Saved", 
+                'appointment' => $request,
+
+                )));
+
+        } else {
 
             $this->load->view('/pages/appointment_form');
         }
@@ -128,6 +104,13 @@ class Appointments extends CI_Controller {
         $this->email->send();
 
         echo $this->email->print_debugger();
+    }
+    
+    private function implodeNonNull($sep, $arr) {
+        if($arr != null) {
+            return implode($sep, $arr);
+        }
+        return "";
     }
 
 }

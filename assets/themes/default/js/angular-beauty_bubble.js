@@ -20,7 +20,7 @@
         $scope.Model = {};
         $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
         
-        $scope.isEmailSent = false;
+        $scope.isFormAccepted = false;
         $scope.emailSendErrorMessage = "";
         $scope.sendData = function () {
             // build the model
@@ -28,7 +28,7 @@
             $scope.sendPromise = $http.post($scope.ModelUrl, data)
             .success(function (data, status) {
                 if (data.success) {
-                    $scope.isEmailSent = true;
+                    $scope.isFormAccepted = true;
                     $scope.emailSendErrorMessage = "";
                 }
                 else {

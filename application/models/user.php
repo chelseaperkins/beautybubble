@@ -20,4 +20,12 @@ class User extends MY_Model{
     public $last_name;
     /** @var string */
     public $email;
+    /** @var string */
+    public $password;
+       /** @var string */
+    public $ph_number;
+    /** @var string */
+    public $mobile_number;
+    /** @var bool */
+    public $is_admin;
 }

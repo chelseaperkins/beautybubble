@@ -210,7 +210,10 @@ class My_Model extends CI_Model {
             $this->update_obj();
         }
         else {
-            $this->insert_obj();
+            $id = $this->insert_obj();
+            if(property_exists($this, 'id')) {
+                $this->id = $id;
+            }
         }
     }
     

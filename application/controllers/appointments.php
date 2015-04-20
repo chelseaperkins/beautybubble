@@ -72,8 +72,10 @@ class Appointments extends CI_Controller {
             
             $appointment->date_time = $request->dateTime;     
             
-            $appointment->save();
             
+            
+            $this->sendemail($request);
+            $appointment->save();
             $this->output->set_header('Content-Type: application/json; charset=utf-8');
             exit( json_encode(array(
                 'success'=> true, 
@@ -89,18 +91,18 @@ class Appointments extends CI_Controller {
         }
     }
 
-    public function email() {
+    public function sendemail($request) {
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             
             $this->load->library('email');
             $this->email->set_newline("\r\n");
             //$return = $_POST;
-            $sender_email = $this->input->post('email');
-            $sender_first_name = $this->input->post('first_name');
-            $sender_last_name = $this->input->post('last_name');
-            $home_ph = $this->input->post('home_phone');
-            $mobile_ph = $this->input->post('mobile_phone');
+            $sender_email = isset($request->email) ? $request->email : "";
+            $sender_first_name = isset($request->firstName) ? $request->firstName : "";
+            $sender_last_name = isset($request->lastName) ? $request->lastName : "";
+            $home_ph = isset($request->phNumber) ? $request->phNumber : "";
+            $mobile_ph = isset($request->mobilePhone) ? $request->mobilePhone : "";
             $this->email->from($sender_email, $sender_first_name .' '. $sender_last_name);
             $this->email->to('chelseaperkins6@gmail.com', 'Chelsea');
             $this->email->subject('An appointment has been requested');

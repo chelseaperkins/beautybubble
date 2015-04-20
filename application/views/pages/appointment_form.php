@@ -151,10 +151,14 @@
                         </div>
 
 
+                        <div
+                        vc-recaptcha
+                        key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
+                        on-success="setResponse(response)"
+                        ></div>
 
-
-                        <input type="button" ng-click="sendData()" value="Submit" class="btn btn-default form_submit">
-
+                        <input type="button" ng-click="sendData()" ng-disabled="!isVerified || isSending" value="Submit" class="btn btn-default form_submit">
+                        {{emailSendErrorMessage}}
 
                     </form>
                 </div>
@@ -164,7 +168,7 @@
                     <p>Your booking time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
                     <p>Your treatments you are booked for are:</p>
                 <table>
-                    <tr>
+                    <tr ng-show="Model.facialTreatments !== null">
                         <td>Facial Treatments:</td>
                         <td>{{Model.facialTreatments}}</td>
                     </tr>

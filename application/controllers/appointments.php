@@ -62,9 +62,7 @@ class Appointments extends CI_Controller {
                         
             $appointment = new Appointment();
             $appointment->user_id = $user->id;
-            if(isset ($request->facialTreatments)) {
-                $appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);
-            }
+            if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
             if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
             if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
             if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
@@ -75,7 +73,7 @@ class Appointments extends CI_Controller {
             $appointment->date_time = $request->dateTime;     
             
             $appointment->save();
-
+            
             $this->output->set_header('Content-Type: application/json; charset=utf-8');
             exit( json_encode(array(
                 'success'=> true, 
@@ -83,6 +81,7 @@ class Appointments extends CI_Controller {
                 'appointment' => $request,
 
                 )));
+            
 
         } else {
 
@@ -91,19 +90,51 @@ class Appointments extends CI_Controller {
     }
 
     public function email() {
-        $this->load->library('email');
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            
+            $this->load->library('email');
+            $this->email->set_newline("\r\n");
+            //$return = $_POST;
+            $sender_email = $this->input->post('email');
+            $sender_first_name = $this->input->post('first_name');
+            $sender_last_name = $this->input->post('last_name');
+            $home_ph = $this->input->post('home_phone');
+            $mobile_ph = $this->input->post('mobile_phone');
+            $this->email->from($sender_email, $sender_first_name .' '. $sender_last_name);
+            $this->email->to('chelseaperkins6@gmail.com', 'Chelsea');
+            $this->email->subject('An appointment has been requested');
+            $message = '
+            <html>
+            <body>
+            <p>Appointment details that have been requested,</p>
+                <table>
+                    <tr>
+                        <td>Sender:</td>
+                        <td>' . $sender_first_name . '&nbsp;' . $sender_last_name . '</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>' . $sender_email . '</td>
+                    </tr>
+                    <tr>
+                        <td>Home phone number:</td>
+                        <td>' . $home_ph . '</td>
+                    </tr>
+                    <tr>
+                        <td>Mobile Number:</td>
+                        <td>' . $mobile_ph . '</td>
+                    </tr>
+                </table>
+            </body>
+            </html>
+            ';
+            $this->email->message($message);
 
-        $this->email->from('your@example.com', 'Your Name');
-        $this->email->to('someone@example.com');
-        $this->email->cc('another@another-example.com');
-        $this->email->bcc('them@their-example.com');
+            $this->email->send();
+        }
 
-        $this->email->subject('Email Test');
-        $this->email->message('Testing the email class.');
-
-        $this->email->send();
-
-        echo $this->email->print_debugger();
+        
     }
     
     private function implodeNonNull($sep, $arr) {

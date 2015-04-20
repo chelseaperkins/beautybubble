@@ -36,8 +36,8 @@
                             <input type="text" ng-model="Model.lastName" class="form-control" id="last_name" placeholder="Enter Last Name" required>
                         </div>
                         <div class="form-group">
-                            <label for="email"><?php echo"Email address"; ?></label>
-                            <input type="email" ng-model="Model.email" class="form-control" id="email" placeholder="Enter email" required>
+                            <label for="email"><?php echo"Email Address"; ?></label>
+                            <input type="email" ng-model="Model.email" class="form-control" id="email" placeholder="Enter email address" required>
                         </div>
                         <div class="form-group">
                             <label for="home_phone"><?php echo"Home Phone Number"; ?></label>
@@ -45,14 +45,9 @@
                         </div>
                         <div class="form-group">
                             <label for="mobile_phone"><?php echo"Mobile Phone Number"; ?></label>
-                            <input type="text" ng-model="Model.mobilePhone" class="form-control" id="mobile_phone" placeholder="Enter Mobile Phone Number" required>
+                            <input type="text" ng-model="Model.mobilePhone" class="form-control" id="mobile_phone" placeholder="Enter Mobile Phone Number">
                         </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> <?php echo"Remember Me"; ?>
-                            </label>
-                        </div>
-
+                        
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Appointment details"; ?></strong></h3></label>
                         <hr class="appointment_heading"> 
 
@@ -77,7 +72,7 @@
                                 <option value="Eyebrow Tint and Lash Tint for $20"><?php echo"Eyebrow Tint and Lash Tint for $20"; ?></option>
                                 <option value="Eyebrow Shape and Brow Tint for $15"><?php echo"Eyebrow Shape and Brow Tint for $15"; ?></option>
                                 <option value="Eyebrow Tint, Shape and Lash Tint for $25"><?php echo"Eyebrow Tint, Shape and Lash Tint for $25"; ?></option>
-                                <option value="Eyebrow Perm for $30"><?php echo"Eyebrow Perm for $30"; ?></option>
+                                <option value="Eyelash Perm for $30"><?php echo"Eyebrow Perm for $30"; ?></option>
                             </select>
                         </div> 
 
@@ -164,12 +159,41 @@
                     </form>
                 </div>
                 <div class="appointmentsuccess" ng-show="isFormAccepted">
-                    <h3>Thank you for your request!</h3>
-                    <font>We will be in touch with you shortly.</font>
-                    <p>Your booking time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}
-                    
-                    {{Model.bodyTreatments}}</p>
-                    
+                    <h3>Thank you for your appointment request!</h3><br />
+                    <font>We will be in touch with you shortly.</font><br />
+                    <p>Your booking time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
+                    <p>Your treatments you are booked for are:</p>
+                <table>
+                    <tr>
+                        <td>Facial Treatments:</td>
+                        <td>{{Model.facialTreatments}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eye Treatments:</td>
+                        <td>{{Model.eyeTreatments}}</td>
+                    </tr>
+                    <tr>
+                        <td>Body Treatments:</td>
+                        <td>{{Model.bodyTreatments}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eye Treatments:</td>
+                        <td>{{Model.sprayTanning}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eye Treatments:</td>
+                        <td>{{Model.nailTreatments}}</td>
+                    </tr>
+                    <tr>
+                        <td>Eye Treatments:</td>
+                        <td>{{Model.waxingTreatments}}</td>
+                    </tr>
+                    <tr>
+                        <td>Electrolysis:</td>
+                        <td>{{Model.electrolysis}}</td>
+                    </tr>
+
+                </table>
                 </div>
 
             </div>

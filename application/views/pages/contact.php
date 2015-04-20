@@ -61,15 +61,15 @@
 
                         </div>
                         <div class="form-group">
-                            <?php echo form_label('Email', 'email'); ?>
-                            <?php echo form_input('email', set_value('email'), 'class=form-control'); ?>
+                            <?php echo form_label('Email Address', 'email_address'); ?>
+                            <?php echo form_input('email_address', set_value('email_address'), 'class=form-control', 'required'); ?>
 
                         </div>
                        
 
                         <div class="form-group">
                             <?php echo form_label('Comments', 'comments'); ?>
-                            <textarea type="text" class="form-control" rows="5" id="comments" placeholder="Comments" required></textarea><br />
+                            <textarea type="text" name="comments" class="form-control" rows="5" placeholder="Your Message" required></textarea><br />
                         </div>
 
                         <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 

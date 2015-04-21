@@ -4,7 +4,7 @@
 $config['protocol'] = 'smtp';
 $config['smtp_host'] = 'smtp.googlemail.com';
 $config['smtp_user'] = 'chelseaperkins6@gmail.com';
-$config['smtp_pass'] = 'ruskinstreet';
+$config['smtp_pass'] = 'raymond2005';
 $config['smtp_port'] = '465';
 $config['smtp_crypto'] = 'ssl';
 //$config['mailtype'] = 'html';

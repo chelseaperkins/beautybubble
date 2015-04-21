@@ -62,6 +62,7 @@ class Appointments extends CI_Controller {
                         
             $appointment = new Appointment();
             $appointment->user_id = $user->id;
+                        
             if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
             if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
             if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
@@ -69,15 +70,12 @@ class Appointments extends CI_Controller {
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
             if(isset ($request->electrolsis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolsis);}
-            
-            $appointment->date_time = $request->dateTime;     
-            
-            
-            
-            $this->sendemail($request);
+            $appointment->date_time = $request->dateTime;
+            $this->sendemail($request);                          
             $appointment->save();
+            
             $this->output->set_header('Content-Type: application/json; charset=utf-8');
-            exit( json_encode(array(
+            exit(json_encode(array(
                 'success'=> true, 
                 'message' => "Saved", 
                 'appointment' => $request,
@@ -94,15 +92,25 @@ class Appointments extends CI_Controller {
     public function sendemail($request) {
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+            //$return = $_POST;
             $this->load->library('email');
             $this->email->set_newline("\r\n");
-            //$return = $_POST;
+            
             $sender_email = isset($request->email) ? $request->email : "";
-            $sender_first_name = isset($request->firstName) ? $request->firstName : "";
+            $sender_first_name = isset($request->firstName) ? $request->firstName : ""; 
             $sender_last_name = isset($request->lastName) ? $request->lastName : "";
+            $date_time = isset($request->dateTime) ? $request->dateTime : "";
             $home_ph = isset($request->phNumber) ? $request->phNumber : "";
             $mobile_ph = isset($request->mobilePhone) ? $request->mobilePhone : "";
+            $facial_treatments = isset($request->facialTreatments) ? $request->facialTreatments : "";
+            $eye_treatments = isset($request->eyeTreatments) ? $request->eyeTreatments : "";
+            $body_treatments = isset($request->bodyTreatments) ? $request->bodyTreatments : "";
+            $spray_tanning = isset($request->sprayTanning) ? $request->sprayTanning : "";
+            $nail_treatments = isset($request->nailTreatments) ? $request->nailTreatments : "";
+            $waxing_treatments = isset($request->waxingTreatments) ? $request->waxingTreatments : "";
+            $electrolysis = isset($request->electrolysis) ? $request->electrolysis : "";
+                       
+            
             $this->email->from($sender_email, $sender_first_name .' '. $sender_last_name);
             $this->email->to('chelseaperkins6@gmail.com', 'Chelsea');
             $this->email->subject('An appointment has been requested');
@@ -112,21 +120,55 @@ class Appointments extends CI_Controller {
             <p>Appointment details that have been requested,</p>
                 <table>
                     <tr>
-                        <td>Sender:</td>
+                        <td>Date and Time:</td>
+                        <td>' . $date_time . '</td>
+                    </tr>
+                    <tr>
+                        <td>Client:</td>
                         <td>' . $sender_first_name . '&nbsp;' . $sender_last_name . '</td>
                     </tr>
                     <tr>
-                        <td>Email:</td>
+                        <td>Client Email Address:</td>
                         <td>' . $sender_email . '</td>
                     </tr>
                     <tr>
-                        <td>Home phone number:</td>
+                        <td>Home Phone Number:</td>
                         <td>' . $home_ph . '</td>
                     </tr>
                     <tr>
                         <td>Mobile Number:</td>
                         <td>' . $mobile_ph . '</td>
                     </tr>
+                    
+                    <tr>
+                        <td>Facial Treatments:</td>
+                        <td>' . $facial_treatments . '</td>
+                    </tr>
+                    <tr>
+                        <td>Eye Treatments:</td>
+                        <td>' . $eye_treatments . '</td>
+                    </tr>
+                    <tr>
+                        <td>Body Treatments:</td>
+                        <td>' . $body_treatments . '</td>
+                    </tr>
+                    <tr>
+                        <td>Spray Tanning:</td>
+                        <td>' . $spray_tanning . '</td>
+                    </tr>
+                    <tr>
+                        <td>Nail Treatments:</td>
+                        <td>' . $nail_treatments . '</td>
+                    </tr>
+                    <tr>
+                        <td>Waxing Treatments:</td>
+                        <td>' . $waxing_treatments . '</td>
+                    </tr>
+                    <tr>
+                        <td>Electrolysis:</td>
+                        <td>' . $electrolysis . '</td>
+                    </tr>
+                    
                 </table>
             </body>
             </html>

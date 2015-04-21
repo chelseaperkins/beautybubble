@@ -66,7 +66,7 @@
                             <label for="eye_treatments"><?php echo"Eye Treatments"; ?></label>
 
                             <select multiple ng-model="Model.eyeTreatments" chosen style="width:100%;">
-                                <option value="Select one or multiple treatments"><?php echo"Select a treatment"; ?></option>
+                                <option value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Eyelash Tint for $15"><?php echo"Eyelash Tint for $15"; ?></option>
                                 <option value="Eyebrow Tint for $10"><?php echo"Eyebrow Tint for $10"; ?></option>
                                 <option value="Eyebrow Tint and Lash Tint for $20"><?php echo"Eyebrow Tint and Lash Tint for $20"; ?></option>
@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label for="body_treatments"><?php echo"Body Treatments"; ?></label>
                             <select multiple ng-model="Model.bodyTreatments" chosen style="width:100%;">
-                                <option value="Select one or multiple treatments"><?php echo"Select a treatment"; ?></option>
+                                <option value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Full Body Massage - 60 minutes for $80"><?php echo"Full Body Massage - 60 minutes for $80"; ?></option>
                                 <option value="Back, Neck and Shoulder - 30 minutes for $40"><?php echo"Back, Neck and Shoulder - 30 minutes for $40"; ?></option>
                             </select>  
@@ -90,7 +90,7 @@
                         <div class="form-group">
                             <label for="spray_tanning"><?php echo"Spray Tanning"; ?></label>
                             <select multiple ng-model="Model.sprayTanning" chosen style="width:100%;">
-                                <option value="Select one or multiple treatments"><?php echo"Select a treatment"; ?></option>
+                                <option value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Full Body for $30"><?php echo"Full Body for $30"; ?></option>
                                 <option value="Half Body for $20"><?php echo"Half Body for $20"; ?></option>
                             </select>                          
@@ -99,7 +99,7 @@
                         <div class="form-group">
                             <label for="nail_treatments"><?php echo"Nail Treatments"; ?></label>
                             <select multiple ng-model="Model.nailTreatments" chosen style="width:100%;">
-                                <option value="Select one or multiple treatments"><?php echo"Select a treatment"; ?></option>
+                                <option value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Deluxe Manicure - 60 minutes for $45"><?php echo"Deluxe Manicure - 60 minutes for $45"; ?></option>
                                 <option value="Mini Manicure - 30 minutes for $30"><?php echo"Mini Manicure - 30 minutes for $30"; ?></option>
                                 <option value="File and Polish for $15"><?php echo"File and Polish for $15"; ?></option>
@@ -112,7 +112,7 @@
                         <div class="form-group">
                             <label for="waxing_treatments"><?php echo"Waxing Treatments"; ?></label>
                             <select multiple ng-model="Model.waxingTreatments" chosen style="width:100%;">
-                                <option value="Select one or multiple treatments"><?php echo"Select a treatment"; ?></option>
+                                <option value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Underarm wax for $15"><?php echo"Underarm wax for $15"; ?></option>
                                 <option value="Forearm wax for $20"><?php echo"Forearm wax for $20"; ?></option>
                                 <option value="Back or Chest wax for $35"><?php echo"Back or Chest wax for $35"; ?></option>
@@ -134,7 +134,7 @@
                         <div class="form-group">
                             <label for="electrolysis"><?php echo"Electrolysis"; ?></label>
                             <select multiple ng-model="Model.electrolysis" chosen style="width:100%;">
-                                <option value="Select one or multiple treatments"><?php echo"Select a treatment"; ?></option>
+                                <option value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="15 minutes (minimum appointment) for $25"><?php echo"15 minutes (minimum appointment) for $25"; ?></option>
                                 <option value="30 minutes for $40"><?php echo"30 minutes for $40"; ?></option>
                             </select> 
@@ -156,6 +156,7 @@
                         key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
                         on-success="setResponse(response)"
                         ></div>
+                        <br />
 
                         <input type="button" ng-click="sendData()" ng-disabled="!isVerified || isSending" value="Submit" class="btn btn-default form_submit">
                         {{emailSendErrorMessage}}
@@ -164,35 +165,35 @@
                 </div>
                 <div class="appointmentsuccess" ng-show="isFormAccepted">
                     <h3>Thank you for your appointment request!</h3><br />
-                    <font>We will be in touch with you shortly.</font><br />
-                    <p>Your booking time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
-                    <p>Your treatments you are booked for are:</p>
+                    <p>Please remember that this is just a request for an appointment, and will need to be confirmed.<br /> We will be in touch with you shortly.</p><br />
+                    <p>Your requested appointment date and time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
+                    <p>The treatments you requested are:</p>
                 <table>
                     <tr ng-show="Model.facialTreatments !== null">
                         <td>Facial Treatments:</td>
                         <td>{{Model.facialTreatments}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="Model.eyeTreatments !== null">
                         <td>Eye Treatments:</td>
                         <td>{{Model.eyeTreatments}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="Model.bodyTreatments !== null">
                         <td>Body Treatments:</td>
                         <td>{{Model.bodyTreatments}}</td>
                     </tr>
-                    <tr>
-                        <td>Eye Treatments:</td>
+                    <tr ng-show="Model.sprayTanning !== null">
+                        <td>Spray Tanning:</td>
                         <td>{{Model.sprayTanning}}</td>
                     </tr>
-                    <tr>
-                        <td>Eye Treatments:</td>
+                    <tr ng-show="Model.nailTreatments !== null">
+                        <td>Nail Treatments:</td>
                         <td>{{Model.nailTreatments}}</td>
                     </tr>
-                    <tr>
-                        <td>Eye Treatments:</td>
+                    <tr ng-show="Model.waxingTreatments !== null">
+                        <td>Waxing Treatments:</td>
                         <td>{{Model.waxingTreatments}}</td>
                     </tr>
-                    <tr>
+                    <tr ng-show="Model.electrolysis !== null">
                         <td>Electrolysis:</td>
                         <td>{{Model.electrolysis}}</td>
                     </tr>

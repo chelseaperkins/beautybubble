@@ -37,10 +37,10 @@ class Site extends CI_controller {
         $this->load->view('pages/contact');
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            
+            //$return = $_POST;
             $this->load->library('email');
             $this->email->set_newline("\r\n");
-            //$return = $_POST;
+            
             $sender_email = $this->input->post('email_address');
             $sender_first_name = $this->input->post('first_name');
             $sender_last_name = $this->input->post('last_name');

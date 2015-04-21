@@ -47,8 +47,8 @@
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.jquery.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-beauty_bubble.js"></script>
-        <!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>
-        <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>-->
+        <!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>-->
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>
 
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -79,7 +79,19 @@
                                 <img class="logo" src="<?php echo base_url(); ?>assets/themes/default/images/logo.png" alt="logo"/>
                             </a>
                         </div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a href="<?php echo site_url(); ?>">Home</a></li>
+                        
+                        <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
+                        <li><a href="<?php echo site_url('/dashboard/home_dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('/dashboard/login'); ?>">Logout</a></li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
                     </div>
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                
+            </nav><!-- /.container-fluid -->
                 </nav>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenuDivider">
                     <li>Profile</li>
@@ -89,17 +101,9 @@
             
              
             <div class="row dash_wrapper">
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="col-md-6 collapse navbar-collapse dash_nav_wrapper " id="bs-example-navbar-collapse-1">
-                    <ul class="nav nav-pills nav-stacked dash_nav">
-                        <li class="active"><a href="<?php echo site_url('/dashboard/index'); ?>"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                        <li><a href="<?php echo site_url('/dashboard/status'); ?>"><span class="glyphicon glyphicon-tasks"></span> View current appointments</a></li>
-                        <li><a href="<?php echo site_url('/dashboard/status'); ?>"><span class="glyphicon glyphicon-ban-circle"></span> View expired appointments</a></li>
-                    </ul>
-                </div><!-- /.navbar-collapse -->
-                <!-- /.container-fluid -->
+                
 
-                <div class="col-md-6">
+                <div class="col-md-8">
 
                 <?php echo $output; ?>
                 </div>

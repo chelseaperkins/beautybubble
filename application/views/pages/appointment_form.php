@@ -72,7 +72,7 @@
                                 <option value="Eyebrow Tint and Lash Tint for $20"><?php echo"Eyebrow Tint and Lash Tint for $20"; ?></option>
                                 <option value="Eyebrow Shape and Brow Tint for $15"><?php echo"Eyebrow Shape and Brow Tint for $15"; ?></option>
                                 <option value="Eyebrow Tint, Shape and Lash Tint for $25"><?php echo"Eyebrow Tint, Shape and Lash Tint for $25"; ?></option>
-                                <option value="Eyelash Perm for $30"><?php echo"Eyebrow Perm for $30"; ?></option>
+                                <option value="Eyelash Perm for $30"><?php echo"Eyelash Perm for $30"; ?></option>
                             </select>
                         </div> 
 
@@ -168,34 +168,34 @@
                     <p>Please remember that this is just a request for an appointment, and will need to be confirmed.<br /> We will be in touch with you shortly.</p><br />
                     <p>Your requested appointment date and time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
                     <p>The treatments you requested are:</p>
-                <table>
+                    <table class="appointmentsuccess">
                     <tr ng-show="Model.facialTreatments !== null">
                         <td>Facial Treatments:</td>
-                        <td>{{Model.facialTreatments}}</td>
+                        <td><div ng-repeat="treatment in Model.facialTreatments">{{treatment}}</div></td>
                     </tr>
                     <tr ng-show="Model.eyeTreatments !== null">
                         <td>Eye Treatments:</td>
-                        <td>{{Model.eyeTreatments}}</td>
+                        <td><div ng-repeat="treatment in Model.eyeTreatments">{{treatment}}</div></td>
                     </tr>
                     <tr ng-show="Model.bodyTreatments !== null">
                         <td>Body Treatments:</td>
-                        <td>{{Model.bodyTreatments}}</td>
+                        <td><div ng-repeat="treatment in Model.bodyTreatments">{{treatment}}</div></td>
                     </tr>
                     <tr ng-show="Model.sprayTanning !== null">
                         <td>Spray Tanning:</td>
-                        <td>{{Model.sprayTanning}}</td>
+                        <td><div ng-repeat="treatment in Model.sprayTanning">{{treatment}}</div></td>
                     </tr>
                     <tr ng-show="Model.nailTreatments !== null">
                         <td>Nail Treatments:</td>
-                        <td>{{Model.nailTreatments}}</td>
+                        <td><div ng-repeat="treatment in Model.nailTreatments">{{treatment}}</div></td>
                     </tr>
                     <tr ng-show="Model.waxingTreatments !== null">
                         <td>Waxing Treatments:</td>
-                        <td>{{Model.waxingTreatments}}</td>
+                        <td><div ng-repeat="treatment in Model.waxingTreatments">{{treatment}}</div></td>
                     </tr>
                     <tr ng-show="Model.electrolysis !== null">
                         <td>Electrolysis:</td>
-                        <td>{{Model.electrolysis}}</td>
+                        <td><div ng-repeat="treatment in Model.electrolysis">{{treatment}}</div></td>
                     </tr>
 
                 </table>

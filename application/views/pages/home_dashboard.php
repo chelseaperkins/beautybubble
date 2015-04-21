@@ -4,6 +4,8 @@
         <div class="dashbd_home_text">
             <h1><strong><?php echo"DASHBOARD"; ?></strong></h1>
             <p><?php echo"Todays appointments"; ?></p>
+            
+            
             <div class="row">
                 <div class="col-sm-4 col-md-4 text center">
 
@@ -17,9 +19,6 @@
                             </ul>
                         </div>
 
-
-<!--                        <p>First name: Jo <br />
-Last name: Blogs <br /></p>-->
                     </div>
                 </div>
                 <div class="col-sm-4 col-md-4">

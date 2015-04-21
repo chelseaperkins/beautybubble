@@ -102,13 +102,13 @@ class Appointments extends CI_Controller {
             $date_time = isset($request->dateTime) ? $request->dateTime : "";
             $home_ph = isset($request->phNumber) ? $request->phNumber : "";
             $mobile_ph = isset($request->mobilePhone) ? $request->mobilePhone : "";
-            $facial_treatments = isset($request->facialTreatments) ? $request->facialTreatments : "";
-            $eye_treatments = isset($request->eyeTreatments) ? $request->eyeTreatments : "";
-            $body_treatments = isset($request->bodyTreatments) ? $request->bodyTreatments : "";
-            $spray_tanning = isset($request->sprayTanning) ? $request->sprayTanning : "";
-            $nail_treatments = isset($request->nailTreatments) ? $request->nailTreatments : "";
-            $waxing_treatments = isset($request->waxingTreatments) ? $request->waxingTreatments : "";
-            $electrolysis = isset($request->electrolysis) ? $request->electrolysis : "";
+            $facial_treatments =isset($request->facialTreatments) ? $this->implodeNonNull(",  ",$request->facialTreatments) : "";
+            $eye_treatments = isset($request->eyeTreatments) ? $this->implodeNonNull(",  ",$request->eyeTreatments) : "";
+            $body_treatments = isset($request->bodyTreatments) ? $this->implodeNonNull(",  ",$request->bodyTreatments) : "";
+            $spray_tanning = isset($request->sprayTanning) ? $this->implodeNonNull(",  ",$request->sprayTanning) : "";
+            $nail_treatments = isset($request->nailTreatments) ? $this->implodeNonNull(",  ",$request->nailTreatments) : "";
+            $waxing_treatments = isset($request->waxingTreatments) ? $this->implodeNonNull(",  ",$request->waxingTreatments) : "";
+            $electrolysis = isset($request->electrolysis) ? $this->implodeNonNull(",  ",$request->electrolysis) : "";
                        
             
             $this->email->from($sender_email, $sender_first_name .' '. $sender_last_name);
@@ -121,7 +121,7 @@ class Appointments extends CI_Controller {
                 <table>
                     <tr>
                         <td>Date and Time:</td>
-                        <td>' . $date_time . '</td>
+                        <td>' . $date_time. '</td>
                     </tr>
                     <tr>
                         <td>Client:</td>
@@ -142,7 +142,7 @@ class Appointments extends CI_Controller {
                     
                     <tr>
                         <td>Facial Treatments:</td>
-                        <td>' . $facial_treatments . '</td>
+                        <td>' . $facial_treatments .'</td>
                     </tr>
                     <tr>
                         <td>Eye Treatments:</td>

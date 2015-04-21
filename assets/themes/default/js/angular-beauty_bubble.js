@@ -25,7 +25,7 @@
         $scope.emailSendErrorMessage = "";
         $scope.setResponse = function (response) {
             $scope.isVerified = true;
-        // send the `response` to your server for verification.
+            // send the `response` to your server for verification.
         };
         $scope.sendData = function () {
             // build the model
@@ -47,6 +47,15 @@
                 $scope.emailSendErrorMessage = "We are sorry as there was an issue sending your message. Please try again.";
             });
         };
+        
+        /* debug */
+        $scope.Model.firstName = "Chelsea";
+        $scope.Model.lastName = "Perkins";
+        $scope.Model.email = "chelseaperkins6@gmail.com";
+        $scope.Model.phNumber = "033557789";
+        $scope.Model.mobileNumber = "+642194579";
+        $scope.Model.facialTreatments = ["Facial - 60 minutes for $50"];
+        $scope.Model.eyeTreatments = ["Eyelash Tint for $15", "Eyelash Perm for $30"];
     }
     ]);
     /* End of Appointment controller */

@@ -2,6 +2,7 @@
 
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
+session_start();
 
 class Dashboard extends CI_Controller {
 
@@ -15,17 +16,41 @@ class Dashboard extends CI_Controller {
 
     private function _init() {
         $this->output->set_template('simple');
-        
     }
 
     public function index() {
 
         $this->load->view('pages/home_dashboard');
     }
+
+//    Login for admin
+    public function login($email, $password) {
+        $this->load->view('pages/log_in');
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //$return = $_POST;
+            // Load session library
+            $this->load->library('session');
+            // Load model
+            $this->load->model('user');
+            
+        }
+    }
     
-    public function detail(){
-        
-        $this->load->view('pages/detail');
+    // Logout from admin page
+public function logout() {
+
+// Removing session data
+$sess_array = array(
+'username' => ''
+);
+$this->session->unset_userdata('logged_in', $sess_array);
+$data['message_display'] = 'Successfully Logout';
+$this->load->view('login_form', $data);
+}
+
+
+
+    public function detail() {
         
     }
 
@@ -35,7 +60,6 @@ class Dashboard extends CI_Controller {
 //        $this->load->model('todo');
 //
 //        $todo = new Todo();
-
 //            is add/edit
 //        if (!$this->input->post()) {
 ////                if is add
@@ -57,69 +81,68 @@ class Dashboard extends CI_Controller {
 //                $todo = $this->Todo->get($id);
 //            }
 
-            $this->load->view('pages/add_edit');
+        $this->load->view('pages/add_edit');
 //                    , array(
 //                'edit' =>$id != NULL,
 //                'todo' => $todo,
 //            ));
-            
 //        }else{
 ////            if is insert/update
 //            $this->_insert_update($todo, $id);
 //        }
     }
-    
+
     /**
      * Private method to insert or update a Todo depending on whether an id is specified.
      * @param Todo $todo
      * @param int $id
      */
     private function _insert_update($todo, $id) {
-	//populate from post
-	$todo->title = $this->input->post('title');
-	$todo->description = $this->input->post('description');
-	// validation
-	$this->load->library('form_validation');
-	$this->form_validation->set_rules(array(
-	    array(
-		'field' => 'title',
-		'label' => 'Title',
-		'rules' => 'required',
-	    ),
-	    array(
-		'field' => 'description',
-		'label' => 'Description',
-		'rules' => 'required',
-	    ),
-	));
-	$this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
-	//if doesn't validate
-	if (!$this->form_validation->run()) {
-	    $this->load->view('pages/add_edit', array(
-		'edit' => $id != null,
-		'todo' => $todo,
-	    ));
-	} else {//if validates
-	    $todo->id = (int) $id;
-	    //hard-code a few values not in the form
-	    $todo->priority = 1;
-	    $todo->comment = "my comment";
-	    $todo->created_on = "2015-01-01";
-	    $todo->last_modified_on = "2015-01-01";
-	    $todo->due_on = "2015-01-01";
-	    $todo->status = "DONE";
-	    $todo->deleted = 0;
-	    $todo->save($id);
-	    //add flash and redirect
-	    $action = "";
-	    if ($id == null) {
-		$action = "added";
-	    } else {
-		$action = "updated";
-	    }
+        //populate from post
+        $todo->title = $this->input->post('title');
+        $todo->description = $this->input->post('description');
+        // validation
+        $this->load->library('form_validation');
+        $this->form_validation->set_rules(array(
+            array(
+                'field' => 'title',
+                'label' => 'Title',
+                'rules' => 'required',
+            ),
+            array(
+                'field' => 'description',
+                'label' => 'Description',
+                'rules' => 'required',
+            ),
+        ));
+        $this->form_validation->set_error_delimiters('<div class="alert alert-error">', '</div>');
+        //if doesn't validate
+        if (!$this->form_validation->run()) {
+            $this->load->view('pages/add_edit', array(
+                'edit' => $id != null,
+                'todo' => $todo,
+            ));
+        } else {//if validates
+            $todo->id = (int) $id;
+            //hard-code a few values not in the form
+            $todo->priority = 1;
+            $todo->comment = "my comment";
+            $todo->created_on = "2015-01-01";
+            $todo->last_modified_on = "2015-01-01";
+            $todo->due_on = "2015-01-01";
+            $todo->status = "DONE";
+            $todo->deleted = 0;
+            $todo->save($id);
+            //add flash and redirect
+            $action = "";
+            if ($id == null) {
+                $action = "added";
+            } else {
+                $action = "updated";
+            }
 //	    $this->session->set_flashdata('success', 'TODO successfully ' . $action);
-	    redirect('/todos/status/' . strtolower($todo->status), 'refresh');
-	}
+            redirect('/todos/status/' . strtolower($todo->status), 'refresh');
+        }
     }
 
     public function status() {
@@ -147,23 +170,23 @@ class Dashboard extends CI_Controller {
 //            'todos' => $todos,
 //        ));
     }
-    
+
     /**
      * Delete Todo based on id. Status is passed in for redirection to list.
      * @param string $status
      * @param int $id
      */
-    public function delete($status,$id) {
-	$this->load->model('Todo');
-    if($this->Todo->delete($id)){
-        $this->load->library('session');
-	$this->session->set_flashdata('success', 'TODO successfully deleted.');
-    }else{
-	$this->session->set_flashdata('error', 'There was a problem deleting the TODO. Please try again.');	
-    }
+    public function delete($status, $id) {
+        $this->load->model('Todo');
+        if ($this->Todo->delete($id)) {
+            $this->load->library('session');
+            $this->session->set_flashdata('success', 'TODO successfully deleted.');
+        } else {
+            $this->session->set_flashdata('error', 'There was a problem deleting the TODO. Please try again.');
+        }
 //    take back to list
-    redirect('/todos/status/'.$status, 'refresh');
- }
+        redirect('/todos/status/' . $status, 'refresh');
+    }
 
     public function example_3() {
 //		$this->load->section('sidebar', 'ci_simplicity/sidebar');

@@ -1,32 +1,27 @@
 
-<div class="login_background">
+<div class="row login_background">
    
-    <div class="login_form_wrapper">
-        <form class="teacher_login_form" action="#" method="POST">
-            <fieldset>
-                <legend>Log in</legend>
-                <label for="teacherName">Teacher name
-                    <input id="teacher_name" type="text" name="teacherName" onblur="validateForTextOnly(this)"required="true" value="<?php echo $teacher->getTeacherName() ?>"></label>
-                <br>
-                <br>
+    <div class="col-md-12 login_form_wrapper">
+        <form class="login_form" action="#" method="POST">
+            
+                <h2>Log in</h2>
+                <hr class="message_heading">
+                <div class="form-group">
+                <label for="admin_email">Email
+                <input type="text" name="admin_email" required="true" class="form-control"></label>
+                </div>
+                
+                <div class="form-group">
                 <label for="password">Password
-                    <input id="password" type="password" name="password" required="true" value="<?php echo $teacher->getPassword() ?>"></label>
-                <br>
-                <br>
+                    <input id="password" type="password" name="password" required="true" class="form-control"></label>
+                </div>
+                
                 <div class="login_submit">
-                    <input name="submit" type="submit" value="Log in">
-                    <?php
-                  
-                   if($error != ""){
-                   
-                        echo '<span>' . $error . '</span>';
-                        
-                        }
-                    ?>
+                    <input name="submit" type="submit" value="Log in" class="btn btn-default login_submit">
                     
                 </div>         
-                <br>
-            </fieldset>
+                
+           
         </form>
 
     </div>

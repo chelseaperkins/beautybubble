@@ -17,7 +17,7 @@
                 </div>
                 
                 <div class="login_submit">
-                    <input name="submit" type="submit" value="Log in" class="btn btn-default login_submit">
+                    <input name="submit" type="submit" value="log_in" class="btn btn-default login_submit">
                     
                 </div>         
                 

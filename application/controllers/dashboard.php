@@ -23,31 +23,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('pages/home_dashboard');
     }
 
-//    Login for admin
-    public function login($email, $password) {
-        $this->load->view('pages/log_in');
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //$return = $_POST;
-            // Load session library
-            $this->load->library('session');
-            // Load model
-            $this->load->model('user');
-            
-        }
-    }
-    
-    // Logout from admin page
-public function logout() {
-
-// Removing session data
-$sess_array = array(
-'username' => ''
-);
-$this->session->unset_userdata('logged_in', $sess_array);
-$data['message_display'] = 'Successfully Logout';
-$this->load->view('login_form', $data);
-}
-
 
 
     public function detail() {

@@ -33,8 +33,8 @@ class Site extends CI_controller {
 
     public function contact() {
 
-        $this->load->helper('form');
-        $this->load->view('pages/contact');
+        $sent = false;
+        
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
@@ -72,8 +72,12 @@ class Site extends CI_controller {
             ';
             $this->email->message($message);
 
-            $this->email->send();
+            
+            $sent = $this->email->send();//true;
         }
+        $this->load->view('pages/contact',  array(
+               'sent' => $sent,
+          ));
     }
 
 }

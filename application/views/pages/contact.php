@@ -41,51 +41,59 @@
                     </div>
                 </div>
             </div>
-            <div class="row contact_us_form">
-                <div class="col-sm-0 col-md-3"></div>
-                 <div class="col-sm-2 col-md-3">
+            
+                <div class="row contact_us_form">
+                    
+                    <div class="col-sm-0 col-md-3"></div>
+                    <div class="col-sm-2 col-md-3">
+                    <?php if (!$sent) : ?>
+                        <div class="contact">
+                            <h2><strong><?php echo"Send us a Message"; ?></strong></h2>
+                            <hr class="message_heading">
+                            <?php echo form_open(); ?>
 
-                    <div class="contact">
-                        <h2><strong><?php echo"Send us a Message"; ?></strong></h2>
-                        <hr class="message_heading">
-                        <?php echo form_open(); ?>
-                        
-                        <div class="form-group">
-                            <?php echo form_label('First Name', 'first_name'); ?>
-                            <?php echo form_input('first_name', set_value('first_name'), 'class=form-control'); ?>
+                            <div class="form-group">
+                                <?php echo form_label('First Name', 'first_name'); ?>
+                                <?php echo form_input('first_name', set_value('first_name'), 'class=form-control'); ?>
+                            </div>
+
+                            <div class="form-group">
+                                <label><?php echo form_label('Last Name', 'last_name'); ?></label>
+                                <?php echo form_input('last_name', set_value('last_name'), 'class=form-control'); ?>
+
+                            </div>
+                            <div class="form-group">
+                                <?php echo form_label('Email Address', 'email_address'); ?>
+                                <?php echo form_input('email_address', set_value('email_address'), 'class=form-control', 'required'); ?>
+
+                            </div>
+
+
+                            <div class="form-group">
+                                <?php echo form_label('Comments', 'comments'); ?>
+                                <textarea type="text" name="comments" class="form-control" rows="5" placeholder="Your Message" required></textarea><br />
+                            </div>
+
+                            <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 
+                            <?php echo form_close(); ?>
                         </div>
-
-                        <div class="form-group">
-                            <label><?php echo form_label('Last Name', 'last_name'); ?></label>
-                            <?php echo form_input('last_name', set_value('last_name'), 'class=form-control'); ?>
-
+                    <?php elseif ($sent) : ?>
+                        <div class='contact_thank_message'>
+                            <h2>Thank you for your message</h2>
+                            <p>We will be in touch with you shortly.</p>
                         </div>
-                        <div class="form-group">
-                            <?php echo form_label('Email Address', 'email_address'); ?>
-                            <?php echo form_input('email_address', set_value('email_address'), 'class=form-control', 'required'); ?>
-
-                        </div>
-                       
-
-                        <div class="form-group">
-                            <?php echo form_label('Comments', 'comments'); ?>
-                            <textarea type="text" name="comments" class="form-control" rows="5" placeholder="Your Message" required></textarea><br />
-                        </div>
-
-                        <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 
-                        <?php echo form_close(); ?>
-                    </div>
-
+                    <?php endif; ?>
                 </div>
+
 
                 <div class="col-sm-2 col-md-4 col-md-push-1">
                     <div class="fb-page" data-href="https://www.facebook.com/thebeautybubbleNZ" data-height="540" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/thebeautybubbleNZ"><a href="https://www.facebook.com/thebeautybubbleNZ">The Beauty Bubble</a></blockquote></div></div>
                 </div>
-               <div class="col-sm-0 col-md-2"></div>
-            </div>
+                <div class="col-sm-0 col-md-2"></div>
             </div>
         </div>
-    </div>   
+    </div>
+</div>   
 </div>
 <div class="row">
     <div class="call_to_action_wrap">

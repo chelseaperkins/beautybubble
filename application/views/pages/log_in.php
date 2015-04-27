@@ -8,12 +8,12 @@
         <h2>Log in</h2>
         <hr class="message_heading">
         <div class="form-group">
-            <?php echo form_label('Email Address', 'email'); ?>
+            <?php echo form_label('Email Address', 'email'); ?><span class='pull-right validation_error'><?php echo form_error('email'); ?></span>
             <input type="text" name="email" for="email" value="" class="form-control"  required />
         </div>
 
         <div class="form-group">
-            <?php echo form_label('Password', 'password'); ?>
+            <?php echo form_label('Password', 'password'); ?><span class='pull-right validation_error'><?php echo form_error('password'); ?></span>
             <input type="password" name="password" value="" class="form-control" required />
         </div> 
 

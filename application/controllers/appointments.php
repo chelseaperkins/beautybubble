@@ -53,7 +53,7 @@ class Appointments extends CI_Controller {
                 $user = new User();
                 $user->first_name = $request->firstName;
                 $user->last_name = $request->lastName;
-                $user->email =$request->email;
+                $user->email = $request->email;
                 $user->ph_number = $request->phNumber;
                 $user->mobile_number = $request->mobilePhone;
                 $user->is_admin = false;

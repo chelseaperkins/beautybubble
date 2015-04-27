@@ -73,7 +73,7 @@ class Site extends CI_controller {
             $this->email->message($message);
 
             
-            $sent = $this->email->send();//true;
+            $sent = $this->email->send();
         }
         $this->load->view('pages/contact',  array(
                'sent' => $sent,

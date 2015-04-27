@@ -28,4 +28,6 @@ class User extends MY_Model{
     public $mobile_number;
     /** @var bool */
     public $is_admin;
+    /** @var bool */
+    public $is_verified;
 }

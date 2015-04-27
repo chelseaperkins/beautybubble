@@ -46,6 +46,8 @@
         
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.jquery.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-recaptcha.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-beauty_bubble.js"></script>
         <!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>-->
         <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>

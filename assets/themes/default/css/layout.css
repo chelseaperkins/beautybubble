@@ -6816,6 +6816,7 @@ hr.message_heading {
   color: #242d64;
   text-shadow: 0 1px 0 #fff;
   font-size: 1.5em;
+  margin: 0px;
 }
 .dashbd_wrap {
   position: relative;
@@ -6850,7 +6851,7 @@ hr.message_heading {
   font-family: 'Caudex';
   text-align: center;
 }
-/*login page*/
+/*login and register pages*/
 .login_background {
   background: rgba(255, 255, 255, 0.2);
 }
@@ -6871,6 +6872,10 @@ hr.message_heading {
   color: #242d64;
   border-color: #242d64;
   padding: 6px 50px 6px 50px;
+}
+span.pull-right.valadation_error p {
+  color: #f0ad4e !important;
+  font-size: 8px!important;
 }
 /*Nav bar*/
 .navbar .nav .active > a,

@@ -223,8 +223,8 @@ class My_Model extends CI_Model {
     private function insert_obj() {
         $this->db->insert($this->_table, $this);
         $insert_id = $this->_database->insert_id();
-            $this->trigger('after_create', $insert_id);
-            return $insert_id;
+        $this->trigger('after_create', $insert_id);
+        return $insert_id;
     }
     
     /**

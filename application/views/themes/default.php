@@ -148,8 +148,18 @@
                     <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
 Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
                 </div>
-                <div class="col-md-4 facebook_plugin">
-
+                <div class="col-md-4">
+                    <div>
+                    <ul>
+                        <li><a href="<?php echo site_url(); ?>">Home</a></li>
+                        <li><a href="<?php echo site_url('/site/about_us'); ?>">About Us</a></li>
+                        <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
+                        <li><a href="<?php echo site_url('/appointments/request'); ?>">Request Appointment</a></li>
+                        <li><a href="<?php echo site_url('/site/contact'); ?>">Contact</a></li>
+                        <li><a href="<?php echo site_url('/auth/login'); ?>">Admin log-in</a></li>
+                        <li><a href="<?php echo site_url('/auth/register'); ?>">Admin register</a></li>
+                    </ul>
+                    </div>
 
                 </div>
 

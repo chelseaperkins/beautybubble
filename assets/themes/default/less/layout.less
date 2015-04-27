@@ -13,6 +13,7 @@ and open the template in the editor.
 @light_blue: #c3d6ee;
 @font_headings: 'Caudex';
 
+
 html, body{
     height: 100%;
 }
@@ -328,7 +329,7 @@ hr.message_heading{
     color: @dark_blue;
     text-shadow: 0 1px 0 #fff;
     font-size: 1.5em;
-
+margin: 0px;
 }
 
 .dashbd_wrap{
@@ -385,7 +386,7 @@ hr.message_heading{
 
 }
 
-/*login page*/
+/*login and register pages*/
 .login_background{
     background: rgba(255,255,255,0.2);
     
@@ -410,8 +411,12 @@ hr.message_heading{
     color: @dark_blue;
     border-color: @dark_blue;
     padding: 6px 50px 6px 50px;
+       
 }
-
+span.pull-right.valadation_error p{
+        color: @brand-warning!important;
+        font-size: 8px!important;
+    }    
 /*Nav bar*/
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover{
@@ -477,6 +482,8 @@ hr.message_heading{
     width: 60%;
     float: none!important;
 }
+
+
 
 /*treatments page*/
 

@@ -1,11 +1,10 @@
-<div class="dashbd_wrap" ng-app="beautyBubbleApp" ng-controller="AppointmentCtrl">
+<div class="dashbd_wrap" ng-app="beautyBubbleApp" ng-controller="AddEditCtrl">
     <div class="row dashbd_home_content">
 
         <div class="dashbd_home_text">
             <h1><strong><?php echo"DASHBOARD"; ?></strong></h1>
             <p><?php echo"Todays appointments"; ?></p>
-            
-            
+
             <div class="row">
                 <div class="col-sm-4 col-md-4 text center">
 
@@ -46,26 +45,26 @@
                     </div>
                 </div>
             </div>
+
+            <div class="row">
+                <div class="col-sm-4 col-md-4">
+                    <div class="dash_appointment_cell">
+
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="dash_appointment_cell">
+
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-4">
+                    <div class="dash_appointment_cell">
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4 col-md-4">
-                <div class="dash_appointment_cell">
-
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <div class="dash_appointment_cell">
-
-                </div>
-            </div>
-            <div class="col-sm-4 col-md-4">
-                <div class="dash_appointment_cell">
-
-                </div>
-            </div>
-        </div>
-
-        <div class="edit-class-modal"><div class="modal-header"><button type="button" class="close">× </button></div>
+        
 
             <div class="edit-class"><div class="edit-class-title"><h2>Add/Edit Appointment</h2></div>
                 <div class="edit-appoinment"><p></p></div>
@@ -212,6 +211,6 @@
             </div>
         </div>
     </div>
-</div>
-</div>
-</div>
+
+
+

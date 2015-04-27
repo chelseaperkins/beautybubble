@@ -29,60 +29,99 @@ public function index() {
 $this->load->view('pages/register');
 }
 
-public function register() {
-    $this->load->view('pages/register');
-$this->form_validation->set_rules('email', 'Email', 'required|valid_email');
-$this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]');
-$this->form_validation->set_rules('passconf', 'Password Confirmation', 'required');
-if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+public function verify(){
+    $email_link = $this->input->get('key');
     
-if($this->form_validation->run() == TRUE) {
-$data = array(
-'email' => $this->input->post('email'),
- 'password' => sha1($this->input->post('password')),
- 'is_Admin' => $this->input->is_Admin = 1
-);
-
-$this->db->insert('users', $data);
-
-$this->load->view('pages/home_dashboard');
-
-} else {
-    echo 'validation error';
-//TODO display error
-}
-
-}else{
-    $this->load->view('errors/error_404');
-}
-}
-
-private function auth($data){
+    $auth_data = $this->encrypt->decode($email_link, 'fjskdlf');
+    $link_conf = json_decode($auth_data);
+    $this->load->model('User');
+    $user = new User();
+    $row = $user->get($link_conf->id);
+    $row->is_verified = true;
+    $user->update($row->id, $row);
         
-            $this->email->to($data);
-            $this->email->subject('Admin activation email');
-            $message = '
-            <html>
-            <body>
-            <p>Please activate your administration account by clicking the link below</p>
-                <table>
-                    <tr>
-                        <td>Activation link</td>
-                        <td>' . $actlink . '</td>
-                    </tr>
-                    
+        $this->load->view('pages/verify');
+    }
+    
+    
+    
 
-                </table>
-            </body>
-            </html>
-            ';
-            $this->email->message($message);
 
+public function register() {
+    $error = '';
+
+    if ($_SERVER['REQUEST_METHOD'] == 'POST'){
+        $this->form_validation->set_rules('email', 'Email', 'required|valid_email|xss_clean');
+        $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|min_length[5]|max_length[12]|xss_clean');
+        $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|xss_clean');
+        
+        if($this->form_validation->run() == TRUE) {
+             $this->load->model('User');
+            $user = new User();
+            $user->first_name = $this->input->post('firstName');
+            $user->last_name = $this->input->post('lastName');
+            $user->email = $this->input->post('email');
+            $user->password = sha1($this->input->post('password'));
+            $user->ph_number = $this->input->post('phNumber');
+            $user->mobile_number = $this->input->post('mobilePhone');
+            $user->is_admin = true;
+            $user->is_verified = false;
+            $user->save();
+            $this->auth($user); 
+            $this->load->view('pages/home_dashboard',  array(
+               'email' => $user,
+            ));
             
-            $sent = $this->email->send();//true;
-           
+        } else {
+            $this->load->view('pages/register',  array(
+               'error' => "",
+          ));
+                    
+        }
+
+    }else{
+       $this->load->view('pages/register');
+    }
+}
+
+private function auth($user){
+    $actlink = base_url('auth/verify'); // set this to the page url
+    $encodedVerify = "?key="; // set this to your encoded string
+    $auth_data = json_encode(array(
+                'id'=> $user->id,
+                'time'=> time(),
+                ));
+    $hash_data = $this->encrypt->encode($auth_data, 'fjskdlf');
+    
+    $this->email->set_newline("\r\n");
+    $this->email->from('noreply@beautybubble.co.nz', 'Beauty Bubble website');
+    $this->email->to($user->email);
+
+    $this->email->subject('Admin activation email');
+    $message = '
+    <html>
+    <body>
+    <p>Please activate your administration account by clicking the link below</p>
+        <table>
+            <tr>
+                <td>Activation link:</td>
+                <td>' . $actlink . $encodedVerify . $hash_data .'</td>
+            </tr>
+
+
+        </table>
+    </body>
+    </html>
+    ';
+    $this->email->message($message);
+
+
+    $this->email->send();
     
 }
+
+
+
 
 //    Login for admin
 public function login() {

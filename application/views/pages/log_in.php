@@ -1,28 +1,28 @@
 
 <div class="row login_background">
    
-    <div class="col-md-12 login_form_wrapper">
-        <form class="login_form" action="#" method="POST">
-            
-                <h2>Log in</h2>
-                <hr class="message_heading">
-                <div class="form-group">
-                <label for="admin_email">Email
-                <input type="text" name="admin_email" required="true" class="form-control"></label>
-                </div>
-                
-                <div class="form-group">
-                <label for="password">Password
-                    <input id="password" type="password" name="password" required="true" class="form-control"></label>
-                </div>
-                
-                <div class="login_submit">
-                    <input name="submit" type="submit" value="log_in" class="btn btn-default login_submit">
-                    
-                </div>         
-                
-           
-        </form>
+    <div class="col-sm-0 col-md-3"></div>
+    <div class="col-md-5 login_form_wrapper">
+        <?php echo form_open(); ?>
 
+        <h2>Log in</h2>
+        <hr class="message_heading">
+        <div class="form-group">
+            <?php echo form_label('Email Address', 'email'); ?>
+            <input type="text" name="email" for="email" value="" class="form-control"  required />
+        </div>
+
+        <div class="form-group">
+            <?php echo form_label('Password', 'password'); ?>
+            <input type="password" name="password" value="" class="form-control" required />
+        </div> 
+
+        <div class="login_submit">
+            <input name="submit" type="submit" value="Log in" class="btn btn-default login_submit">
+
+        </div>         
+
+        <?php echo form_close(); ?>
     </div>
+    <div class="col-sm-0 col-md-3"></div>
 </div>

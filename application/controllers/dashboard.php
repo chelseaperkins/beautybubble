@@ -23,30 +23,69 @@ class Dashboard extends CI_Controller {
         $this->load->view('pages/home_dashboard');
     }
 
+
+
     public function detail() {
         
     }
 
-    public function add_edit() {
+    public function add_edit($id = null) {
 
-//        $this->load->helper('form');
-//        $this->load->model('todo');
-//
-//        $todo = new Todo();
-//            is add/edit
-//        if (!$this->input->post()) {
-////                if is add
-//            if ($id === NULL) {
-////                    populate with defaults
-//            $todo->title = '';
-//            $todo->due_on = '';
-//            $todo->priority = '';
-//	    $todo->comment = '';
-//	    $todo->created_on = '';
-//	    $todo->last_modified_on = '';
-//	    $todo->due_on = '';
-//	    $todo->status = '';
-//	    $todo->deleted = '';
+       $page_model = "";
+        $this->load->helper('date');
+
+        
+        $this->load->model('Appointment');
+          
+        if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //$return = $_POST;
+            $post_data = file_get_contents("php://input");
+            $request = json_decode($post_data);
+            //if add 
+            if ($id) {
+		//get user from db by id 
+		$this->load->model('User');
+		$user = $this->User->get($id);
+	                    
+                // user does not exist so create
+                $user = new User();
+                $user->first_name = $request->firstName;
+                $user->last_name = $request->lastName;
+                $user->email = $request->email;
+                $user->ph_number = $request->phNumber;
+                $user->mobile_number = $request->mobilePhone;
+                $user->is_admin = false;
+                $user->save();
+            
+            }   
+            $appointment = new Appointment();
+            $appointment->user_id = $user->id;
+                        
+            if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
+            if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
+            if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
+            if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
+            if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
+            if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
+            if(isset ($request->electrolsis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolsis);}
+            $appointment->date_time = $request->dateTime;                        
+            $appointment->save();
+            
+            $this->output->set_header('Content-Type: application/json; charset=utf-8');
+            exit(json_encode(array(
+                'success'=> true, 
+                'message' => "Saved", 
+                'appointment' => $request,
+
+                )));
+            }
+
+        
+
+            $this->load->view('pages/home_dashboard');
+        }
+    
+
 //            }else{
 ////                if is edit
 ////                get Todo from db by id
@@ -54,16 +93,16 @@ class Dashboard extends CI_Controller {
 //                $todo = $this->Todo->get($id);
 //            }
 
-        $this->load->view('pages/add_edit');
+        
 //                    , array(
 //                'edit' =>$id != NULL,
-//                'todo' => $todo,
+//                'appointment' => $appointment,
 //            ));
 //        }else{
 ////            if is insert/update
 //            $this->_insert_update($todo, $id);
 //        }
-    }
+    
 
     /**
      * Private method to insert or update a Todo depending on whether an id is specified.

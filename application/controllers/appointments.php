@@ -35,7 +35,7 @@ class Appointments extends CI_Controller {
             //$return = $_POST;
             $post_data = file_get_contents("php://input");
             $request = json_decode($post_data);
-            
+            //Check email address in database to check if user exsists. 
             $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
             if($query->num_rows > 0) {
                 // get the first row from the results
@@ -82,6 +82,7 @@ class Appointments extends CI_Controller {
 
                 )));
             
+
         } else {
 
             $this->load->view('/pages/appointment_form');
@@ -176,6 +177,7 @@ class Appointments extends CI_Controller {
 
             $this->email->send();
         }
+
         
     }
     

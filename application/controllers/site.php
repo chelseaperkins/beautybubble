@@ -79,4 +79,5 @@ class Site extends CI_controller {
                'sent' => $sent,
           ));
     }
+
 }

@@ -27,6 +27,9 @@
         <link href="<?php echo base_url(); ?>assets/themes/default/css/custom.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/themes/default/css/layout.css" rel="stylesheet" type="text/css">
         <link href="<?php echo base_url(); ?>assets/themes/default/css/chosen.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/ngDialog.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/ngDialog-theme-default.min.css" rel="stylesheet" type="text/css">
+        <link href="<?php echo base_url(); ?>assets/themes/default/css/ngDialog-theme-plain.min.css" rel="stylesheet" type="text/css">
         <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Caudex">
         
 
@@ -43,7 +46,7 @@
         <script src="<?php echo base_url(); ?>assets/themes/default/js/ui-bootstrap-tpls.min.js"></script>
              
         
-        
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/ngDialog.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.jquery.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/chosen.js"></script>
         <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
@@ -83,10 +86,10 @@
                         </div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="active"><a href="<?php echo site_url(); ?>">Home</a></li>
                         
-                        <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
                         <li><a href="<?php echo site_url('/dashboard/home_dashboard'); ?>">Dashboard</a></li>
+                        <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
+                        <li><a href="<?php echo site_url('/dashboard/'); ?>">Profile</a></li>
                         <li><a href="<?php echo site_url('/auth/logout'); ?>">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->

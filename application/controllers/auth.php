@@ -65,11 +65,9 @@ class Auth extends CI_controller {
                 $user->is_verified = false;
                 $user->save();
                 $this->auth($user);
-                
                 $this->load->view('pages/log_in', array(
                     'email' => $user,
                 ));
-                
             } else {
                 $this->load->view('pages/register', array(
                     'error' => "",
@@ -104,11 +102,13 @@ class Auth extends CI_controller {
                 <td>' . $actlink . $encodedVerify . $hash_data . '</td>
             </tr>
 
+
         </table>
     </body>
     </html>
     ';
         $this->email->message($message);
+
 
         $this->email->send();
     }

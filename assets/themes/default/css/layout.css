@@ -6873,7 +6873,7 @@ hr.message_heading {
   border-color: #242d64;
   padding: 6px 50px 6px 50px;
 }
-span.pull-right.valadation_error p {
+span.pull-right.valadation_error {
   color: #f0ad4e !important;
   font-size: 8px!important;
 }

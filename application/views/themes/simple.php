@@ -87,7 +87,7 @@
                         
                         <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
                         <li><a href="<?php echo site_url('/dashboard/home_dashboard'); ?>">Dashboard</a></li>
-                        <li><a href="<?php echo site_url('/dashboard/login'); ?>">Logout</a></li>
+                        <li><a href="<?php echo site_url('/auth/logout'); ?>">Logout</a></li>
                     </ul>
                 </div><!-- /.navbar-collapse -->
                     </div>

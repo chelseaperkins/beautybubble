@@ -82,7 +82,6 @@ class Appointments extends CI_Controller {
 
                 )));
             
-
         } else {
 
             $this->load->view('/pages/appointment_form');
@@ -177,7 +176,6 @@ class Appointments extends CI_Controller {
 
             $this->email->send();
         }
-
         
     }
     

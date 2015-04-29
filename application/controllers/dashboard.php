@@ -23,8 +23,6 @@ class Dashboard extends CI_Controller {
         $this->load->view('pages/home_dashboard');
     }
 
-
-
     public function detail() {
         
     }

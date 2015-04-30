@@ -59,18 +59,67 @@
         }
     ]);
     /* End of Appointment controller */
-
-    beautyBubbleApp.controller('AddEditCtrl', ['$scope', '$http', '$modal', function ctrl($scope, $http, $modal) {
+    
+    /* Dashboard controller */
+    beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', function ctrl($scope, $http) {
+            $scope.ModelUrl = window.location.pathname;
+            $scope.Model = pageModel;
+        }
+    ]);
+    /* End of Dashboard controller */
+    
+    /* Modal controller */
+    beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal', function ctrl($scope, $http, $modal) {
             $scope.ModelUrl = window.location.pathname;
 
             var now = new Date();
-            $scope.Model = {};
+            $scope.Model = pageModel;
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
-            $scope.open = function (size) {
+            $scope.openEditModal = function (appointment) {
 
                 var modalInstance = $modal.open({
                     templateUrl: 'editAppointmentModalContent.html',
+                    controller: 'ModalEditCtrl',
+                    size: 'lg',
+                    resolve: {
+                        appointment: function () {
+                            return appointment;
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                    $scope.selected = selectedItem;
+                }, function () {
+                    //$log.info('Modal dismissed at: ' + new Date());
+                });
+            };
+            
+            $scope.openAddModal = function (size) {
+
+                var modalInstance = $modal.open({
+                    templateUrl: 'addAppointmentModalContent.html',
                     controller: 'ModalCtrl',
+                    size: 'lg',
+                    resolve: {
+                        items: function () {
+                            return [];
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                    $scope.selected = selectedItem;
+                }, function () {
+                    //$log.info('Modal dismissed at: ' + new Date());
+                });
+            };
+            
+            $scope.openProfileModal = function (size) {
+
+                var modalInstance = $modal.open({
+                    templateUrl: 'addAppointmentModalContent.html',
+                    controller: 'ModalProfileCtrl',
                     size: 'lg',
                     resolve: {
                         items: function () {
@@ -102,10 +151,57 @@
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
+        $scope.close = function (){
+            $modalInstance.close($scope.selected.item);
+        };
         
         $timeout(function () {
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
     });
+    
+    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment) {
+        
+        $scope.appointment = appointment;
 
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.selected.item);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+
+        
+        $timeout(function () {
+            $(".chosen-select").chosen({width: "100%"});
+        }, 200);
+    });
+    
+    beautyBubbleApp.controller('ModalProfileCtrl', function ($scope, $modalInstance, $timeout, items) {
+        
+        $scope.items = items;
+        $scope.selected = {
+            item: $scope.items[0]
+        };
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.selected.item);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+        
+        $scope.close = function (){
+            $modalInstance.close($scope.selected.item);
+        };
+        
+        $timeout(function () {
+            $(".chosen-select").chosen({width: "100%"});
+        }, 200);
+    });
+        /* Modal controller */
+        
 })(angular);

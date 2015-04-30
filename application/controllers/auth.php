@@ -130,14 +130,13 @@ class Auth extends CI_controller {
             //Ensure values exist for email and pass, and validate the user
             if ($email && $pass && $this->validate_user($email, $pass)) {
                 // If the user is valid, redirect to the dashboard
-                $this->load->view('pages/home_dashboard');
+                 redirect('dashboard');
             } else {
                 // Otherwise show the login screen with an error message.
                 $this->load->view('pages/log_in', array(
                     'error' => $login_error,
                 ));
-                
-            }
+                }
         } else {
             $this->load->view('pages/log_in');
         }
@@ -156,12 +155,16 @@ class Auth extends CI_controller {
         if (is_array($login) && count($login) == 1) {
 // Set the users details into the $details property of this class
             $this->details = $login[0];
-// Call set_session to set the user's session vars via CodeIgniter
+            if($this->details->is_verified == true){
+                // Call set_session to set the user's session vars via CodeIgniter
             $this->set_session();
             return true;
+            }
+
         }
 
         return false;
+        
     }
 
     function set_session() {

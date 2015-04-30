@@ -4,6 +4,10 @@ if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 session_start();
 
+class PageModel {
+    public $results;
+}
+
 class Dashboard extends CI_Controller {
 
     function __construct() {
@@ -19,11 +23,21 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
+        $this->load->model('Appointment');
+        $pageModel = new PageModel();
+        $pageModel->results = $this->Appointment->get_all();
+        foreach ($pageModel->results as $value) {
+            $value->first_name = "test";
+            $value->last_name = "name";
+            $value->eyeTreatments = isset($value->eye_treatments) ? explode(', ', $value->eye_treatments) : array();
+        }
+        
+        
+        $this->load->view('pages/home_dashboard', array(
+                'pageModel' => $pageModel,
 
-        $this->load->view('pages/home_dashboard');
+            ));
     }
-
-
 
     public function detail() {
         
@@ -79,9 +93,6 @@ class Dashboard extends CI_Controller {
 
                 )));
             }
-
-        
-
             $this->load->view('pages/home_dashboard');
         }
     
@@ -157,32 +168,20 @@ class Dashboard extends CI_Controller {
         }
     }
 
-    public function status() {
-//        $status
-//        $this->load->helper('url');
-//        $this->load->library('table');
-//        $todos = array();
-//        $this->load->model('Todo');
-//        $rows = $this->Todo->get_many_by('status', strtoupper($status));
-//        foreach ($rows as $row) {
-//            $todos[] = array(
-//                $row->title,
-//                $row->due_on,
-//                $row->priority,
-//                $row->description,
-//                $row->status,
-//               anchor('todos/add_edit/'.$row->id,'Edit').' | '.anchor('todos/delete/'.$status.'/'.$row->id,'Delete'),
-//            );
-//        }
+    public function view_apptmts() {
+      
+        $appointments = array();
+        $this->load->model('Appointment');
+        $rows = $this->Appointment->get_many_by('status', strtoupper($status));     
 
-
-        $this->load->view('pages/list');
+ //       $this->load->view('pages/list');
 //                , array(
 //           'status' => $status,
 //            'todos' => $todos,
 //        ));
     }
 
+    
     /**
      * Delete Todo based on id. Status is passed in for redirection to list.
      * @param string $status

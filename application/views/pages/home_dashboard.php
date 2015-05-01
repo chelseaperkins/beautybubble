@@ -1,7 +1,7 @@
 <div class="dashbd_wrap" ng-app="beautyBubbleApp" ng-controller="DashboardCtrl">
     <div class="row dashbd_home_content">
-        <div class="col-md-3"></div>
-        <div class="col-md-8">
+        <div class="col-md-2"></div>
+        <div class="col-md-9">
             <div class="dashbd_home_text">
                 <h1><strong><?php echo"DASHBOARD"; ?></strong></h1>
                 <p><?php echo"Todays appointments"; ?></p>
@@ -17,11 +17,31 @@
                                     <li><a class="edit-class"><span class="glyphicon glyphicon-remove-sign"></span> Delete Appointment</a></li>
                                 </ul>
                             </div>
-                            <div>
-                                <span ng-repeat="item in apptmt.eyeTreatments">{{item}} </span>
+                            <font size="2">
+                           
+                            <div> 
+                                <label><h4>Client:</h4></label>
+                                <div>
+                                    
+                                </div>
                                 
-                                
+                                <label><h4>Treatments:</h4></label>
+                                <div>
+                                <span ng-repeat="item in apptmt.facialTreatments">{{item}} </span><br />
+                                <span ng-repeat="item in apptmt.eyeTreatments">{{item}} </span><br />
+                                <span ng-repeat="item in apptmt.bodyTreatments">{{item}} </span><br />
+                                <span ng-repeat="item in apptmt.sprayTanning">{{item}} </span><br />
+                                <span ng-repeat="item in apptmt.nailTreatments">{{item}} </span><br />
+                                <span ng-repeat="item in apptmt.waxingTreatments">{{item}} </span><br />
+                                <span ng-repeat="item in apptmt.electroysis">{{item}} </span><br />
+                                </div>
+                                <label><h4>Date and Time:</h4></label>
+                                <div>
+                                <span ng-repeat="item in apptmt.dateTime">{{item}} </span><br /> 
+                                </div>                     
                             </div>
+                            
+                            </font>
                         </div>
                     </div>
 
@@ -200,7 +220,7 @@
         </div>
         </div>
     </script>
-
+                        <!--{{appointment.eye_treatments}}--> 
     <script type="text/ng-template" id="editAppointmentModalContent.html" class="modal">
         <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
@@ -211,13 +231,13 @@
             <div class="row">
            
                 <div class="col-md-8">
-                        {{appointment.eye_treatments}}   
+  
                     
                     <form>
                         
                         <div class="form-group">
                             <label for="facial_treatments">Facial Treatments</label>
-                            <select multiple ng-model="facialTreatments" class="chosen-select">
+                            <select multiple ng-model="appointment.facialTreatments" class="chosen-select">
                                 <option value="Select treatment">Select a treatment</option>
                                 <option value="Facial - 60 minutes for $50">Facial - 60 minutes for $50</option>
                             </select>
@@ -239,7 +259,7 @@
 
                         <div class="form-group">
                             <label for="body_treatments">Body Treatments</label>
-                            <select multiple ng-model="bodyTreatments" class="chosen-select">
+                            <select multiple ng-model="appointment.bodyTreatments" class="chosen-select">
                                 <option value="Select one or multiple treatments">Select a treatment</option>
                                 <option value="Full Body Massage - 60 minutes for $80">Full Body Massage - 60 minutes for $80</option>
                                 <option value="Back, Neck and Shoulder - 30 minutes for $40">Back, Neck and Shoulder - 30 minutes for $40</option>
@@ -248,7 +268,7 @@
 
                         <div class="form-group">
                             <label for="spray_tanning">Spray Tanning</label>
-                            <select multiple ng-model="sprayTanning" class="chosen-select">
+                            <select multiple ng-model="appointment.sprayTanning" class="chosen-select">
                                 <option value="Select one or multiple treatments">Select a treatment</option>
                                 <option value="Full Body for $30">Full Body for $30</option>
                                 <option value="Half Body for $20">Half Body for $20</option>
@@ -257,7 +277,7 @@
 
                         <div class="form-group">
                             <label for="nail_treatments">Nail Treatments</label>
-                            <select multiple ng-model="nailTreatments" class="chosen-select">
+                            <select multiple ng-model="appointment.nailTreatments" class="chosen-select">
                                 <option value="Select one or multiple treatments">Select a treatment</option>
                                 <option value="Deluxe Manicure - 60 minutes for $45">Deluxe Manicure - 60 minutes for $45</option>
                                 <option value="Mini Manicure - 30 minutes for $30">Mini Manicure - 30 minutes for $30</option>
@@ -271,7 +291,7 @@
 
                         <div class="form-group">
                             <label for="waxing_treatments">Waxing Treatments</label>
-                            <select multiple ng-model="waxingTreatments" class="chosen-select">
+                            <select multiple ng-model="appointment.waxingTreatments" class="chosen-select">
                                 <option value="Select one or multiple treatments">Select a treatment</option>
                                 <option value="Underarm wax for $15">Underarm wax for $15</option>
                                 <option value="Forearm wax for $20">Forearm wax for $20</option>
@@ -293,7 +313,7 @@
 
                         <div class="form-group">
                             <label for="electrolysis">Electrolysis</label>
-                            <select multiple ng-model="electrolysis" class="chosen-select">
+                            <select multiple ng-model="appointment.electrolysis" class="chosen-select">
                                 <option value="Select one or multiple treatments">Select a treatment</option>
                                 <option value="15 minutes (minimum appointment) for $25">15 minutes (minimum appointment) for $25</option>
                                 <option value="30 minutes for $40">30 minutes for $40</option>

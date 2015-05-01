@@ -1,7 +1,8 @@
 
 <div class="row login_background">
    
-    <div class="col-sm-0 col-md-3"></div>
+    <div class="col-sm-0 col-md-3">
+    </div>
     <div class="col-md-5 login_form_wrapper">
         <?php echo form_open(); ?>
 

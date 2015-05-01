@@ -60,15 +60,10 @@
     ]);
     /* End of Appointment controller */
     
-    /* Dashboard controller */
-    beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', function ctrl($scope, $http) {
-            $scope.ModelUrl = window.location.pathname;
-            $scope.Model = pageModel;
-        }
-    ]);
-    /* End of Dashboard controller */
     
-    /* Modal controller */
+    
+    
+    /* Dashboard controller */
     beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal', function ctrl($scope, $http, $modal) {
             $scope.ModelUrl = window.location.pathname;
 
@@ -202,6 +197,6 @@
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
     });
-        /* Modal controller */
+        /* End of Dashboard controller */
         
 })(angular);

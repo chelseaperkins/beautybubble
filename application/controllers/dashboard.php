@@ -29,7 +29,17 @@ class Dashboard extends CI_Controller {
         foreach ($pageModel->results as $value) {
             $value->first_name = "test";
             $value->last_name = "name";
+            
+            $value->facialTreatments = isset($value->facial_treatments) ? explode(', ', $value->facial_treatments) : array();
             $value->eyeTreatments = isset($value->eye_treatments) ? explode(', ', $value->eye_treatments) : array();
+            $value->bodyTreatments = isset($value->body_treatments) ? explode(', ', $value->body_treatments) : array();
+            $value->sprayTanning = isset($value->sprayTanning) ? explode(', ', $value->sprayTanning) : array();
+            $value->nailTreatments = isset($value->nail_treatments) ? explode(', ', $value->nail_treatments) : array();
+            $value->waxingTreatments = isset($value->waxing_treatments) ? explode(', ', $value->waxing_treatments) : array();
+            $value->electroysis = isset($value->electroysis) ? explode(', ', $value->electroysis) : array();
+            $value->dateTime = isset($value->date_time) ? explode(', ', $value->date_time) : array();
+            
+            
         }
         
         

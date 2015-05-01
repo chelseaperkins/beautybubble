@@ -174,22 +174,26 @@ class Auth extends CI_controller {
             'id' => $this->details->id,
             'email' => $this->details->email,
             'is_Admin' => true,
-                )
+            )
         );
     }
 
 // Logout from admin page
-    public function logout() {
-
+    public function logout($data) {
+        
 // Removing session data
         $sess_array = array(
-            'email' => ''
+            'id' => '',
+            'email' => '',
         );
         $this->session->unset_userdata('logged_in', $sess_array);
-        $data['message_display'] = 'Successfully Logout';
-        $this->load->view('pages/log_in', 
-                array('data' => $data,
-            ));
+        
+        redirect('auth/login', array(
+            'data' => $data,
+           ));
+//        $this->load->view('pages/log_in', 
+//                
+        
     }
 
 }

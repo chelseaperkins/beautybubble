@@ -71,7 +71,6 @@ class Site extends CI_controller {
             </html>
             ';
             $this->email->message($message);
-
             
             $sent = $this->email->send();
         }

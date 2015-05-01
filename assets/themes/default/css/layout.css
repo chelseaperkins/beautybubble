@@ -6765,7 +6765,7 @@ hr.message_heading {
 .dash_dropdown_btn.btn {
   display: inline-block;
   margin-bottom: 0;
-  margin-right: 70%;
+  margin-right: 80%;
   font-weight: normal;
   text-align: center;
   vertical-align: middle;
@@ -6874,7 +6874,7 @@ hr.message_heading {
   border-color: #242d64;
   padding: 6px 50px 6px 50px;
 }
-span.pull-right.valadation_error {
+span.pull-right.valadation_error p {
   color: #f0ad4e !important;
   font-size: 8px!important;
 }

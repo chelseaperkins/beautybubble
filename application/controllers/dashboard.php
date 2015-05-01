@@ -24,8 +24,11 @@ class Dashboard extends CI_Controller {
 
     public function index() {
         $this->load->model('Appointment');
+//        Set new model varible
         $pageModel = new PageModel();
+//      Get the appointments from the database
         $pageModel->results = $this->Appointment->get_all();
+//      loop results so that they display appointments by values in database
         foreach ($pageModel->results as $value) {
             $value->first_name = "test";
             $value->last_name = "name";
@@ -42,7 +45,7 @@ class Dashboard extends CI_Controller {
             
         }
         
-        
+//        view home_dashboard and array of values stored in the $pagemodel varible
         $this->load->view('pages/home_dashboard', array(
                 'pageModel' => $pageModel,
 

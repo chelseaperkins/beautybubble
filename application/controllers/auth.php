@@ -155,11 +155,11 @@ class Auth extends CI_controller {
         if (is_array($login) && count($login) == 1) {
 // Set the users details into the $details property of this class
             $this->details = $login[0];
-            if($this->details->is_verified == true){
+//            if($this->details->is_verified == true){
                 // Call set_session to set the user's session vars via CodeIgniter
             $this->set_session();
             return true;
-            }
+//            }
 
         }
 

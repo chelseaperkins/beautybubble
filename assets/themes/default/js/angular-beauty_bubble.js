@@ -70,6 +70,8 @@
             var now = new Date();
             $scope.Model = pageModel;
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+            
+//            Opens edit modal and populates the appointment values from the database to allow edit functionality
             $scope.openEditModal = function (appointment) {
 
                 var modalInstance = $modal.open({
@@ -90,11 +92,12 @@
                 });
             };
             
+//            Opens add modal, add appointment functionality
             $scope.openAddModal = function (size) {
 
                 var modalInstance = $modal.open({
                     templateUrl: 'addAppointmentModalContent.html',
-                    controller: 'ModalCtrl',
+                    controller: 'ModalAddCtrl',
                     size: 'lg',
                     resolve: {
                         items: function () {
@@ -110,11 +113,33 @@
                 });
             };
             
+//            Opens admin profile modal, create admin profile details
             $scope.openProfileModal = function (size) {
 
                 var modalInstance = $modal.open({
-                    templateUrl: 'addAppointmentModalContent.html',
+                    templateUrl: 'profileAppointmentModalContent.html',
                     controller: 'ModalProfileCtrl',
+                    size: 'lg',
+                    resolve: {
+                        items: function () {
+                            return [];
+                        }
+                    }
+                });
+
+                modalInstance.result.then(function (selectedItem) {
+                    $scope.selected = selectedItem;
+                }, function () {
+                    //$log.info('Modal dismissed at: ' + new Date());
+                });
+            };
+            
+ //            Opens delete message modal, deletes values           
+            $scope.openDeleteModal = function () {
+
+                var modalInstance = $modal.open({
+                    templateUrl: 'deleteAppointmentModalContent.html',
+                    controller: 'ModalDeleteCtrl',
                     size: 'lg',
                     resolve: {
                         items: function () {
@@ -131,8 +156,26 @@
             };
         }
     ]);
+//  
+    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment) {
+        
+        $scope.appointment = appointment;
 
-    beautyBubbleApp.controller('ModalCtrl', function ($scope, $modalInstance, $timeout, items) {
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.selected.item);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+        //   timer to allow chosen plugin set width        
+        $timeout(function () {
+            $(".chosen-select").chosen({width: "100%"});
+        }, 200);
+    });
+    
+    beautyBubbleApp.controller('ModalAddCtrl', function ($scope, $modalInstance, $timeout, items) {
         
         $scope.items = items;
         $scope.selected = {
@@ -150,25 +193,7 @@
             $modalInstance.close($scope.selected.item);
         };
         
-        $timeout(function () {
-            $(".chosen-select").chosen({width: "100%"});
-        }, 200);
-    });
-    
-    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment) {
-        
-        $scope.appointment = appointment;
-
-
-        $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-
-        
+        //   timer to allow chosen plugin set width 
         $timeout(function () {
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
@@ -192,7 +217,23 @@
         $scope.close = function (){
             $modalInstance.close($scope.selected.item);
         };
+        //   timer to allow chosen plugin set width 
+        $timeout(function () {
+            $(".chosen-select").chosen({width: "100%"});
+        }, 200);
+    });
+    
+    beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, items) {
+               
+        $scope.ok = function () {
+            $modalInstance.close($scope.selected.item);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
         
+        //    timer to allow chosen plugin set width 
         $timeout(function () {
             $(".chosen-select").chosen({width: "100%"});
         }, 200);

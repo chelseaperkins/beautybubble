@@ -34,6 +34,7 @@ class Appointments extends CI_Controller {
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
             $post_data = file_get_contents("php://input");
+//            create varible to encode data to json and pass in user input data
             $request = json_decode($post_data);
             //Check email address in database to check if user exsists. 
             $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
@@ -69,7 +70,7 @@ class Appointments extends CI_Controller {
             if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
-            if(isset ($request->electrolsis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolsis);}
+            if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
             $appointment->date_time = $request->dateTime;
             $this->sendemail($request);                          
             $appointment->save();
@@ -186,5 +187,7 @@ class Appointments extends CI_Controller {
         }
         return "";
     }
+    
+    
 
 }

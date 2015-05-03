@@ -10,8 +10,6 @@
     ]);
     /* End of Template controller */
 
-
-
     /* Appointment controller */
     beautyBubbleApp.controller('AppointmentCtrl', ['$scope', '$http', function ctrl($scope, $http) {
             $scope.ModelUrl = window.location.pathname;
@@ -19,13 +17,34 @@
             var now = new Date();
             $scope.Model = {};
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+            
+//       datepicker/make any day before the current day unselectable        
+            $scope.toggleMin = function () {
+            $scope.minDate = $scope.minDate ? null : new Date();
+            };
+            $scope.toggleMin();
+        
+//       datepicker/set dates unselectable up to a year
+                $scope.toggleMax = function () {
+            var date = new Date();
+            $scope.maxDate = date.setDate((new Date()).getDate() + 365);
+            };
+            $scope.toggleMax();
+//            open datepicker
+            $scope.datePickerOpened = function ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+        };
+        
             $scope.isVerified = false;
             $scope.isSending = false;
             $scope.isFormAccepted = false;
             $scope.emailSendErrorMessage = "";
             $scope.setResponse = function (response) {
-                $scope.isVerified = true;
-                // send the `response` to your server for verification.
+            $scope.isVerified = true;
+            // send the `response` to server for verification.
             };
             $scope.sendData = function () {
                 // build the model
@@ -59,12 +78,9 @@
         }
     ]);
     /* End of Appointment controller */
-    
-    
-    
-    
+          
     /* Dashboard controller */
-    beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal', function ctrl($scope, $http, $modal) {
+    beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal',  function ctrl($scope, $http, $modal) {
             $scope.ModelUrl = window.location.pathname;
 
             var now = new Date();
@@ -154,25 +170,82 @@
                     //$log.info('Modal dismissed at: ' + new Date());
                 });
             };
+            
+            $scope.createDateFromMysql = function(mysql_string)
+            { 
+               if(typeof mysql_string === 'string')
+               {
+                  var t = mysql_string.split(/[- :]/);
+
+                  //when t[3], t[4] and t[5] are missing they defaults to zero
+                  return new Date(t[0], t[1] - 1, t[2], t[3] || 0, t[4] || 0, t[5] || 0);          
+               }
+
+               return null;   
+            };
+                       
         }
     ]);
-//  
-    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment) {
-        
+    
+//  Controller for edit modal
+    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment, $http) {
+        $scope.ModelUrl = window.location.pathname+'/edit';
         $scope.appointment = appointment;
-
-
-        $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
+           
+        $scope.saveData = function () {
+             // build the model
+                var data = $scope.appointment;
+                $scope.isSaving = true;
+                $scope.sendPromise = $http.post($scope.ModelUrl, data)
+                        .success(function (data, status) {
+                            $scope.isSaving = false;
+                            if (data.success) {
+                                $scope.dataSent = true;
+                                $scope.dataSendErrorMessage = "";
+                            }
+                            else {
+                                $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                            }
+                        })
+                        .error(function (data, status) {
+                            $scope.isSaving = false;
+                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                        });
+            
+                        
+            $modalInstance.close("saved");
         };
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
+//       make any day before the current day unselectable        
+        $scope.toggleMin = function () {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+        
+//       allows dates to be selectable up to a year from current date
+        $scope.toggleMax = function () {
+            var date = new Date();
+        $scope.maxDate = date.setDate((new Date()).getDate() + 365);
+        };
+        $scope.toggleMax();
+
+        $scope.datePickerOpened = function ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+        };
+       
+        
         //   timer to allow chosen plugin set width        
         $timeout(function () {
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
+        
+        
     });
     
     beautyBubbleApp.controller('ModalAddCtrl', function ($scope, $modalInstance, $timeout, items) {
@@ -239,5 +312,8 @@
         }, 200);
     });
         /* End of Dashboard controller */
+        
+        
+    
         
 })(angular);

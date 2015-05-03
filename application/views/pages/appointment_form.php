@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-6">
 
-                <div class="appointment" ng-hide="isFormAccepted">
+                <div class="appointment" ng-hide="isFormAccepted=true">
                     <?php if (!empty($errors)): ?>
                         <ul class="errors">
                             <?php foreach ($errors as $error): ?>
@@ -75,8 +75,6 @@
                                 <option value="Eyelash Perm for $30"><?php echo"Eyelash Perm for $30"; ?></option>
                             </select>
                         </div> 
-
-
 
                         <div class="form-group">
                             <label for="body_treatments"><?php echo"Body Treatments"; ?></label>
@@ -142,14 +140,19 @@
 
                         <div class="form-group">
                             <label for="appointment_date"><?php echo"Appointment Date"; ?></label>
-                            <input type="date" ng-model="Model.dateTime"  class="form-control" id="appointment_date" placeholder="dd/mm/yyyy" required>
+                            <p class="input-group">
+                            <input type="text" ng-model="Model.dateTime"  class="form-control" id="appointment_date" datepicker-popup="dd-MMMM-yyyy" is-open="opened" min-date="minDate" max-date="maxDate" close-text="Close" required>
+                            <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                            </p>
+                            
                         </div>
 
                         <div class="form-group">
                             <label for="appointment_time"><?php echo"Appointment Time"; ?></label>                                                          
                             <timepicker ng-model="Model.dateTime" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
                         </div>
-
 
                         <div
                         vc-recaptcha
@@ -169,31 +172,31 @@
                     <p>Your requested appointment date and time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
                     <p>The treatments you requested are:</p>
                     <table class="appointmentsuccess">
-                    <tr ng-show="Model.facialTreatments !== null">
+                    <tr ng-hide="Model.facialTreatments == null || Model.facialTreatments.length == 0">
                         <td>Facial Treatments:</td>
                         <td><div ng-repeat="treatment in Model.facialTreatments">{{treatment}}</div></td>
                     </tr>
-                    <tr ng-show="Model.eyeTreatments !== null">
+                    <tr ng-hide="Model.eyeTreatments == null || Model.eyeTreatments.length == 0">
                         <td>Eye Treatments:</td>
                         <td><div ng-repeat="treatment in Model.eyeTreatments">{{treatment}}</div></td>
                     </tr>
-                    <tr ng-show="Model.bodyTreatments !== null">
+                    <tr ng-hide="Model.bodyTreatments == null || Model.bodyTreatments.length == 0">
                         <td>Body Treatments:</td>
                         <td><div ng-repeat="treatment in Model.bodyTreatments">{{treatment}}</div></td>
                     </tr>
-                    <tr ng-show="Model.sprayTanning !== null">
+                    <tr ng-hide="Model.sprayTanning == null || Model.sprayTanning.length == 0">
                         <td>Spray Tanning:</td>
                         <td><div ng-repeat="treatment in Model.sprayTanning">{{treatment}}</div></td>
                     </tr>
-                    <tr ng-show="Model.nailTreatments !== null">
+                    <tr ng-hide="Model.nailTreatments == null || Model.nailTreatments.length == 0">
                         <td>Nail Treatments:</td>
                         <td><div ng-repeat="treatment in Model.nailTreatments">{{treatment}}</div></td>
                     </tr>
-                    <tr ng-show="Model.waxingTreatments !== null">
+                    <tr ng-hide="Model.waxingTreatments == null || Model.waxingTreatments.length == 0">
                         <td>Waxing Treatments:</td>
                         <td><div ng-repeat="treatment in Model.waxingTreatments">{{treatment}}</div></td>
                     </tr>
-                    <tr ng-show="Model.electrolysis !== null">
+                    <tr ng-hide="Model.electrolysis == null || Model.electrolysis.length == 0">
                         <td>Electrolysis:</td>
                         <td><div ng-repeat="treatment in Model.electrolysis">{{treatment}}</div></td>
                     </tr>

@@ -84,9 +84,9 @@
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">
 
-                                <li><a href="<?php echo site_url('/dashboard/home_dashboard'); ?>"><span class="glyphicon glyphicon-tasks"></span></a></li>
-                                <li><a href="<?php echo site_url('site/our_treatments'); ?>"><span class="glyphicon glyphicon-list-alt"></span></a></li>
-                                <li class="dropdown"><a href="#"  data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
+                                <li><a href="<?php echo site_url('/dashboard/home_dashboard'); ?>" title="Dashboard"><span class="glyphicon glyphicon-tasks"></span></a></li>
+                                <li><a href="<?php echo site_url('site/our_treatments'); ?>" title="Price List"><span class="glyphicon glyphicon-list-alt"></span></a></li>
+                                <li class="dropdown"><a href="#" title="Admin" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span></a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#" ng-click="openProfileModal()">Profile</a></li>
                                         <li class="divider"></li>

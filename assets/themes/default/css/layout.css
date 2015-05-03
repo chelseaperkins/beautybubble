@@ -6564,6 +6564,10 @@ h1.home_welcome_text {
   font-size: 1.5em;
   font-family: 'Caudex';
 }
+h1 {
+  text-align: center!important;
+  font-family: 'Caudex';
+}
 h2.page_heading {
   text-align: center!important;
   font-family: 'Caudex';
@@ -6573,6 +6577,10 @@ h2 {
 }
 h3 {
   font-family: 'Caudex';
+}
+h4 {
+  font-family: 'Caudex';
+  color: #242d64;
 }
 hr.page_title {
   border-top: 1px solid #242d64;
@@ -6750,18 +6758,6 @@ hr.message_heading {
   text-decoration: none;
 }
 /*dashboard themes/simple.php css*/
-.dash_appointment_cell {
-  margin: 5px;
-  border: 1px solid black;
-  width: 100%;
-  min-height: 300px;
-  border: 1px solid;
-  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-  -webkit-border-radius: 3px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.075);
-  background-color: #fff;
-  padding: 10px;
-}
 .dash_dropdown_btn.btn {
   display: inline-block;
   margin-bottom: 0;
@@ -6774,7 +6770,6 @@ hr.message_heading {
   white-space: nowrap;
   padding: 6px 12px;
   border-radius: 4px;
-  /*  -webkit-user-select: none;*/
 }
 .dash_dropdown_btn.img-circle {
   border-radius: 50% !important;
@@ -6813,6 +6808,27 @@ hr.message_heading {
   background-color: #fff;
 }
 /*dashboard home page ($output)*/
+input::-webkit-calendar-picker-indicator {
+  display: none;
+}
+input[type="text"]::-webkit-input-placeholder {
+  visibility: hidden !important;
+}
+.dashbd_home_text h4 {
+  font-weight: bold;
+}
+.dash_appointment_cell {
+  height: 450px;
+  margin: 5px;
+  border: 1px solid black;
+  width: 100%;
+  border: 1px solid;
+  border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+  -webkit-border-radius: 3px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3), 0 1px 1px rgba(0, 0, 0, 0.075);
+  background-color: #fff;
+  padding: 10px;
+}
 .dashbd_home_content {
   color: #242d64;
   text-shadow: 0 1px 0 #fff;
@@ -6823,10 +6839,6 @@ hr.message_heading {
   position: relative;
   min-height: 100%;
   background-color: #fff;
-}
-.dashbd_home_text {
-  font-family: 'Caudex';
-  text-align: center;
 }
 /*footer css*/
 .copyright_info {
@@ -7399,10 +7411,6 @@ span.pull-right.valadation_error p {
     margin-bottom: 30px;
   }
   /*Nav bar and contact info in header*/
-  nav navbar-nav navbar-right {
-    position: absolute;
-    right: 10px;
-  }
   nav navbar-nav navbar-right {
     position: absolute;
     right: 10px;

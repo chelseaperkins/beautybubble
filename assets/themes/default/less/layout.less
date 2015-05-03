@@ -9,10 +9,9 @@ and open the template in the editor.
 */
 @import "bootstrap.less";
 
-@dark_blue: #242d64;
-@light_blue: #c3d6ee;
-@font_headings: 'Caudex';
-
+@dark-blue: #242d64;
+@light-blue: #c3d6ee;
+@font-headings: 'Caudex';
 
 html, body{
     height: 100%;
@@ -20,33 +19,41 @@ html, body{
 
 h1.home_welcome_text{
     font-size: 1.5em;
-    font-family: @font_headings;
+    font-family: @font-headings;
 }
 
+h1{
+    text-align: center!important;
+    font-family: @font-headings;
+}
 h2.page_heading {
     text-align: center!important;
-    font-family: @font_headings;
+    font-family: @font-headings;
 }
 
-h2{font-family: @font_headings;
+h2{font-family: @font-headings;
 }
+
 h3{
-    font-family: @font_headings;
+    font-family: @font-headings;
 }
-
+h4{
+    font-family: @font-headings;
+    color: @dark-blue;
+}
 hr.page_title {
 
-    border-top: 1px solid @dark_blue;
+    border-top: 1px solid @dark-blue;
     border-width: thin;
 }
 
 hr.treatment_heading{
-    border-top: 1px solid @dark_blue;
+    border-top: 1px solid @dark-blue;
     border-width: thin;
 }
 
 hr.appointment_heading{
-    border-top: 1px solid @dark_blue;
+    border-top: 1px solid @dark-blue;
     border-width: thin;
     width: 100%;
     margin-left: 0px;
@@ -54,16 +61,16 @@ hr.appointment_heading{
 }
 
 hr.contact_heading{
-    border-top: 1px solid @dark_blue;
+    border-top: 1px solid @dark-blue;
     border-width: thin;
     margin-top: 5px;
     margin-left: -5px;
     width: 90%;
 }
+
 hr.message_heading{
     border-top: 1px solid #242d64;
     border-width: thin;
-   
 }
 
 /*about page css*/
@@ -83,7 +90,7 @@ hr.message_heading{
 }
 
 .about_text{
-    color: @dark_blue;
+    color: @dark-blue;
     font-family: @font-family-sans-serif;
     font-size: 1em;
 }
@@ -121,7 +128,7 @@ hr.message_heading{
 }
 
 .appointment_text{
-    color: @dark_blue;
+    color: @dark-blue;
     font-family: @font-family-sans-serif;
     font-size: 1.2em;
 }
@@ -133,8 +140,8 @@ hr.message_heading{
 .form_submit.btn-default{
     background-color: #fff !important;
     background-image: none;
-    color: @dark_blue;
-    border-color: @dark_blue;
+    color: @dark-blue;
+    border-color: @dark-blue;
     padding: 6px 50px 6px 50px;
     float: right;
 }
@@ -153,7 +160,6 @@ hr.message_heading{
     background-size: 100%;
     z-index: -99;
     overflow: auto;
-
 }
 
 /*call to action for front-end pages*/
@@ -165,7 +171,6 @@ hr.message_heading{
 
 .call_to_action_buttons a {
     margin: 20px;
-
 }
 
 .call_to_action_buttons img {
@@ -178,7 +183,7 @@ hr.message_heading{
 }
 
 .call_to_action_wrap {
-    background-color: @light_blue;
+    background-color: @light-blue;
 }
 
 /*Contact details/form on contact page*/
@@ -187,12 +192,12 @@ hr.message_heading{
 }
 
 .contact_page a:link {
-    color: @dark_blue!important;
+    color: @dark-blue!important;
     text-decoration: none!important; 
 }
 
 .contact_page a:visited {
-    color: @dark_blue;
+    color: @dark-blue;
     text-decoration: none; 
 }
 
@@ -203,7 +208,6 @@ hr.message_heading{
 
 .contact_us_form{
     margin-top: 50px;
-    
 }
 
 .contact_details{
@@ -225,10 +229,9 @@ hr.message_heading{
 }
 
 .contact_text{
-    color: @dark_blue;
+    color: @dark-blue;
     font-family: @font-family-sans-serif;
     font-size: 1.2em;
-
 }
 
 .google_map_wrapper{
@@ -251,24 +254,12 @@ hr.message_heading{
 }
 
 .contact_info a:hover{
-    color: @light_blue;
+    color: @light-blue;
     text-decoration: none; 
 }
 
-/*dashboard themes/simple.php css*/
-.dash_appointment_cell{
-    margin: 5px;
-    border: 1px solid black;
-    width: 100%;
-    min-height: 300px;
-    border: 1px solid;
-    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
-    -webkit-border-radius: 3px;
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.075);
-    background-color: #fff;
-    padding: 10px;
-}
 
+/*dashboard themes/simple.php css*/
 .dash_dropdown_btn.btn{
     display: inline-block;
     margin-bottom: 0;
@@ -281,7 +272,6 @@ hr.message_heading{
     white-space: nowrap;
     padding: 6px 12px;
     border-radius: 4px;
-    /*  -webkit-user-select: none;*/
 }
 
 .dash_dropdown_btn.img-circle {
@@ -290,12 +280,11 @@ hr.message_heading{
 }
 
 .dash_nav.nav-pills>li.active>a, .nav-pills>li.active>a:focus, .nav-pills>li.active>a:hover{
-    background-color: @dark_blue;
-
+    background-color: @dark-blue;
 }
 
 .dash_nav_wrapper{
-    background-color: @light_blue;
+    background-color: @light-blue;
     padding: 100px 10px 100px 10px;
     margin-left: 300px;
 }
@@ -312,7 +301,7 @@ hr.message_heading{
     background-size: 100%;
     overflow: auto;
     padding-bottom: 150px;
-    font-family: @font_headings;
+    font-family: @font-headings;
 }
 
 .dash_wrapper{
@@ -322,49 +311,65 @@ hr.message_heading{
     -webkit-border-radius: 3px;
     box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.075);
     background-color: #fff;
-
 }
 
 /*dashboard home page ($output)*/
+
+input::-webkit-calendar-picker-indicator{
+    display: none;
+}
+input[type="date"]::-webkit-input-placeholder{ 
+    visibility: hidden !important;
+}
+
+.dashbd_home_text h1{
+    
+}
+
+.dashbd_home_text h4{
+    font-weight: bold;
+}
+
+.dash_appointment_cell{
+    height: 450px;
+    margin: 5px;
+    border: 1px solid black;
+    width: 100%;
+    border: 1px solid;
+    border-color: #e5e6e9 #dfe0e4 #d0d1d5;
+    -webkit-border-radius: 3px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3),0 1px 1px rgba(0,0,0,0.075);
+    background-color: #fff;
+    padding: 10px;
+}
+
 .dashbd_home_content{
-    color: @dark_blue;
+    color: @dark-blue;
     text-shadow: 0 1px 0 #fff;
     font-size: 1.5em;
     margin: 0px;
-    
 }
 
 .dashbd_wrap{
     position: relative;
     min-height: 100%;
     background-color: #fff;
-
-}
-
-.dashbd_home_text{
-    font-family: 'Caudex';
-    text-align: center;
-
 }
 
 /*footer css*/
 
 .guarantee_para{
-    
+
 }
-.facebook_plugin{
-    
-}
+
 .copyright_info{
     margin-top: 80px;
-    
 }
 
 .footer{
-    background-color: @light_blue;
-    color: @dark_blue;
+    background-color: @light-blue;
+    color: @dark-blue;
     font-family: @font-family-sans-serif;
-
 }
 
 /*main home page /default controller*/
@@ -378,20 +383,17 @@ hr.message_heading{
 .home_text_background{
     background: rgba(255,255,255,0.2);
     margin-top: 35%;
-
 }
 
 .home_welcome_text{
     padding: 5px;
     font-family: 'Caudex';
     text-align: center;
-
 }
 
 /*login and register pages*/
 .login_background{
     background: rgba(255,255,255,0.2);
-    
 }
 
 .login_text_wrapper{
@@ -404,25 +406,25 @@ hr.message_heading{
     width: 400px;
     margin-right: auto;
     margin-left: auto;
-    color: @dark_blue;
+    color: @dark-blue;
 }
 
 .login_submit{
     background-color: #fff !important;
     background-image: none;
-    color: @dark_blue;
-    border-color: @dark_blue;
+    color: @dark-blue;
+    border-color: @dark-blue;
     padding: 6px 50px 6px 50px;
-       
+
 }
 span.pull-right.valadation_error p{
-        color: @brand-warning!important;
-        font-size: 8px!important;
-    }    
+    color: @brand-warning!important;
+    font-size: 8px!important;
+}    
 /*Nav bar*/
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover{
-    color: @dark_blue;
+    color: @dark-blue;
     background-color:#fff;
 }
 
@@ -434,14 +436,14 @@ span.pull-right.valadation_error p{
     padding: 9px 10px 9px 10px;
     font-family: 'Caudex';
     font-size: 1.2em;
-    color: @dark_blue;
+    color: @dark-blue;
     background-color:#fff;
 }
 
 .nav>li>a:hover {
     text-decoration: none;
     background: rgba(0,0,0,0);
-    color: @light_blue;
+    color: @light-blue;
 }
 
 .navbar-brand{
@@ -454,12 +456,11 @@ span.pull-right.valadation_error p{
 }
 
 .navbar .container-fluid{
-    background-color: @dark_blue;
+    background-color: @dark-blue;
     background-image: none;
     width: 100%;
     margin-left: 0px;
     margin-right:0px;
-
 }
 
 .nav_contact_info{
@@ -474,7 +475,7 @@ span.pull-right.valadation_error p{
 }
 
 .nav_contact_info a:hover{
-    color: @light_blue;
+    color: @light-blue;
 }
 
 
@@ -484,8 +485,6 @@ span.pull-right.valadation_error p{
     width: 60%;
     float: none!important;
 }
-
-
 
 /*treatments page*/
 
@@ -499,13 +498,11 @@ span.pull-right.valadation_error p{
 
 .nail_treament_para{
     font-size: 8px;
-
 }
 
 .treatments_content{
     color: #fff;
     margin-top: 30px;
-
 }
 
 .treatments_background{
@@ -515,12 +512,11 @@ span.pull-right.valadation_error p{
     margin-right: 15px;
     margin-bottom:  85px;
     margin-top: 40%;
-
 }
 
 
 .treatments_text{
-    color: @dark_blue;
+    color: @dark-blue;
     font-family: 'Caudex';
     font-size: 15px!important;
 }
@@ -541,7 +537,7 @@ span.pull-right.valadation_error p{
 }
 
 .under_nav_line{
-     margin-top: 8.7%;
+    margin-top: 8.7%;
     background-color: #fff;
     height: 10px;
     margin-left: -15px;
@@ -553,40 +549,39 @@ span.pull-right.valadation_error p{
 
     h1.home_welcome_text{
         font-size: 1.5em;
-        font-family: @font_headings;
+        font-family: @font-headings;
     }
 
     h2.page_heading {
         text-align: center!important;
-        font-family: @font_headings;
+        font-family: @font-headings;
     }
 
     h3{
-        font-family: @font_headings;
+        font-family: @font-headings;
     }
 
     hr.page_title {
         width: 60%;
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
     }
 
     hr.treatment_heading{
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
     }
 
     hr.appointment_heading{
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
         width: 155%;
         margin-left: -250px;
         margin-top: 5px;
-
     }
 
     hr.contact_heading{
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
         margin-top: 5px;
         margin-left: -5px;
@@ -610,7 +605,7 @@ span.pull-right.valadation_error p{
     }
 
     .about_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
     }
@@ -636,28 +631,22 @@ span.pull-right.valadation_error p{
         margin-right: 15px;
         margin-bottom: 80px;
         padding: 30px;
-
     }
-
-    .appointment_form_heading{
-
-    }
-
+    
     .appointment_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
-
     }
 
     /*Contact details/form on contact page*/
     .contact_page a:link {
-        color: @dark_blue!important;
+        color: @dark-blue!important;
         text-decoration: none!important; 
     }
 
     .contact_page a:visited {
-        color: @dark_blue;
+        color: @dark-blue;
         text-decoration: none; 
     }
 
@@ -682,7 +671,6 @@ span.pull-right.valadation_error p{
         color: #fff;
         font-size: 1em;
         margin-top: 30px;
-
     }
 
     .contact_background{
@@ -694,10 +682,9 @@ span.pull-right.valadation_error p{
     }
 
     .contact_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
-
     }
 
     .google_map_wrapper{
@@ -723,7 +710,7 @@ span.pull-right.valadation_error p{
 
     .navbar .nav .active > a, .navbar .nav .active > a:hover{
         background-color: #ffffff;
-        color:@dark_blue;
+        color:@dark-blue;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
 
@@ -740,13 +727,13 @@ span.pull-right.valadation_error p{
         padding: 9px 10px 9px 10px;
         font-family: 'Caudex';
         font-size: 1.2em;
-        background-color: @dark_blue;
+        background-color: @dark-blue;
         color:#fff;
     }
 
     .nav>li>a:hover {
         text-decoration: none;
-        color: @light_blue;
+        color: @light-blue;
     }
 
     .navbar-brand{
@@ -760,7 +747,7 @@ span.pull-right.valadation_error p{
     }
 
     .navbar .container-fluid{
-        background-color: @dark_blue;
+        background-color: @dark-blue;
         background-image: none;
         width: 100%;
         margin-left: 0px;
@@ -792,7 +779,7 @@ span.pull-right.valadation_error p{
     }
 
     .nav_contact_info a:hover{
-        color: @light_blue;
+        color: @light-blue;
     }
 
     .contact_info a:link{
@@ -806,7 +793,7 @@ span.pull-right.valadation_error p{
     }
 
     .contact_info a:hover{
-        color: @light_blue;
+        color: @light-blue;
         text-decoration: none; 
     }
 
@@ -836,7 +823,7 @@ span.pull-right.valadation_error p{
     }
 
     .call_to_action_wrap {
-        background-color: #c3d6ee;
+        background-color: @light-blue;
         height: 100px;
     }
 
@@ -852,7 +839,6 @@ span.pull-right.valadation_error p{
         z-index: -99;
         overflow: auto;
         padding-bottom: 150px;
-
     }
 
     .home_content{
@@ -860,13 +846,11 @@ span.pull-right.valadation_error p{
         font-size: 2.3em;
         margin-top: 10%;
         margin-bottom: 5%;
-
     }
 
     .home_text_background{
         background: rgba(255,255,255,0.2);
         margin-top: 18%;
-
     }
 
     .home_welcome_text{
@@ -886,13 +870,11 @@ span.pull-right.valadation_error p{
 
     .nail_treament_para{
         font-size: 15px;
-
     }
 
     .treatments_content{
         color: #fff;
         margin-top: 30px;
-
     }
 
     .treatments_background{
@@ -905,7 +887,7 @@ span.pull-right.valadation_error p{
 
 
     .treatments_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 15px;;
     }
@@ -926,40 +908,39 @@ span.pull-right.valadation_error p{
 
     h1.home_welcome_text{
         font-size: 1.5em;
-        font-family: @font_headings;
+        font-family: @font-headings;
     }
 
     h2.page_heading {
         text-align: center!important;
-        font-family: @font_headings;
+        font-family: @font-headings;
     }
 
     h3{
-        font-family: @font_headings;
+        font-family: @font-headings;
     }
 
     hr.page_title {
         width: 60%;
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
     }
 
     hr.treatment_heading{
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
     }
 
     hr.appointment_heading{
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
         width: 155%;
         margin-left: -250px;
         margin-top: 5px;
-
     }
 
     hr.contact_heading{
-        border-top: 1px solid @dark_blue;
+        border-top: 1px solid @dark-blue;
         border-width: thin;
         margin-top: 5px;
         margin-left: -5px;
@@ -983,7 +964,7 @@ span.pull-right.valadation_error p{
     }
 
     .about_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
     }
@@ -1009,7 +990,6 @@ span.pull-right.valadation_error p{
         margin-right: 15px;
         margin-bottom: 80px;
         padding: 30px;
-
     }
 
     .appointment_form_heading{
@@ -1017,20 +997,19 @@ span.pull-right.valadation_error p{
     }
 
     .appointment_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
-
     }
 
     /*Contact details/form on contact page*/
     .contact_page a:link {
-        color: @dark_blue!important;
+        color: @dark-blue!important;
         text-decoration: none!important; 
     }
 
     .contact_page a:visited {
-        color: @dark_blue;
+        color: @dark-blue;
         text-decoration: none; 
     }
 
@@ -1055,7 +1034,6 @@ span.pull-right.valadation_error p{
         color: #fff;
         font-size: 1em;
         margin-top: 30px;
-
     }
 
     .contact_background{
@@ -1067,10 +1045,9 @@ span.pull-right.valadation_error p{
     }
 
     .contact_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
-
     }
 
     .google_map_wrapper{
@@ -1085,25 +1062,17 @@ span.pull-right.valadation_error p{
     nav navbar-nav navbar-right{
         position: absolute;
         right: 10px;
-
-    }
-
-    nav navbar-nav navbar-right{
-        position: absolute;
-        right: 10px;
-
     }
 
     .navbar .nav .active > a, .navbar .nav .active > a:hover{
         background-color: #ffffff;
-        color:@dark_blue;
+        color:@dark-blue;
         border-top-right-radius: 5px;
         border-top-left-radius: 5px;
     }
 
     .navbar-fixed-top .container, .navbar-fixed-bottom .container {
         width: 100%;
-
     }
 
     .navbar .nav >li > a {
@@ -1113,13 +1082,13 @@ span.pull-right.valadation_error p{
         padding: 9px 10px 9px 10px;
         font-family: 'Caudex';
         font-size: 1.2em;
-        background-color: @dark_blue;
+        background-color: @dark-blue;
         color:#fff;
     }
 
     .nav>li>a:hover {
         text-decoration: none;
-        color: @light_blue;
+        color: @light-blue;
     }
 
     .navbar-brand{
@@ -1134,12 +1103,11 @@ span.pull-right.valadation_error p{
 
 
     .navbar .container-fluid{
-        background-color: @dark_blue;
+        background-color: @dark-blue;
         background-image: none;
         width: 100%;
         margin-left: 0px;
         margin-right:0px;
-
     }
 
     .nav_contact_info{
@@ -1156,7 +1124,7 @@ span.pull-right.valadation_error p{
     }
 
     .nav_contact_info a:hover{
-        color: @light_blue;
+        color: @light-blue;
     }
 
     .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container{
@@ -1189,7 +1157,7 @@ span.pull-right.valadation_error p{
     }
 
     .nav_contact_info a:hover{
-        color: @light_blue;
+        color: @light-blue;
     }
 
     /*call to action for front-end pages*/
@@ -1218,7 +1186,7 @@ span.pull-right.valadation_error p{
     }
 
     .call_to_action_wrap {
-        background-color: @light_blue;
+        background-color: @light-blue;
         height: 100px;
     }
 
@@ -1235,7 +1203,6 @@ span.pull-right.valadation_error p{
         z-index: -99;
         overflow: auto;
         padding-bottom: 150px;
-
     }
 
     /*main home page /default controller*/
@@ -1245,13 +1212,11 @@ span.pull-right.valadation_error p{
         font-size: 2.3em;
         margin-top: 10%;
         margin-bottom: 5%;
-
     }
 
     .home_text_background{
         background: rgba(255,255,255,0.2);
         margin-top: 18%;
-
     }
 
     .home_welcome_text{
@@ -1273,14 +1238,12 @@ span.pull-right.valadation_error p{
 
     .nail_treament_para{
         font-size: 15px;
-
     }
 
     .treatments_content{
         color: #fff;
         font-size: 1.3em;
         margin-top: 30px;
-
     }
 
     .treatments_background{
@@ -1291,9 +1254,8 @@ span.pull-right.valadation_error p{
         margin-bottom:  85px;
     }
 
-
     .treatments_text{
-        color: @dark_blue;
+        color: @dark-blue;
         font-family: @font-family-sans-serif;
         font-size: 1.2em;
     }
@@ -1305,7 +1267,6 @@ span.pull-right.valadation_error p{
     .treatment_price{
         float: right;
     }
-
 
 }
 

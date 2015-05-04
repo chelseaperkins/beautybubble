@@ -13,7 +13,7 @@
             </div>
             <div class="col-md-6">
 
-                <div class="appointment" ng-hide="isFormAccepted=true">
+                <div class="appointment" ng-hide="isFormAccepted">
                     <?php if (!empty($errors)): ?>
                         <ul class="errors">
                             <?php foreach ($errors as $error): ?>
@@ -58,9 +58,7 @@
                                 <option value="Select treatment"><?php echo"Select a treatment"; ?></option>
                                 <option value="Facial - 60 minutes for $50"><?php echo"Facial - 60 minutes for $50"; ?></option>
                             </select>
-
                         </div>
-
 
                         <div class="form-group">
                             <label for="eye_treatments"><?php echo"Eye Treatments"; ?></label>

@@ -71,7 +71,7 @@ class Appointments extends CI_Controller {
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
             if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
-            $appointment->date_time = $request->dateTime;
+            $appointment->date_time = strtotime($request->dateTime)*1000;
             $this->sendemail($request);                          
             $appointment->save();
             
@@ -117,7 +117,7 @@ class Appointments extends CI_Controller {
             $message = '
             <html>
             <body>
-            <p>Appointment details that have been requested,</p>
+            <p>These are the appointment details that have been requested,</p>
                 <table>
                     <tr>
                         <td>Date and Time:</td>
@@ -131,44 +131,82 @@ class Appointments extends CI_Controller {
                         <td>Client Email Address:</td>
                         <td>' . $sender_email . '</td>
                     </tr>
-                    <tr>
+                                       
+                    '; 
+            if($home_ph!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Home Phone Number:</td>
                         <td>' . $home_ph . '</td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            }
+            if($mobile_ph!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Mobile Number:</td>
                         <td>' . $mobile_ph . '</td>
-                    </tr>
-                    
-                    <tr>
+                    </tr>';
+            }
+            if($facial_treatments!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Facial Treatments:</td>
-                        <td>' . $facial_treatments .'</td>
-                    </tr>
-                    <tr>
+                        <td>' . $facial_treatments . '</td>
+                    </tr>';
+            }
+            if($eye_treatments!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Eye Treatments:</td>
                         <td>' . $eye_treatments . '</td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            }
+            
+                if($body_treatments!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Body Treatments:</td>
                         <td>' . $body_treatments . '</td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            }
+             if($spray_tanning!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Spray Tanning:</td>
                         <td>' . $spray_tanning . '</td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            }
+             if($nail_treatments!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Nail Treatments:</td>
                         <td>' . $nail_treatments . '</td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            }
+            if($waxing_treatments!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Waxing Treatments:</td>
                         <td>' . $waxing_treatments . '</td>
-                    </tr>
-                    <tr>
+                    </tr>';
+            }
+            if($electrolysis!=null) 
+            {
+                $message = $message . 
+                    '<tr>
                         <td>Electrolysis:</td>
                         <td>' . $electrolysis . '</td>
-                    </tr>
-                    
+                    </tr>';
+            }
+            $message = $message . ' 
                 </table>
             </body>
             </html>

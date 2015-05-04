@@ -89,30 +89,30 @@
         <div class="modal-body">
         <form>   
         <div class="form-group">
-        <input type="text" ng-model="Model.firstName" class="form-control dash_user_inputs" id="first_name" placeholder="Enter First Name" required>
+        <input type="text" ng-model="appointment.firstName" class="form-control dash_user_inputs" id="first_name" placeholder="Enter First Name" required>
         </div>
         <div class="form-group">
-        <input type="text" ng-model="Model.lastName" class="form-control" id="last_name" placeholder="Enter Last Name" required>
+        <input type="text" ng-model="appointment.lastName" class="form-control" id="last_name" placeholder="Enter Last Name" required>
         </div>
         <div class="form-group">
-        <input type="email" ng-model="Model.email" class="form-control" id="email" placeholder="Enter email address" required>
+        <input type="email" ng-model="appointment.email" class="form-control" id="email" placeholder="Enter email address" required>
         </div>
         <div class="form-group">
-        <input type="text" ng-model="Model.phNumber" class="form-control" id="home_phone" placeholder="Enter Home Phone Number">
+        <input type="text" ng-model="appointment.phNumber" class="form-control" id="home_phone" placeholder="Enter Home Phone Number">
         </div>
         <div class="form-group">
-        <input type="text" ng-model="Model.mobilePhone" class="form-control" id="mobile_phone" placeholder="Enter Mobile Phone Number">
+        <input type="text" ng-model="appointment.mobilePhone" class="form-control" id="mobile_phone" placeholder="Enter Mobile Phone Number">
         </div>
         <div class="form-group">
         <label for="facial_treatments">Facial Treatments</label>
-        <select multiple ng-model="facialTreatments" class="chosen-select">
+        <select multiple ng-model="appointment.facialTreatments" class="chosen-select">
         <option value="Select treatment">Select a treatment</option>
         <option value="Facial - 60 minutes for $50">Facial - 60 minutes for $50</option>
         </select>
         </div>
         <div class="form-group">
         <label for="eye_treatments">Eye Treatments</label>
-        <select multiple ng-model="eyeTreatments" class="chosen-select" >
+        <select multiple ng-model="appointment.eyeTreatments" class="chosen-select" >
         <option value="Select one or multiple treatments">Select a treatment</option>
         <option value="Eyelash Tint for $15">Eyelash Tint for $15</option>
         <option value="Eyebrow Tint for $10">Eyebrow Tint for $10</option>
@@ -124,7 +124,7 @@
         </div> 
         <div class="form-group">
         <label for="body_treatments">Body Treatments</label>
-        <select multiple ng-model="bodyTreatments" class="chosen-select">
+        <select multiple ng-model="appointment.bodyTreatments" class="chosen-select">
         <option value="Select one or multiple treatments">Select a treatment</option>
         <option value="Full Body Massage - 60 minutes for $80">Full Body Massage - 60 minutes for $80</option>
         <option value="Back, Neck and Shoulder - 30 minutes for $40">Back, Neck and Shoulder - 30 minutes for $40</option>
@@ -132,7 +132,7 @@
         </div>
         <div class="form-group">
         <label for="spray_tanning">Spray Tanning</label>
-        <select multiple ng-model="sprayTanning" class="chosen-select">
+        <select multiple ng-model="appointment.sprayTanning" class="chosen-select">
         <option value="Select one or multiple treatments">Select a treatment</option>
         <option value="Full Body for $30">Full Body for $30</option>
         <option value="Half Body for $20">Half Body for $20</option>
@@ -140,7 +140,7 @@
         </div>
         <div class="form-group">
         <label for="nail_treatments">Nail Treatments</label>
-        <select multiple ng-model="nailTreatments" class="chosen-select">
+        <select multiple ng-model="appointment.nailTreatments" class="chosen-select">
         <option value="Select one or multiple treatments">Select a treatment</option>
         <option value="Deluxe Manicure - 60 minutes for $45">Deluxe Manicure - 60 minutes for $45</option>
         <option value="Mini Manicure - 30 minutes for $30">Mini Manicure - 30 minutes for $30</option>
@@ -152,7 +152,7 @@
         </div>
         <div class="form-group">
         <label for="waxing_treatments">Waxing Treatments</label>
-        <select multiple ng-model="waxingTreatments" class="chosen-select">
+        <select multiple ng-model="appointment.waxingTreatments" class="chosen-select">
         <option value="Select one or multiple treatments">Select a treatment</option>
         <option value="Underarm wax for $15">Underarm wax for $15</option>
         <option value="Forearm wax for $20">Forearm wax for $20</option>
@@ -173,7 +173,7 @@
         </div>
         <div class="form-group">
         <label for="electrolysis">Electrolysis</label>
-        <select multiple ng-model="electrolysis" class="chosen-select">
+        <select multiple ng-model="appointment.electrolysis" class="chosen-select">
         <option value="Select one or multiple treatments">Select a treatment</option>
         <option value="15 minutes (minimum appointment) for $25">15 minutes (minimum appointment) for $25</option>
         <option value="30 minutes for $40">30 minutes for $40</option>
@@ -181,16 +181,20 @@
         </div>
         <div class="form-group">
         <label for="appointment_date">Appointment Date</label>
-        <input type="date" class="form-control" id="appointment_date" placeholder="dd/mm/yyyy" required>
-        </div>
+            <p class="input-group">
+            <input type="text" ng-model="appointment.dateTime"  class="form-control" id="appointment_date" datepicker-popup="dd-MMMM-yyyy" is-open="opened" min-date="minDate" max-date="maxDate" close-text="Close" required>
+            <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+            </span>
+           </p>
         </form>
         <div class="form-group">
         <label for="appointment_time">Appointment Time</label>                                                          
-        <timepicker ng-model="time" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
+        <timepicker ng-model="appointment.dateTime" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
         </div>           
         </div>
         <div class="modal-footer">
-        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-primary" ng-click="submitData()">Submit</button>
         <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
         </div>
     </script>
@@ -324,9 +328,10 @@
         <p>Are you sure you want to delete this appointment?</p>
         </div>
         <div class="modal-footer">
-        <button class="btn btn-default form_submit" ng-click="ok()">OK</button>
+        <button class="btn btn-default form_submit" ng-click="cancel()">No</button>
+        <button class="btn btn-default form_submit" ng-click="delete()">Yes</button>
 
-        <button class="btn btn-default form_submit" ng-click="cancel()">Cancel</button>
+        
         </div>
     </script>
 

@@ -25,7 +25,7 @@
             $scope.toggleMin();
         
 //       datepicker/set dates unselectable up to a year
-                $scope.toggleMax = function () {
+            $scope.toggleMax = function () {
             var date = new Date();
             $scope.maxDate = date.setDate((new Date()).getDate() + 365);
             };
@@ -109,15 +109,15 @@
             };
             
 //            Opens add modal, add appointment functionality
-            $scope.openAddModal = function (size) {
+            $scope.openAddModal = function (appointment) {
 
                 var modalInstance = $modal.open({
                     templateUrl: 'addAppointmentModalContent.html',
                     controller: 'ModalAddCtrl',
                     size: 'lg',
                     resolve: {
-                        items: function () {
-                            return [];
+                        appointment: function () {
+                            return appointment;
                         }
                     }
                 });
@@ -190,9 +190,15 @@
 //  Controller for edit modal
     beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment, $http) {
         $scope.ModelUrl = window.location.pathname+'/edit';
+        
         $scope.appointment = appointment;
            
         $scope.saveData = function () {
+            var now = new Date();
+//            var n = now.toLocaleDateString();
+            $scope.Model = {};
+            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+            
              // build the model
                 var data = $scope.appointment;
                 $scope.isSaving = true;
@@ -248,22 +254,64 @@
         
     });
     
-    beautyBubbleApp.controller('ModalAddCtrl', function ($scope, $modalInstance, $timeout, items) {
-        
-        $scope.items = items;
-        $scope.selected = {
-            item: $scope.items[0]
-        };
-
-        $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
+    beautyBubbleApp.controller('ModalAddCtrl', function ($scope, $modalInstance, $timeout, $http, appointment) {
+               
+        $scope.ModelUrl = window.location.pathname+'/add';
+        $scope.appointment = appointment;
+        $scope.submitData = function () {
+            var now = new Date();
+//            var n = now.toLocaleDateString();
+            $scope.Model = {};
+            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+            
+             // build the model
+                var data = $scope.appointment;
+                $scope.isSaving = true;
+                $scope.sendPromise = $http.post($scope.ModelUrl, data)
+                        .success(function (data, status) {
+                            $scope.isSaving = false;
+                            if (data.success) {
+                                $scope.dataSent = true;
+                                $scope.dataSendErrorMessage = "";
+                            }
+                            else {
+                                $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                            }
+                        })
+                        .error(function (data, status) {
+                            $scope.isSaving = false;
+                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                        });
+            
+                        
+            $modalInstance.close("saved");
         };
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');
         };
+        
         $scope.close = function (){
             $modalInstance.close($scope.selected.item);
+        };
+        //       make any day before the current day unselectable        
+        $scope.toggleMin = function () {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+        
+//       allows dates to be selectable up to a year from current date
+        $scope.toggleMax = function () {
+            var date = new Date();
+        $scope.maxDate = date.setDate((new Date()).getDate() + 365);
+        };
+        $scope.toggleMax();
+
+        $scope.datePickerOpened = function ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
         };
         
         //   timer to allow chosen plugin set width 
@@ -274,9 +322,35 @@
     
     beautyBubbleApp.controller('ModalProfileCtrl', function ($scope, $modalInstance, $timeout, items) {
         
-        $scope.items = items;
-        $scope.selected = {
-            item: $scope.items[0]
+        $scope.ModelUrl = window.location.pathname+'/profile';
+       
+        $scope.submitData = function () {
+            var now = new Date();
+//            var n = now.toLocaleDateString();
+            $scope.Model = {};
+            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+            
+             // build the model
+                var data = $scope.Model;
+                $scope.isSaving = true;
+                $scope.sendPromise = $http.post($scope.ModelUrl, data)
+                        .success(function (data, status) {
+                            $scope.isSaving = false;
+                            if (data.success) {
+                                $scope.dataSent = true;
+                                $scope.dataSendErrorMessage = "";
+                            }
+                            else {
+                                $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                            }
+                        })
+                        .error(function (data, status) {
+                            $scope.isSaving = false;
+                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                        });
+            
+                        
+            $modalInstance.close("saved");
         };
 
         $scope.ok = function () {
@@ -296,11 +370,38 @@
         }, 200);
     });
     
-    beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, items) {
-               
-        $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
+    beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, appointment) {
+               $scope.ModelUrl = window.location.pathname+'/delete';
+               $scope.appointment = appointment;
+        $scope.delete = function () {
+           var now = new Date();
+//            var n = now.toLocaleDateString();
+            $scope.Model = {};
+            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
+            
+             // build the model
+                var data = $scope.appointment;
+                $scope.isSaving = true;
+                $scope.sendPromise = $http.post($scope.ModelUrl, data)
+                        .success(function (data, status) {
+                            $scope.isSaving = false;
+                            if (data.success) {
+                                $scope.dataSent = true;
+                                $scope.dataSendErrorMessage = "";
+                            }
+                            else {
+                                $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                            }
+                        })
+                        .error(function (data, status) {
+                            $scope.isSaving = false;
+                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                        });
+            
+                        
+            $modalInstance.close("saved");
         };
+        
 
         $scope.cancel = function () {
             $modalInstance.dismiss('cancel');

@@ -54,21 +54,21 @@ class Dashboard extends CI_Controller {
                 
             ));
     }
+   
 
-    public function detail() {
-        
-    }
-
-    public function edit() {
+    public function edit(){
+            $page_model = "";
+            $this->load->helper('date');
+            $this->load->model('Appointment');
+            
             
            if($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
-            $post_data = file_get_contents("php://input");
-//            create varible to encode data to json and pass in user input data
-            $request = json_decode($post_data);         
                         
-            $this->load->model('Appointment');
-            $appointment = $this->Appointment->get($request->id);
+            
+                $post_data = file_get_contents("php://input");
+//            create varible to decode data to json and pass in user input data
+            $request = json_decode($post_data);
             if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
             if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
             if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
@@ -76,17 +76,14 @@ class Dashboard extends CI_Controller {
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
             if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
+            $appointment->date_time = $request->dateTime; 
+//            $date->setTimezone(new DateTimeZone('Pacific/Auckland'));
+//            date_format($date, 'dd/mmmm/yy H:i:s');
+//            $appointment->date_time = date($date);   
+            $appointment = $this->Appointment->get($request->id); 
             
-            $date = new DateTime($request->dateTime, new DateTimeZone('Pacific/Auckland'));
-                        
-            $appointment->date_time;
-            
-//            $date->setTimeZone($result(new DateTimeZone('Pacific/Auckland')));
-//            
-            //
-                                    
-            //$appointment->save();
             $success = $this->Appointment->update($appointment->id, $appointment);
+            
             // send back json
             $this->output->set_header('Content-Type: application/json; charset=utf-8');
             exit(json_encode(array(
@@ -95,29 +92,124 @@ class Dashboard extends CI_Controller {
                 'appointment' => $request,
 
                 )));
+           }
     }
+            public function add($id=null){
+                $page_model = "";
+            $this->load->model('User');
+            $this->load->model('Appointment');
+             if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //$return = $_POST;
+                 
+            $post_data = file_get_contents("php://input");
+                  
+//            create varible to decode data to json and pass in user input data
+            $request = json_decode($post_data);
+            $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
+            if($query->num_rows > 0) {
+                // get the first row from the results
+                $user = new User();
+                $match = reset($query->result());
+                $user->id = $match->id;
+                $user->first_name = $match->first_name;
+                $user->last_name = $match->last_name;
+                $user->email = $match->email;
+                $user->ph_number = $match->ph_number;
+                $user->mobile_number = $match->mobile_number;
+                $user->is_admin = $match->is_admin;
+            }else {
+                // user does not exist so create
+                $user = new User();
+                $user->first_name = $request->firstName;
+                $user->last_name = $request->lastName;
+                $user->email = $request->email;
+                $user->ph_number = $request->phNumber;
+                $user->mobile_number = $request->mobilePhone;
+                $user->is_admin = false;
+                $user->save();
+            }
+              
+                $appointment = new Appointment();
+                $appointment->user_id = $user->id;
+            if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
+            if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
+            if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
+            if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
+            if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
+            if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
+            if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);} 
+            $appointment->date_time = $request->dateTime;
+            $appointment->save();
+            }
+                       
+          
+            // send back json
+            $this->output->set_header('Content-Type: application/json; charset=utf-8');
+            exit(json_encode(array(
+                'success'=> true, 
+                'message' => "Saved", 
+                'appointment' => $request,
+
+                )));
     }
-    
-    
-    
-           
-    
-    
+                       
     /**
-     * Delete Todo based on id. Status is passed in for redirection to list.
+     * Delete Appointment based on id. Status is passed in for redirection to list.
      * @param string $status
      * @param int $id
      */
     public function delete($status, $id) {
-        $this->load->model('Todo');
-        if ($this->Todo->delete($id)) {
+        $this->load->model('Appointment');
+        if ($this->Appointment->delete($id)) {
             $this->load->library('session');
-            $this->session->set_flashdata('success', 'TODO successfully deleted.');
+            $this->session->set_flashdata('success', 'Appointment successfully deleted.');
         } else {
-            $this->session->set_flashdata('error', 'There was a problem deleting the TODO. Please try again.');
+            $this->session->set_flashdata('error', 'There was a problem deleting the Appointment. Please try again.');
         }
 //    take back to list
-        redirect('/todos/status/' . $status, 'refresh');
+        redirect('/index/' . $status, 'refresh');
+    }
+    
+    public function profile() {
+        $page_model = "";
+            $this->load->model('User');
+            
+             if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            //$return = $_POST;
+                 
+            $post_data = file_get_contents("php://input");
+                  
+//            create varible to decode data to json and pass in user input data
+            $request = json_decode($post_data);
+            $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
+            if($query->num_rows > 0) {
+                // get the first row from the results
+                $user = new User();
+                $match = reset($query->result());
+                $user->id = $match->id;
+                $user->first_name = $match->first_name;
+                $user->last_name = $match->last_name;
+                $user->email = $match->email;
+                $user->is_admin = $match->is_admin;
+            }else {
+                // user does not exist so create
+                $user = new User();
+                $user->first_name = $request->firstName;
+                $user->last_name = $request->lastName;
+                $user->email = $request->email;
+                $user->is_admin = false;
+                $user->save();
+            }
+           
+    }
+    // send back json
+            $this->output->set_header('Content-Type: application/json; charset=utf-8');
+            exit(json_encode(array(
+                'success'=> true, 
+                'message' => "Saved", 
+                'appointment' => $request,
+
+                )));
     }
     
     

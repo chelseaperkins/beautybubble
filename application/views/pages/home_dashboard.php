@@ -24,7 +24,7 @@
                                 <a class="dash_dropdown_btn btn btn-white dropdown-toggle img-circle" data-toggle="dropdown"><b class="caret"></b></a>
                                 <ul class="dropdown-menu pull-right" role="menu">
                                     <li><a href="#" ng-click="openEditModal(apptmt)" ><span class="glyphicon glyphicon-edit"></span> Edit Appointment</a></li>
-                                    <li><a href="#" ng-click="openDeleteModal()"><span class="glyphicon glyphicon-remove-sign"></span> Delete Appointment</a></li>
+                                    <li><a href="#" ng-click="openDeleteModal(apptmt)"><span class="glyphicon glyphicon-remove-sign"></span> Delete Appointment</a></li>
                                 </ul>
                             </div>
                             <font size="2">

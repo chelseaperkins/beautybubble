@@ -60,7 +60,7 @@ class Appointments extends CI_Controller {
                 $user->is_admin = false;
                 $user->save();
             }
-                        
+            
             $appointment = new Appointment();
             $appointment->user_id = $user->id;
                         
@@ -71,7 +71,9 @@ class Appointments extends CI_Controller {
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
             if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
-            $appointment->date_time = strtotime($request->dateTime)*1000;
+            $appointment->date_time = new DateTime($request->dateTime);
+            //$appmt_date = new DateTime(rtrim($request->dateTime, "Z"), new DateTimeZone('Pacific/Auckland'));
+            //$appmt_date->setTimezone();
             $this->sendemail($request);                          
             $appointment->save();
             

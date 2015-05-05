@@ -158,7 +158,7 @@ class Dashboard extends CI_Controller {
      * @param string $status
      * @param int $id
      */
-    public function delete($status, $id) {
+    public function delete($id) {
         $this->load->model('Appointment');
         if ($this->Appointment->delete($id)) {
             $this->load->library('session');
@@ -167,7 +167,7 @@ class Dashboard extends CI_Controller {
             $this->session->set_flashdata('error', 'There was a problem deleting the Appointment. Please try again.');
         }
 //    take back to list
-        redirect('/index/' . $status, 'refresh');
+        redirect('/index', 'refresh');
     }
     
     public function profile() {

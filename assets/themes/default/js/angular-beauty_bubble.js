@@ -151,15 +151,15 @@
             };
             
  //            Opens delete message modal, deletes values           
-            $scope.openDeleteModal = function () {
+            $scope.openDeleteModal = function (appointment) {
 
                 var modalInstance = $modal.open({
                     templateUrl: 'deleteAppointmentModalContent.html',
                     controller: 'ModalDeleteCtrl',
                     size: 'lg',
                     resolve: {
-                        items: function () {
-                            return [];
+                        appointment: function () {
+                            return appointment;
                         }
                     }
                 });
@@ -370,7 +370,7 @@
         }, 200);
     });
     
-    beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, appointment) {
+    beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, $http, appointment) {
                $scope.ModelUrl = window.location.pathname+'/delete';
                $scope.appointment = appointment;
         $scope.delete = function () {

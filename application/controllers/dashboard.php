@@ -160,14 +160,20 @@ class Dashboard extends CI_Controller {
      */
     public function delete($id) {
         $this->load->model('Appointment');
-        if ($this->Appointment->delete($id)) {
+        $post_data = file_get_contents("php://input");
+        $request = json_decode($post_data);
+        $success = false;
+        if ($this->Appointment->delete($request->id)) {
+            $success = true;
             $this->load->library('session');
             $this->session->set_flashdata('success', 'Appointment successfully deleted.');
         } else {
             $this->session->set_flashdata('error', 'There was a problem deleting the Appointment. Please try again.');
         }
-//    take back to list
-        redirect('/index', 'refresh');
+        exit(json_encode(array(
+                'success'=> $success, 
+                'message' => "Saved", 
+            )));
     }
     
     public function profile() {

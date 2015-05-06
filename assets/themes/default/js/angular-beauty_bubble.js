@@ -188,7 +188,7 @@
     ]);
     
 //  Controller for edit modal
-    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, appointment, $http) {
+    beautyBubbleApp.controller('ModalEditCtrl', function ($scope, $modalInstance, $timeout, $http, appointment ) {
         $scope.ModelUrl = window.location.pathname+'/edit';
         
         $scope.appointment = appointment;
@@ -373,12 +373,11 @@
     beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, $http, appointment) {
                $scope.ModelUrl = window.location.pathname+'/delete';
                $scope.appointment = appointment;
+               
         $scope.delete = function () {
-           var now = new Date();
-//            var n = now.toLocaleDateString();
+
             $scope.Model = {};
-            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
-            
+                       
              // build the model
                 var data = $scope.appointment;
                 $scope.isSaving = true;
@@ -399,7 +398,7 @@
                         });
             
                         
-            $modalInstance.close("saved");
+            $modalInstance.close("deleted");
         };
         
 

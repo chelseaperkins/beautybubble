@@ -5,6 +5,7 @@
         <meta name="resource-type" content="document" />
         <meta name="robots" content="all, index, follow"/>
         <meta name="googlebot" content="all, index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <?php
         /** -- Copy from here -- */
         if (!empty($meta))
@@ -104,9 +105,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+                     
+                    
                     <a class="navbar-brand" href="<?php echo site_url(); ?>">
                         <img class="logo" src="<?php echo base_url(); ?>assets/themes/default/images/logo.png" alt="logo"/>
                     </a>
+                     <div class="clear-div"></div>
                     <div class="nav_contact_info">
                     <p>
                         
@@ -116,9 +120,8 @@
                         <a class="contact_info" href="tel+64273810095"><?php echo"027 3810095"; ?></a>
                     </p>
                 </div>
-                    
+                   
                 </div>
-
                 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -131,7 +134,7 @@
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </nav><!-- /.container-fluid -->
-                    
+                    <div class="clear-div"></div>
         </header>    
 
 
@@ -170,11 +173,12 @@ Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighte
 
             </div>
         </footer>
-
+        
         <div class="background_image">
+            
 
         </div>     
-
-
+        
+        
     </body>
 </html>

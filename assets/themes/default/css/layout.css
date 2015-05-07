@@ -6631,6 +6631,10 @@ hr.message_heading {
   height: 60%;
 }
 /*appoinment form page css*/
+.g-recaptcha {
+  transform: scale(0.77);
+  transform-origin: 0 0;
+}
 .appointment > form {
   margin-left: 0%;
   vertical-align: middle;
@@ -6643,10 +6647,10 @@ hr.message_heading {
 }
 .appointment_background {
   background: rgba(255, 255, 255, 0.9);
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-bottom: 80px;
-  padding: 30px;
+  padding: 5px;
   margin-top: 60%;
 }
 .appointment_form_heading {
@@ -6655,7 +6659,7 @@ hr.message_heading {
 .appointment_text {
   color: #242d64;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 1.2em;
+  font-size: 12px;
 }
 .appointmentsuccess table td {
   vertical-align: top;
@@ -6671,7 +6675,7 @@ hr.message_heading {
 /*default template background image */
 .background_image {
   position: fixed;
-  top: 0%;
+  top: 14%;
   height: 100%;
   width: 100%;
   background-image: url('../images/beauty_bubble_background.jpg');
@@ -6811,7 +6815,7 @@ hr.message_heading {
 input::-webkit-calendar-picker-indicator {
   display: none;
 }
-input[type="text"]::-webkit-input-placeholder {
+input[type="date"]::-webkit-input-placeholder {
   visibility: hidden !important;
 }
 .dashbd_home_text h4 {
@@ -6915,6 +6919,8 @@ span.pull-right.valadation_error p {
 .navbar-brand {
   height: auto;
   padding: 0px;
+  display: inline;
+  margin-top: -25%;
 }
 .navbar-toggle .icon-bar {
   background-color: #fff!important;
@@ -6934,9 +6940,16 @@ span.pull-right.valadation_error p {
   margin-top: 0%;
   text-decoration: none;
   color: #fff!important;
+  padding-bottom: 10px;
 }
 .nav_contact_info a:hover {
   color: #c3d6ee;
+}
+a.visible-xs.contact_info {
+  margin-bottom: -39px;
+}
+.clear-div {
+  clear: both;
 }
 .logo {
   margin-right: 0x;
@@ -6965,18 +6978,18 @@ span.pull-right.valadation_error p {
   margin-left: 15px;
   margin-right: 15px;
   margin-bottom: 85px;
-  margin-top: 40%;
+  margin-top: 50%;
 }
 .treatments_text {
   color: #242d64;
-  font-family: 'Caudex';
-  font-size: 15px!important;
+  font-size: 12px;
 }
 .treatment_text_box_side {
   margin-top: 31px;
 }
 .treatment_price {
   float: right;
+  font-size: 12px;
 }
 /*page wrap template for output*/
 .wrap {
@@ -7341,6 +7354,10 @@ span.pull-right.valadation_error p {
   #karina_image {
     padding-top: 90%;
   }
+  .g-recaptcha {
+    transform: scale(0.99);
+    transform-origin: 0 0;
+  }
   .appointment > form {
     margin-left: 50%;
   }
@@ -7397,7 +7414,7 @@ span.pull-right.valadation_error p {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 80px;
-    padding: 30px;
+    padding: 5px;
   }
   .contact_text {
     color: #242d64;
@@ -7491,14 +7508,6 @@ span.pull-right.valadation_error p {
     margin-top: -150px;
     z-index: 100;
   }
-  .nav_contact_info a {
-    margin: 0px;
-    text-decoration: none;
-    color: #fff!important;
-  }
-  .nav_contact_info a:hover {
-    color: #c3d6ee;
-  }
   /*call to action for front-end pages*/
   .call_to_action_background {
     height: 25%;
@@ -7567,7 +7576,6 @@ span.pull-right.valadation_error p {
   }
   .treatments_content {
     color: #fff;
-    font-size: 1.3em;
     margin-top: 30px;
   }
   .treatments_background {

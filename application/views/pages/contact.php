@@ -1,5 +1,5 @@
 <div class="under_nav_line"></div>
-<div ng-app="beautyBubbleApp" ng-controller="ContactCtrl" class="wrap">
+<div class="wrap">
 
     <div class="row contact_content contact_background">
         <div class="contact_text">

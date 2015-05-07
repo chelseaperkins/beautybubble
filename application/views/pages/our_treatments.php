@@ -27,7 +27,7 @@
                 <h3><strong><?php echo"Body Treatments"; ?></strong></h3>
                 <hr class="treatment_heading">
                 <span><?php echo"Full Body Massage - 60 minutes"; ?></span><span class="treatment_price"><?php echo"$80"; ?></span><br />
-                <span><?php echo"Back, Neck and Shoulder - 30 minutes"; ?></span><span class="treatment_price"><?php echo"$40"; ?></span>
+                <span><?php echo"Back, Neck & Shoulder - 30 minutes"; ?></span><span class="treatment_price"><?php echo"$40"; ?></span>
                 <br />
                 <br />
                 <h3><strong><?php echo"Spray Tanning"; ?></strong></h3>
@@ -85,7 +85,7 @@ prepared and polished."; ?></span>
                 <span><?php echo"Eyebrow shape"; ?></span><span class="treatment_price"><?php echo"$30"; ?></span><br />
                 <span><?php echo"Upper lip or chin"; ?></span><span class="treatment_price"><?php echo"$10"; ?></span><br />
                 <span><?php echo"Facial Bleaching"; ?></span><span class="treatment_price"><?php echo"$5"; ?></span><br />
-                <span class="treatment_price" style="font-size: 15px; margin-top: -8px;"><?php echo"per area"; ?></span>
+                <span class="treatment_price" style="margin-top: -8px;"><?php echo"per area"; ?></span>
                 <br />
 
                 <h3><strong><?php echo"Electrolysis"; ?></strong></h3>

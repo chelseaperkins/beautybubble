@@ -152,7 +152,7 @@
                             <timepicker ng-model="Model.dateTime" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
                         </div>
 
-                        <div
+                        <div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX"
                         vc-recaptcha
                         key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
                         on-success="setResponse(response)"

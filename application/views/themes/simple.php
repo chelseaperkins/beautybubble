@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <meta name="resource-type" content="document" />
+        <meta name="robots" content="all, index, follow"/>
+        <meta name="googlebot" content="all, index, follow" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <?php
         foreach ($js as $file) {
             echo "\n\t\t";

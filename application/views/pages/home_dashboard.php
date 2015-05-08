@@ -336,6 +336,7 @@
     </script>
 
     <script>
+//        
                 var pageModel = <?php echo json_encode($pageModel); ?>;
 
     </script>

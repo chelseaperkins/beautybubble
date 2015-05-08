@@ -6845,13 +6845,43 @@ input[type="date"]::-webkit-input-placeholder {
   background-color: #fff;
 }
 /*footer css*/
-.copyright_info {
-  margin-top: 80px;
+
+.guarantee-para{
+    padding:30px;
+    text-align: center;
+}
+.quick-links-menu{
+    text-align: left;
+    padding:30px;
+}
+.quick-links-menu li{
+    text-decoration: none;
+    list-style-type: none;
+    color: #242d64;
+    }
+.quick-links-menu a:hover{
+    text-decoration: none;
+    list-style-type: none;
+    color: #fff;
+}
+.admin-menu{
+    padding:30px;
+    text-align: left;
+}
+.admin-menu li{
+    text-decoration: none;
+    list-style-type: none;
+}
+.admin-menu a:hover{
+    text-decoration: none;
+    list-style-type: none;
+    color: #fff;
 }
 .footer {
   background-color: #c3d6ee;
   color: #242d64;
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  text-align: center;
 }
 /*main home page /default controller*/
 .home_content {
@@ -6868,6 +6898,7 @@ input[type="date"]::-webkit-input-placeholder {
   font-family: 'Caudex';
   text-align: center;
 }
+
 /*login and register pages*/
 .login_background {
   background: rgba(255, 255, 255, 0.2);

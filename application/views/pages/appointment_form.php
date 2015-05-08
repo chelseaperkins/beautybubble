@@ -144,7 +144,6 @@
                             <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                             </span>
                             </p>
-                            
                         </div>
 
                         <div class="form-group">

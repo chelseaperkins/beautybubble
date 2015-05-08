@@ -115,6 +115,7 @@ class Auth extends CI_controller {
 
 //    Login for admin
     public function login() {
+        
         $login_error = 'log in error, please try again';
         //$return = $_POST;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -129,8 +130,12 @@ class Auth extends CI_controller {
             }
             //Ensure values exist for email and pass, and validate the user
             if ($email && $pass && $this->validate_user($email, $pass)) {
+                
                 // If the user is valid, redirect to the dashboard
-                 redirect('dashboard');
+                 $login = redirect('dashboard', array(
+                    'login' => $login,
+                ));
+                 
             } else {
                 // Otherwise show the login screen with an error message.
                 $this->load->view('pages/log_in', array(
@@ -169,31 +174,37 @@ class Auth extends CI_controller {
 
     function set_session() {
 // set the user data to the session
-
-        $this->session->set_userdata(array(
+$sess_array = array(
             'id' => $this->details->id,
+            'first_name' => $this->details->first_name,
+            'last_name' => $this->details->last_name,
             'email' => $this->details->email,
             'is_Admin' => true,
-            )
-        );
+            ); 
+        $this->session->set_userdata($sess_array);
+                        
     }
 
 // Logout from admin page
-    public function logout($data) {
+    public function logout() {
         
 // Removing session data
         $sess_array = array(
             'id' => '',
+            'first_name' => '',
+            'last_name' => '',
             'email' => '',
+            'is_Admin' => true,
         );
-        $this->session->unset_userdata('logged_in', $sess_array);
+        
+
+        
+        $this->session->unset_userdata($sess_array);
+        
         
         redirect('auth/login', array(
-            'data' => $data,
+            
            ));
-//        $this->load->view('pages/log_in', 
-//                
-        
     }
 
 }

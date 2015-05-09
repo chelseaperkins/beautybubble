@@ -87,6 +87,11 @@
             $scope.Model = pageModel;
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
             
+            $scope.selectAppointments = function (user){
+                $scope.appointmentFilter = user.email;
+                $('#dash-tabs a[href="#appointments"]').tab('show') // Select tab by name
+            };
+            
 //            Opens edit modal and populates the appointment values from the database to allow edit functionality
             $scope.openEditModal = function (appointment) {
 
@@ -250,8 +255,7 @@
         $timeout(function () {
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
-        
-        
+                
     });
     
     beautyBubbleApp.controller('ModalAddCtrl', function ($scope, $modalInstance, $timeout, $http, appointment) {
@@ -348,7 +352,6 @@
                             $scope.isSaving = false;
                             $scope.dataSendErrorMessage = "Data saving error, Please try again.";
                         });
-            
                         
             $modalInstance.close("saved");
         };
@@ -411,9 +414,42 @@
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
     });
-        /* End of Dashboard controller */
-        
-        
+        /* End of Dashboard controller */      
     
+     /* Directives */
+ 
+    beautyBubbleApp.directive('minTime', function ($parse){ 
+    return {
+        require: 'ngModel',
+        restrict: 'A',
+        link: function(scope, elem, attrs, ctrl) {
+            var minTime = scope.minTime - 1;
+
+            scope.$watch(attrs.minTime, function(newVal) {
+                minTime = newVal;
+                validate();
+            });
+
+            scope.$watch(attrs.ngModel, validate);
+
+            function validate(value) {
+                if(value instanceof Date) {
+                    var modelHour = value.getHours();
+                    if(modelHour < minTime) {
+                        setTimeout(function(){
+                            scope.$apply(function() {
+                                value.setHours(minTime);
+                                var model = $parse(attrs.ngModel);
+                                model.assign(scope, value); // set the ng model value
+                            });
+                            //scope.$apply();
+                        }, 25);
+                    }
+                }
+                return value;
+            }
+        }
+    };
+    });
         
 })(angular);

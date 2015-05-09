@@ -3,83 +3,149 @@
 
         <div class="col-md-12 col-md-push-3 ">
             <div class="dashbd_home_text">
-                <div class="row">
-                    <div class="col-md-4 col-md-push-3">
-                    
-                        <h1><strong><?php echo"DASHBOARD"; ?></strong></h1>
-                        <p><?php echo"Todays appointments"; ?></p>
-                        <br />
-                        <div class="navbar-underline">
-                            <a href="#"ng-click="openAddModal()"><span class="glyphicon glyphicon-plus-sign"></span> Add appointment</a>
+                <h1><strong><?php echo"DASHBOARD"; ?></strong></h1>
+                <hr>
+                <div role="tabpanel">
+
+                    <!-- Nav tabs -->
+                    <ul id="dash-tabs" class="nav nav-tabs" role="tablist">
+                        <li role="presentation" class="active"><a href="#appointments" aria-controls="appointments" role="tab" data-toggle="tab">Appointments</a></li>
+                        <li role="presentation"><a href="#clients" aria-controls="clients" role="tab" data-toggle="tab">Clients</a></li>
+
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div role="tabpanel" class="tab-pane active" id="appointments">
+                            <div class="row"> <h3><?php echo"Todays appointments"; ?></h3>
+                                    <hr>
+                                    <br />
+                                    <div class="col-md-4">
+                                    <label><?php echo"Search appointments:"; ?></label>
+                                    <input class="form-control" ng-model="appointmentFilter" placeholder="Type to search">
+                                    
+                                    
+                                </div>
+                                <div class="col-md-8"></div>
+                                <div class="col-md-4 col-md-push-3">
+
+
+                                   
+                                    
+                                    <div class="navbar-underline">
+                                        <a href="#"ng-click="openAddModal()"><span class="glyphicon glyphicon-plus-sign"></span> Add appointment</a>
+                                    </div>
+                                    <br />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <!--displays html repeatedly for each appointment-->
+                                <div class="col-sm-4 col-md-4" ng-repeat="apptmt in Model.results| filter:appointmentFilter | orderBy:'date_time':false">
+                                    <div class="dash_appointment_cell">
+                                        <a class="dash_dropdown_btn btn btn-white dropdown-toggle" data-toggle="dropdown"></a>
+                                        <div class="class-tile-menu-toggle btn-group">
+                                            <a class="dash_dropdown_btn btn btn-white dropdown-toggle img-circle" data-toggle="dropdown"><b class="caret"></b></a>
+                                            <ul class="dropdown-menu pull-right" role="menu">
+                                                <li><a href="#" ng-click="openEditModal(apptmt)" ><span class="glyphicon glyphicon-edit"></span> Edit Appointment</a></li>
+                                                <li><a href="#" ng-click="openDeleteModal(apptmt)"><span class="glyphicon glyphicon-remove-sign"></span> Delete Appointment</a></li>
+                                            </ul>
+                                        </div>
+
+                                        <!--displays values from database repeatedly-->
+                                        <div>
+                                            <font size="2">
+                                            <strong><h4>Client:</h4></strong>
+                                            <div>
+                                                <label>First Name: {{apptmt.first_name}} </label> 
+                                                <br />
+                                                <label>Last Name: {{apptmt.last_name}}</label>
+                                                <br />
+                                                <label>Email: {{apptmt.email}}</label>
+                                                <br />
+                                            </div>
+
+                                            <h4>Treatments:</h4>
+
+                                            <div>
+                                                <label ng-hide="apptmt.facialTreatments == null || apptmt.facialTreatments.length == 0">Facial Treatments:</label> 
+                                                <span ng-repeat="item in apptmt.facialTreatments">{{item}} </span>
+                                                <br />
+                                                <label ng-hide="apptmt.eyeTreatments == null || apptmt.eyeTreatments.length == 0">Eye Treatments:</label> 
+                                                <span ng-repeat="item in apptmt.eyeTreatments">{{item}} </span>
+                                                <br />
+                                                <label ng-hide="apptmt.bodyTreatments == null || apptmt.bodyTreatments.length == 0">Body Treatments:</label> 
+                                                <span ng-repeat="item in apptmt.bodyTreatments">{{item}} </span>
+                                                <br />
+                                                <label ng-hide="apptmt.sprayTanning == null || apptmt.sprayTanning.length == 0">Spray Tanning:</label> 
+                                                <span ng-repeat="item in apptmt.sprayTanning">{{item}} </span>
+                                                <br />
+                                                <label ng-hide="apptmt.nailTreatments == null || apptmt.nailTreatments.length == 0">Nail Treatments:</label> 
+                                                <span ng-repeat="item in apptmt.nailTreatments">{{item}} </span>
+                                                <br />
+                                                <label ng-hide="apptmt.waxingTreatments == null || apptmt.waxingTreatments.length == 0">Waxing Treatments:</label> 
+                                                <span ng-repeat="item in apptmt.waxingTreatments">{{item}} </span>
+                                                <br />
+                                                <label ng-hide="apptmt.electrolysis == null || apptmt.electrolysis.length == 0">Electrolysis:</label> 
+                                                <span ng-repeat="item in apptmt.electrolysis">{{item}} </span>
+                                                <br />
+                                            </div>
+                                            <label><h4>Date and Time:</h4></label>
+                                            <div>
+                                                <span>{{apptmt.dateTime| date:'dd MMMM hh:mm a'}} </span><br /> 
+                                            </div>
+                                            </font>                     
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <br />
-                    </div>
-                </div>
-                <div class="row">
-                    <!--displays html repeatedly for each appointment-->
-                    <div class="col-sm-4 col-md-4" ng-repeat="apptmt in Model.results | orderBy:'date_time':false">
-                        <div class="dash_appointment_cell">
-                            <a class="dash_dropdown_btn btn btn-white dropdown-toggle" data-toggle="dropdown"></a>
-                            <div class="class-tile-menu-toggle btn-group">
-                                <a class="dash_dropdown_btn btn btn-white dropdown-toggle img-circle" data-toggle="dropdown"><b class="caret"></b></a>
-                                <ul class="dropdown-menu pull-right" role="menu">
-                                    <li><a href="#" ng-click="openEditModal(apptmt)" ><span class="glyphicon glyphicon-edit"></span> Edit Appointment</a></li>
-                                    <li><a href="#" ng-click="openDeleteModal(apptmt)"><span class="glyphicon glyphicon-remove-sign"></span> Delete Appointment</a></li>
-                                </ul>
-                            </div>
-                            <font size="2">
-                            <!--displays values from database repeatedly-->
-                            <div> 
-                                <strong><h4>Client:</h4></strong>
-                                <div>
-                                    <label>First Name: {{apptmt.first_name}} </label> 
-                                    <br />
-                                    <label>Last Name: {{apptmt.last_name}}</label>
-                                    <br />
-                                    <label>Email: {{apptmt.email}}</label>
-                                    <br />
+
+                        <div role="tabpanel" class="tab-pane" id="clients">
+                            <h3><?php echo"Client list"; ?></h3>
+                                <hr>
+                                <br />
+                            <div class="row client-table" >
+                                <div class="col-md-4">
+                                    <label><?php echo"Search client list:"; ?></label>
+                                    <input class="form-control" ng-model="clientFilter" placeholder="Type to search">
+                                    
+                                    
                                 </div>
-                                <font size="2">
-                                <h4>Treatments:</h4>
+                                <div class="col-md-8"></div>
+                                <div class="col-md-12">
                                 
-                                <div>
-                                    <label ng-hide="apptmt.facialTreatments == null || apptmt.facialTreatments.length == 0">Facial Treatments:</label> 
-                                    <span ng-repeat="item in apptmt.facialTreatments">{{item}} </span>
-                                    <br />
-                                    <label ng-hide="apptmt.eyeTreatments == null || apptmt.eyeTreatments.length == 0">Eye Treatments:</label> 
-                                    <span ng-repeat="item in apptmt.eyeTreatments">{{item}} </span>
-                                    <br />
-                                    <label ng-hide="apptmt.bodyTreatments == null || apptmt.bodyTreatments.length == 0">Body Treatments:</label> 
-                                    <span ng-repeat="item in apptmt.bodyTreatments">{{item}} </span>
-                                    <br />
-                                    <label ng-hide="apptmt.sprayTanning == null || apptmt.sprayTanning.length == 0">Spray Tanning:</label> 
-                                    <span ng-repeat="item in apptmt.sprayTanning">{{item}} </span>
-                                    <br />
-                                    <label ng-hide="apptmt.nailTreatments == null || apptmt.nailTreatments.length == 0">Nail Treatments:</label> 
-                                    <span ng-repeat="item in apptmt.nailTreatments">{{item}} </span>
-                                    <br />
-                                    <label ng-hide="apptmt.waxingTreatments == null || apptmt.waxingTreatments.length == 0">Waxing Treatments:</label> 
-                                    <span ng-repeat="item in apptmt.waxingTreatments">{{item}} </span>
-                                    <br />
-                                    <label ng-hide="apptmt.electrolysis == null || apptmt.electrolysis.length == 0">Electrolysis:</label> 
-                                    <span ng-repeat="item in apptmt.electrolysis">{{item}} </span>
-                                    <br />
+                                    <font size="2">
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th>First Name</th>
+                                                    <th>Last Name</th>
+                                                    <th>Email</th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="user in Model.clients | filter:clientFilter" ng-click="selectAppointments(user)">
+                                                    <td>{{user.first_name}}</td>
+                                                    <td>{{user.last_name}}</td>
+                                                    <td>{{user.email}}</td>
+                                                </tr>
+                                            </tbody
+                                                
+                                        </table>
+                                    </font>
                                 </div>
-                                <label><h4>Date and Time:</h4></label>
-                                <div>
-                                    <span>{{apptmt.dateTime | date:'dd MMMM hh:mm a'}} </span><br /> 
-                                </div>
-                                </font>                     
+                               
                             </div>
-
-
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 
     <!--    Modal content for ModalAddCtrl controller-->
     <script type="text/ng-template" id="addAppointmentModalContent.html">
@@ -181,16 +247,16 @@
         </div>
         <div class="form-group">
         <label for="appointment_date">Appointment Date</label>
-            <p class="input-group">
-            <input type="text" ng-model="appointment.dateTime"  class="form-control" id="appointment_date" datepicker-popup="dd-MMMM-yyyy" is-open="opened" min-date="minDate" max-date="maxDate" close-text="Close" required>
-            <span class="input-group-btn">
-            <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-            </span>
-           </p>
+        <p class="input-group">
+        <input type="text" ng-model="appointment.dateTime"  class="form-control" id="appointment_date" datepicker-popup="dd-MMMM-yyyy" is-open="opened" min-date="minDate" max-date="maxDate" close-text="Close" required>
+        <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+        </p>
         </form>
         <div class="form-group">
         <label for="appointment_time">Appointment Time</label>                                                          
-        <timepicker ng-model="appointment.dateTime" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
+        <timepicker ng-model="appointment.dateTime" minTime="0800" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
         </div>           
         </div>
         <div class="modal-footer">
@@ -199,7 +265,7 @@
         </div>
     </script>
 
-  
+
     <!--    Modal content for ModalEditCtrl controller-->
     <script type="text/ng-template" id="editAppointmentModalContent.html" class="modal">
         <div class="modal-header">
@@ -296,18 +362,18 @@
 
         <div class="form-group">
         <label for="appointment_date">Appointment Date</label>
-            <p class="input-group">
-              <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="appointment.dateTime" is-open="opened" min-date="minDate" max-date="maxDate"  close-text="Close" />
-              <span class="input-group-btn">
-                <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-              </span>
-            </p>            
+        <p class="input-group">
+        <input type="text" class="form-control" datepicker-popup="dd-MMMM-yyyy" ng-model="appointment.dateTime" is-open="opened" min-date="minDate" max-date="maxDate"  close-text="Close" />
+        <span class="input-group-btn">
+        <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+        </span>
+        </p>            
         </div>
-        
+
 
         <div class="form-group">
         <label for="appointment_time">Appointment Time</label>                                                          
-        <timepicker hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" ng-model="appointment.dateTime" required></timepicker>
+        <timepicker hour-step="1" minute-step="15"  min-time="8" show-meridian="true" mousewheel="true" ng-model="appointment.dateTime" required></timepicker>
         </div>
         </form>
         </div>
@@ -331,12 +397,12 @@
         <button class="btn btn-default form_submit" ng-click="cancel()">No</button>
         <button class="btn btn-default form_submit" ng-click="delete()">Yes</button>
 
-        
+
         </div>
     </script>
 
     <script>
-//        
+                //        
                 var pageModel = <?php echo json_encode($pageModel); ?>;
 
     </script>

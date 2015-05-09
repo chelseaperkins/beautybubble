@@ -13,8 +13,8 @@
         <div class="call_to_action_line"></div>
         <div class="call_to_action_background">
             <div class="call_to_action_buttons">
-                <a href="http://localhost/The_Beauty_Bubble/site/our_treatments"><img src="<?php echo base_url(); ?>assets/themes/default/images/our_treatments_button.png" alt="our treatments button"/></a>
-                <a href="http://localhost/The_Beauty_Bubble/appointments/request"><img src="<?php echo base_url(); ?>assets/themes/default/images/request_appointment_button.png" alt="request appointment button"/></a>
+                <a href="<?php echo site_url('site/our_treatments'); ?>"><img src="<?php echo base_url(); ?>assets/themes/default/images/our_treatments_button.png" alt="our treatments button"/></a>
+                <a href="<?php echo site_url('/appointments/request'); ?>"><img src="<?php echo base_url(); ?>assets/themes/default/images/request_appointment_button.png" alt="request appointment button"/></a>
             </div>
         </div>
     </div>

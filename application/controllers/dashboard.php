@@ -43,16 +43,25 @@ class Dashboard extends CI_Controller {
             $value->nailTreatments = isset($value->nail_treatments) ? explode(', ', $value->nail_treatments) : array();
             $value->waxingTreatments = isset($value->waxing_treatments) ? explode(', ', $value->waxing_treatments) : array();
             $value->electrolysis = isset($value->electrolysis) ? explode(', ', $value->electrolysis) : array();
-            
-            $value->dateTime = strtotime($value->date_time)*1000;
-                        
+            $local_date = new DateTime($value->date_time, new DateTimeZone('GMT') );
+            $local_date->setTimeZone(new DateTimeZone('Pacific/Auckland'));
+            // get the time string formated to ISO 8601
+            $value->dateTime = $local_date->format(DateTime::ISO8601);
+           
+//            $test = $local_date->format('Y-m-d H:i:s');
         }
+        $pageModel->clients = $this->User->get_all();
         
 //        view home_dashboard and array of values stored in the $pagemodel varible
         $this->load->view('pages/home_dashboard', array(
                 'pageModel' => $pageModel,
                 
             ));
+        
+    }
+    
+    public function our_treatments() {
+        $this->load->view('pages/our_treatments');
     }
    
 
@@ -69,6 +78,7 @@ class Dashboard extends CI_Controller {
                 $post_data = file_get_contents("php://input");
 //            create varible to decode data to json and pass in user input data
             $request = json_decode($post_data);
+            $appointment = $this->Appointment->get($request->id); 
             if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
             if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
             if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
@@ -76,11 +86,9 @@ class Dashboard extends CI_Controller {
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
             if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
-            $appointment->date_time = $request->dateTime; 
-//            $date->setTimezone(new DateTimeZone('Pacific/Auckland'));
-//            date_format($date, 'dd/mmmm/yy H:i:s');
-//            $appointment->date_time = date($date);   
-            $appointment = $this->Appointment->get($request->id); 
+            $utc_date = new DateTime($request->dateTime, new DateTimeZone('GMT') );
+            $appointment->date_time = $utc_date->format('Y-m-d H:i:s'); 
+            
             
             $success = $this->Appointment->update($appointment->id, $appointment);
             

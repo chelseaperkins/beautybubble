@@ -71,10 +71,10 @@ class Appointments extends CI_Controller {
             if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
             if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
             if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
+            // The JSON date from the postdata is in UTC 
+            // so no need to convert from local time to UTC before putting into the database
             $appointment->date_time = $request->dateTime;
-            //$appmt_date = new DateTime(rtrim($request->dateTime, "Z"), new DateTimeZone('Pacific/Auckland'));
-            //$appmt_date->setTimezone();
-            $this->sendemail($request);                          
+//            $this->sendemail($request);                          
             $appointment->save();
             
             $this->output->set_header('Content-Type: application/json; charset=utf-8');
@@ -97,10 +97,14 @@ class Appointments extends CI_Controller {
             //$return = $_POST;
             $this->load->library('email');
             $this->email->set_newline("\r\n");
-            
+//           Create varibles for values in email message
             $sender_email = isset($request->email) ? $request->email : "";
             $sender_first_name = isset($request->firstName) ? $request->firstName : ""; 
             $sender_last_name = isset($request->lastName) ? $request->lastName : "";
+            $local_date = new DateTime($request->dateTime, new DateTimeZone('GMT') );
+            $local_date->setTimeZone(new DateTimeZone('Pacific/Auckland'));
+            // get the time string formated to RSS
+            $request->dateTime = $local_date->format(DateTime::	RSS);
             $date_time = isset($request->dateTime) ? $request->dateTime : "";
             $home_ph = isset($request->phNumber) ? $request->phNumber : "";
             $mobile_ph = isset($request->mobilePhone) ? $request->mobilePhone : "";

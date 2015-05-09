@@ -90,7 +90,10 @@
                 js.id = id;
                 js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";
                 fjs.parentNode.insertBefore(js, fjs);
-            }(document, 'script', 'facebook-jssdk'));</script>
+            }(document, 'script', 'facebook-jssdk'));
+
+
+        </script>
 
 
         <header class="navbar navbar-fixed-top">
@@ -162,12 +165,20 @@ Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighte
                 </article>
 
                 <article class="col-md-4 admin-menu">
-                    <h3><?php echo"ADMINISTRATION"; ?></h3>
-
-                    <ul>
-                        <li><a href="<?php echo site_url('/auth/login'); ?>">Admin log-in</a></li>
-                        <li><a href="<?php echo site_url('/auth/register'); ?>">Admin register</a></li>
-                    </ul>
+                    <div class="form-group">
+                    <h3><?php echo"ADMIN LOGIN"; ?></h3>
+                   
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+                             Admin acess
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo site_url('/auth/login'); ?>">Log-in</a></li>
+                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo site_url('/auth/register'); ?>">Register</a></li>
+                        </ul>
+                    </div>
+                    </div>
                 </article>
             </div>
 

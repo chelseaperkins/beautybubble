@@ -90,8 +90,8 @@
                                                             
                             <ul class="nav navbar-nav navbar-right">
                                 
-                                <li><a href="<?php echo site_url('/dashboard/home_dashboard'); ?>" title="Dashboard"><span class="glyphicon glyphicon-tasks"></span></a></li>
-                                <li><a href="<?php echo site_url('site/our_treatments'); ?>" title="Price List"><span class="glyphicon glyphicon-list-alt"></span></a></li>
+                                <li><a href="<?php echo site_url('/dashboard/index'); ?>" title="Dashboard"><span class="glyphicon glyphicon-tasks"></span></a></li>
+                                <li><a href="<?php echo site_url('dashboard/our_treatments'); ?>" title="Price List"><span class="glyphicon glyphicon-list-alt"></span></a></li>
                                 <li class="dropdown"><a href="#" title="Admin" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo 'Welcome'.' '.$this->session->userdata('first_name')  ;?> </a>
                                     <ul class="dropdown-menu">
                                         <li><a href="#" ng-click="openProfileModal()">Profile</a></li>

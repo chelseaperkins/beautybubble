@@ -6617,9 +6617,9 @@ hr.message_heading {
 }
 .about_background {
   background: rgba(255, 255, 255, 0.8);
-  padding: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 .about_text {
   color: #242d64;
@@ -6651,7 +6651,7 @@ hr.message_heading {
   margin-right: 5px;
   margin-bottom: 80px;
   padding: 5px;
-  margin-top: 60%;
+  margin-top: 50%;
 }
 .appointment_form_heading {
   text-align: center;
@@ -6671,19 +6671,6 @@ hr.message_heading {
   border-color: #242d64;
   padding: 6px 50px 6px 50px;
   float: right;
-}
-/*default template background image */
-.background_image {
-  position: fixed;
-  top: 14%;
-  height: 100%;
-  width: 100%;
-  background-image: url('../images/beauty_bubble_background.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-  z-index: -99;
-  overflow: auto;
 }
 /*call to action for front-end pages*/
 .call_to_action_background {
@@ -6732,10 +6719,11 @@ hr.message_heading {
 }
 .contact_background {
   background: rgba(255, 255, 255, 0.9);
-  margin-left: 15px;
-  margin-right: 15px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-bottom: 80px;
-  padding: 30px;
+  padding: 10px;
+  margin-top: 50%;
 }
 .contact_text {
   color: #242d64;
@@ -6748,7 +6736,7 @@ hr.message_heading {
   margin-right: auto;
   margin-bottom: 30px;
 }
-/*Contact details on default layout*/
+/*Contact details on default template*/
 .contact_info a:link {
   color: #fff;
   text-decoration: none;
@@ -6844,38 +6832,45 @@ input[type="date"]::-webkit-input-placeholder {
   min-height: 100%;
   background-color: #fff;
 }
+.client-table th {
+  padding: 10px 30px 10px 30px;
+}
+.client-table td {
+  padding: 10px 30px 10px 30px;
+}
 /*footer css*/
-
-.guarantee-para{
-    padding:30px;
-    text-align: center;
+.guarantee_para {
+  padding: 30px;
 }
-.quick-links-menu{
-    text-align: left;
-    padding:30px;
+.guarantee-para {
+  padding: 30px;
+  text-align: center;
 }
-.quick-links-menu li{
-    text-decoration: none;
-    list-style-type: none;
-    color: #242d64;
-    }
-.quick-links-menu a:hover{
-    text-decoration: none;
-    list-style-type: none;
-    color: #fff;
+.quick-links-menu {
+  text-align: left;
+  padding: 30px;
 }
-.admin-menu{
-    padding:30px;
-    text-align: left;
+.quick-links-menu li {
+  text-decoration: none;
+  list-style-type: none;
 }
-.admin-menu li{
-    text-decoration: none;
-    list-style-type: none;
+.quick-links-menu a:hover {
+  text-decoration: none;
+  list-style-type: none;
+  color: #fff;
 }
-.admin-menu a:hover{
-    text-decoration: none;
-    list-style-type: none;
-    color: #fff;
+.admin-menu {
+  padding: 30px;
+  text-align: left;
+}
+.admin-menu li {
+  text-decoration: none;
+  list-style-type: none;
+}
+.admin-menu a:hover {
+  text-decoration: none;
+  list-style-type: none;
+  color: #fff;
 }
 .footer {
   background-color: #c3d6ee;
@@ -6887,18 +6882,30 @@ input[type="date"]::-webkit-input-placeholder {
 .home_content {
   color: #fff;
   font-size: 1em;
-  margin-top: 28%;
+  margin-top: 16%;
 }
 .home_text_background {
   background: rgba(255, 255, 255, 0.2);
-  margin-top: 35%;
+  margin-top: 30%;
 }
 .home_welcome_text {
   padding: 5px;
   font-family: 'Caudex';
   text-align: center;
 }
-
+/*default template background image */
+.background_image {
+  position: fixed;
+  top: 9%;
+  height: 100%;
+  width: 100%;
+  background-image: url('../images/beauty_bubble_background.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  z-index: -99;
+  overflow: auto;
+}
 /*login and register pages*/
 .login_background {
   background: rgba(255, 255, 255, 0.2);
@@ -6987,6 +6994,8 @@ a.visible-xs.contact_info {
   max-width: 450px;
   width: 60%;
   float: none!important;
+  padding-left: 10%;
+  padding-top: 10%;
 }
 /*treatments page*/
 .call_to_action_treatments {
@@ -7005,9 +7014,9 @@ a.visible-xs.contact_info {
 }
 .treatments_background {
   background: rgba(255, 255, 255, 0.8);
-  padding: 30px;
-  margin-left: 15px;
-  margin-right: 15px;
+  padding: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   margin-bottom: 85px;
   margin-top: 50%;
 }
@@ -7404,6 +7413,7 @@ a.visible-xs.contact_info {
     margin-right: 15px;
     margin-bottom: 80px;
     padding: 30px;
+    min-height: 60%;
   }
   .appointment_form_heading {
     margin-left: -100%;
@@ -7445,7 +7455,7 @@ a.visible-xs.contact_info {
     margin-left: 15px;
     margin-right: 15px;
     margin-bottom: 80px;
-    padding: 5px;
+    padding: 30px;
   }
   .contact_text {
     color: #242d64;
@@ -7463,20 +7473,13 @@ a.visible-xs.contact_info {
     position: absolute;
     right: 10px;
   }
-  .navbar .nav .active > a,
-  .navbar .nav .active > a:hover {
-    background-color: #ffffff;
-    color: #242d64;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-  }
   .navbar-fixed-top .container,
   .navbar-fixed-bottom .container {
     width: 100%;
   }
   .navbar .nav > li > a {
-    margin-top: 145px;
-    margin-left: 10px;
+    margin-top: 160px;
+    margin-left: 20px;
     margin-right: 0px;
     padding: 9px 10px 9px 10px;
     font-family: 'Caudex';
@@ -7487,11 +7490,6 @@ a.visible-xs.contact_info {
   .nav > li > a:hover {
     text-decoration: none;
     color: #c3d6ee;
-  }
-  .navbar-brand {
-    height: auto;
-    padding: 0px;
-    float: none!important;
   }
   .navbar-toggle .icon-bar {
     background-color: #fff!important;
@@ -7524,6 +7522,11 @@ a.visible-xs.contact_info {
     margin-right: 0px;
     width: auto;
   }
+  .navbar-brand {
+    height: auto;
+    padding: 0px;
+    float: none!important;
+  }
   .logo {
     margin-left: 30%;
     max-width: 450px;
@@ -7536,7 +7539,7 @@ a.visible-xs.contact_info {
     text-align: right;
     font-size: 1.5em;
     padding: 0px 20px 0px 0px;
-    margin-top: -150px;
+    margin-top: -160px;
     z-index: 100;
   }
   /*call to action for front-end pages*/

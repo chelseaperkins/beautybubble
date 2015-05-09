@@ -86,10 +86,10 @@
                 </div>
 
 
-                <div class="col-sm-2 col-md-4 col-md-push-1">
+                <div class="col-sm-2 col-md-3 col-md-push-1">
                     <div class="fb-page" data-href="https://www.facebook.com/thebeautybubbleNZ" data-height="540" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/thebeautybubbleNZ"><a href="https://www.facebook.com/thebeautybubbleNZ">The Beauty Bubble</a></blockquote></div></div>
                 </div>
-                <div class="col-sm-0 col-md-2"></div>
+                
             </div>
         </div>
     </div>

@@ -23,21 +23,27 @@
                         </ul>
                     <?php endif; ?>
 
-                    <form>
+                    <form name="appointmentForm" novalidate ng-submit="sendData()">
+                        <code>appointmentForm.first_name.$valid = {{appointmentForm.first_name.$valid}}</code><br>
+                        <code>appointmentForm.last_name.$valid = {{appointmentForm.last_name.$valid}}</code><br>
+                        <code>appointmentForm.email.$valid = {{appointmentForm.email.$valid}}</code><br>
+                        
+                        <code>appointmentForm.$valid = {{appointmentForm.$valid}}</code><br>
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Contact details"; ?></strong></h3></label>
                         <hr class="appointment_heading">
 
                         <div class="form-group">
                             <label for="first_name"><?php echo"First Name"; ?></label>
-                            <input type="text" ng-model="Model.firstName" class="form-control" id="first_name" placeholder="Enter First Name" required>
+                            <span class="error" ng-show="!appointmentForm.first_name.$valid && appointmentForm.first_name.$touched">Required!</span>
+                            <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter First Name" ng-pattern="/^[a-zA-Z]*$/" required>
                         </div>
                         <div class="form-group">
                             <label for="last_name"><?php echo"Last Name"; ?></label>
-                            <input type="text" ng-model="Model.lastName" class="form-control" id="last_name" placeholder="Enter Last Name" required>
+                            <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter Last Name"  ng-pattern="/^[a-zA-Z]*$/" required>
                         </div>
                         <div class="form-group">
                             <label for="email"><?php echo"Email Address"; ?></label>
-                            <input type="email" ng-model="Model.email" class="form-control" id="email" placeholder="Enter email address" required>
+                            <input type="email" ng-model="Model.email" class="form-control" name="email" placeholder="Enter email address" required>
                         </div>
                         <div class="form-group">
                             <label for="home_phone"><?php echo"Home Phone Number"; ?></label>
@@ -155,10 +161,12 @@
                         vc-recaptcha
                         key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
                         on-success="setResponse(response)"
-                        ></div>
+                        >  
+                        </div>
+
                         <br />
 
-                        <input type="button" ng-click="sendData()" ng-disabled="!isVerified || isSending" value="Submit" class="btn btn-default form_submit">
+                        <input type="submit"  ng-disabled="!appointmentForm.$valid || isSending" value="Submit" class="btn btn-default form_submit">
                         {{emailSendErrorMessage}}
 
                     </form>

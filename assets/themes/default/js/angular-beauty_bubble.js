@@ -56,6 +56,9 @@
                             if (data.success) {
                                 $scope.isFormAccepted = true;
                                 $scope.emailSendErrorMessage = "";
+                            } else if (!data.success) {
+                                $scope.isFormAccepted = false;
+                                $scope.emailSendErrorMessage = data.message;
                             }
                             else {
                                 $scope.emailSendErrorMessage = "We are sorry as there was an issue sending your message. Please try again.";
@@ -82,7 +85,7 @@
     /* Dashboard controller */
     beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal',  function ctrl($scope, $http, $modal) {
             $scope.ModelUrl = window.location.pathname;
-
+            $scope.ModelDeleteUrl = window.location.pathname+'/delete';
             var now = new Date();
             $scope.Model = pageModel;
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
@@ -170,11 +173,37 @@
                 });
 
                 modalInstance.result.then(function (selectedItem) {
-                    $scope.selected = selectedItem;
+                    $scope.delete(appointment);
                 }, function () {
                     //$log.info('Modal dismissed at: ' + new Date());
                 });
             };
+            
+            $scope.delete = function (appointment) {    
+             // build the model
+                var data = appointment;
+                $scope.sendPromise = $http.post($scope.ModelDeleteUrl, data)
+                    .success(function (data, status) {
+                        $scope.isSaving = false;
+                        if (data.success) {
+                            $scope.dataSent = true;
+                            $scope.dataSendErrorMessage = "";
+                            
+                            var index = $scope.Model.results.indexOf(appointment);
+                            if(index >= 0) {
+                                $scope.Model.results.splice(index, 1);
+                            }
+                        }
+                        else {
+                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                        }
+                    })
+                    .error(function (data, status) {
+                        $scope.isSaving = false;
+                        $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                    });
+
+        };
             
             $scope.createDateFromMysql = function(mysql_string)
             { 
@@ -377,31 +406,8 @@
                $scope.ModelUrl = window.location.pathname+'/delete';
                $scope.appointment = appointment;
                
-        $scope.delete = function () {
-
-            $scope.Model = {};
-                       
-             // build the model
-                var data = $scope.appointment;
-                $scope.isSaving = true;
-                $scope.sendPromise = $http.post($scope.ModelUrl, data)
-                        .success(function (data, status) {
-                            $scope.isSaving = false;
-                            if (data.success) {
-                                $scope.dataSent = true;
-                                $scope.dataSendErrorMessage = "";
-                            }
-                            else {
-                                $scope.dataSendErrorMessage = "Data saving error, Please try again.";
-                            }
-                        })
-                        .error(function (data, status) {
-                            $scope.isSaving = false;
-                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
-                        });
-            
-                        
-            $modalInstance.close("deleted");
+        $scope.delete = function () { 
+            $modalInstance.close("delete");
         };
         
 

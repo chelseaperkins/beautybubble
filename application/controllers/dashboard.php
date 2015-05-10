@@ -23,40 +23,51 @@ class Dashboard extends CI_Controller {
     }
 
     public function index() {
-        $this->load->model('Appointment');
-        $this->load->model('User');
-//        Set new model varible
-        $pageModel = new PageModel();
-//      Get all appointments from the database
-        $pageModel->results = $this->Appointment->get_all();
-//      loop results so that they display appointments by values from database
-        foreach ($pageModel->results as $value) {
-            $user = $this->User->get($value->user_id);
-            $value->first_name = $user->first_name;
-            $value->last_name = $user->last_name;
-            $value->email = $user->email;
-                        
-            $value->facialTreatments = isset($value->facial_treatments) ? explode(', ', $value->facial_treatments) : array();
-            $value->eyeTreatments = isset($value->eye_treatments) ? explode(', ', $value->eye_treatments) : array();
-            $value->bodyTreatments = isset($value->body_treatments) ? explode(', ', $value->body_treatments) : array();
-            $value->sprayTanning = isset($value->spray_tanning) ? explode(', ', $value->spray_tanning) : array();
-            $value->nailTreatments = isset($value->nail_treatments) ? explode(', ', $value->nail_treatments) : array();
-            $value->waxingTreatments = isset($value->waxing_treatments) ? explode(', ', $value->waxing_treatments) : array();
-            $value->electrolysis = isset($value->electrolysis) ? explode(', ', $value->electrolysis) : array();
-            $local_date = new DateTime($value->date_time, new DateTimeZone('GMT') );
-            $local_date->setTimeZone(new DateTimeZone('Pacific/Auckland'));
-            // get the time string formated to ISO 8601
-            $value->dateTime = $local_date->format(DateTime::ISO8601);
-           
-//            $test = $local_date->format('Y-m-d H:i:s');
-        }
-        $pageModel->clients = $this->User->get_all();
         
-//        view home_dashboard and array of values stored in the $pagemodel varible
-        $this->load->view('pages/home_dashboard', array(
-                'pageModel' => $pageModel,
-                
-            ));
+        if($this->session->userdata('first_name'))
+        {
+            // is logged in
+        
+        
+            $this->load->model('Appointment');
+            $this->load->model('User');
+    //        Set new model varible
+            $pageModel = new PageModel();
+    //      Get all appointments from the database
+            $pageModel->results = $this->Appointment->get_all();
+    //      loop results so that they display appointments by values from database
+            foreach ($pageModel->results as $value) {
+                $user = $this->User->get($value->user_id);
+                $value->first_name = $user->first_name;
+                $value->last_name = $user->last_name;
+                $value->email = $user->email;
+
+                $value->facialTreatments = isset($value->facial_treatments) ? explode(', ', $value->facial_treatments) : array();
+                $value->eyeTreatments = isset($value->eye_treatments) ? explode(', ', $value->eye_treatments) : array();
+                $value->bodyTreatments = isset($value->body_treatments) ? explode(', ', $value->body_treatments) : array();
+                $value->sprayTanning = isset($value->spray_tanning) ? explode(', ', $value->spray_tanning) : array();
+                $value->nailTreatments = isset($value->nail_treatments) ? explode(', ', $value->nail_treatments) : array();
+                $value->waxingTreatments = isset($value->waxing_treatments) ? explode(', ', $value->waxing_treatments) : array();
+                $value->electrolysis = isset($value->electrolysis) ? explode(', ', $value->electrolysis) : array();
+                $local_date = new DateTime($value->date_time, new DateTimeZone('GMT') );
+                $local_date->setTimeZone(new DateTimeZone('Pacific/Auckland'));
+                // get the time string formated to ISO 8601
+                $value->dateTime = $local_date->format(DateTime::ISO8601);
+
+    //            $test = $local_date->format('Y-m-d H:i:s');
+            }
+            $pageModel->clients = $this->User->get_all();
+
+    //        view home_dashboard and array of values stored in the $pagemodel varible
+            $this->load->view('pages/home_dashboard', array(
+                    'pageModel' => $pageModel,
+
+                ));
+        }
+        else
+        {
+             redirect('');
+        }
         
     }
     
@@ -166,7 +177,7 @@ class Dashboard extends CI_Controller {
      * @param string $status
      * @param int $id
      */
-    public function delete($id) {
+    public function delete() {
         $this->load->model('Appointment');
         $post_data = file_get_contents("php://input");
         $request = json_decode($post_data);
@@ -180,7 +191,7 @@ class Dashboard extends CI_Controller {
         }
         exit(json_encode(array(
                 'success'=> $success, 
-                'message' => "Saved", 
+                'message' => "Deleted", 
             )));
     }
     

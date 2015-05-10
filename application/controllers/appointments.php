@@ -36,51 +36,75 @@ class Appointments extends CI_Controller {
             $post_data = file_get_contents("php://input");
 //            create varible to encode data to json and pass in user input data
             $request = json_decode($post_data);
-            //Check email address in database to check if user exsists. 
-            $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
-            if($query->num_rows > 0) {
-                // get the first row from the results
-                $user = new User();
-                $match = reset($query->result());
-                $user->id = $match->id;
-                $user->first_name = $match->first_name;
-                $user->last_name = $match->last_name;
-                $user->email = $match->email;
-                $user->ph_number = $match->ph_number;
-                $user->mobile_number = $match->mobile_number;
-                $user->is_admin = $match->is_admin;
-            }else {
-                // user does not exist so create
-                $user = new User();
-                $user->first_name = $request->firstName;
-                $user->last_name = $request->lastName;
-                $user->email = $request->email;
-                $user->ph_number = $request->phNumber;
-                $user->mobile_number = $request->mobilePhone;
-                $user->is_admin = false;
-                $user->save();
+            $success = true;
+            $message = "Saved";
+            // validate data
+            $isValid = true;
+            if($isValid && isset($request->firstName) == false || preg_match("/^[a-zA-Z]*$/", $request->firstName) == false) {
+                $isValid = false;
+                $message = "First name is invalid";
+            }
+            if($isValid && isset($request->lastName) == false || preg_match("/^[a-zA-Z]*$/", $request->lastName) == false) {
+                $isValid = false;
+            }
+            if($isValid && isset($request->phNumber) == true && preg_match("/^[+0-9]*$/", $request->phNumber) == false) {
+                $isValid = false;
+            }
+            if($isValid && isset($request->mobilePhone) == true && preg_match("/^[+0-9]*$/", $request->mobilePhone) == false) {
+                $isValid = false;
             }
             
-            $appointment = new Appointment();
-            $appointment->user_id = $user->id;
-                        
-            if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
-            if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
-            if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
-            if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
-            if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
-            if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
-            if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
-            // The JSON date from the postdata is in UTC 
-            // so no need to convert from local time to UTC before putting into the database
-            $appointment->date_time = $request->dateTime;
-//            $this->sendemail($request);                          
-            $appointment->save();
+            if($isValid) {
+                //Check email address in database to check if user exsists. 
+                $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
+                if($query->num_rows > 0) {
+                    // get the first row from the results
+                    $user = new User();
+                    $match = reset($query->result());
+                    $user->id = $match->id;
+                    $user->first_name = $match->first_name;
+                    $user->last_name = $match->last_name;
+                    $user->email = $match->email;
+                    $user->ph_number = $match->phNumber;
+                    $user->mobile_number = $match->mobilePhone;
+                    $user->is_admin = $match->is_admin;
+                }else {
+                    // user does not exist so create
+                    $user = new User();
+                    $user->first_name = $request->firstName;
+                    $user->last_name = $request->lastName;
+                    $user->email = $request->email;
+                    $user->ph_number = isset($request->phNumber) ? $request->phNumber : null;
+                    $user->mobile_number = isset($request->mobilePhone) ? $request->mobilePhone : null;
+                    $user->is_admin = false;
+                    $user->is_verified = false;
+                    $user->save();
+                }
+
+                $appointment = new Appointment();
+                $appointment->user_id = $user->id;
+
+                if(isset ($request->facialTreatments)) {$appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);}
+                if(isset ($request->bodyTreatments)) {$appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);}            
+                if(isset ($request->eyeTreatments)) {$appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);}
+                if(isset ($request->sprayTanning)) {$appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);}
+                if(isset ($request->nailTreatments)) {$appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);}
+                if(isset ($request->waxingTreatments)) {$appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);}
+                if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
+                // The JSON date from the postdata is in UTC 
+                // so no need to convert from local time to UTC before putting into the database
+                $appointment->date_time = $request->dateTime;
+    //            $this->sendemail($request);                          
+                $appointment->save();
+            }
+            else {
+                $success = false;
+            }
             
             $this->output->set_header('Content-Type: application/json; charset=utf-8');
             exit(json_encode(array(
-                'success'=> true, 
-                'message' => "Saved", 
+                'success'=> $success, 
+                'message' => $message, 
                 'appointment' => $request,
 
                 )));

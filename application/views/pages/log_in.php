@@ -1,9 +1,9 @@
 
 <div class="row login_background">
    
-    <div class="col-sm-0 col-md-3">
+    <div class="col-xs-0 col-md-3">
     </div>
-    <div class="col-md-5 login_form_wrapper">
+    <div class="col-xs-1 col-md-5 login_form_wrapper">
         <?php echo form_open(); ?>
 
         <h2>Log in</h2>
@@ -26,6 +26,6 @@
         <?php echo form_close(); ?>
         
     </div>
-    <div class="col-sm-0 col-md-3"></div>
+    <div class="col-xs-0 col-md-3"></div>
     
 </div>

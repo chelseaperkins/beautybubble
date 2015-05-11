@@ -14,11 +14,13 @@ class Site extends CI_controller {
     }
 
     private function _init() {
+        $title = 'Beauty Therapy in Christchurch | The Beauty Bubble Beauty Therapy';
         $this->output->set_template('default');
+        $this->output->set_title($title);
     }
 
     public function index() {
-
+          
         $this->load->view('pages/home');
     }
 
@@ -32,10 +34,8 @@ class Site extends CI_controller {
     }
 
     public function contact() {
-
         $sent = false;
         
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
             $this->load->library('email');

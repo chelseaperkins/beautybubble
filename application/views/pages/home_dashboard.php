@@ -21,9 +21,7 @@
                                 <hr>
                                 <br />
                                 
-                                <div class="col-md-4">
-
-                                    
+                                <div class="col-md-4">                                
                                         <a href="#"ng-click="openAddModal()"><span class="glyphicon glyphicon-plus-sign"></span> Add appointment</a>
                                     </div>
                                     <div class="col-md-4"></div>
@@ -31,7 +29,6 @@
                                     <label><?php echo"Search appointments:"; ?></label>
                                     <input class="form-control" ng-model="appointmentFilter" placeholder="Type to search">
                                 </div>
-                                
                                
                             </div> 
                             <br />

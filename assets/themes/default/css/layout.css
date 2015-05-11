@@ -6694,7 +6694,7 @@ hr.message_heading {
 /*default template background image */
 .background_image {
   position: fixed;
-  top: 6%;
+  top: 0%;
   height: 100%;
   width: 100%;
   background-color: #c3d6ee;
@@ -6857,6 +6857,7 @@ input[type="date"]::-webkit-input-placeholder {
 .guarantee-para {
   padding: 5px 50px 30px 0px;
   text-align: center;
+  float: right;
 }
 .guarantee-para p {
   padding: 5px 30px 30px 0px;
@@ -6924,6 +6925,8 @@ input[type="date"]::-webkit-input-placeholder {
   color: #242d64;
   border-color: #242d64;
   padding: 6px 50px 6px 50px;
+  margin-right: -8%;
+  float: right;
 }
 span.pull-right.valadation_error p {
   color: #f0ad4e !important;
@@ -6970,7 +6973,8 @@ nav navbar-nav navbar-right {
 }
 .nav_contact_info {
   font-size: 1.5em;
-  text-align: center;
+  text-align: left;
+  width: 60%;
 }
 .nav_contact_info a {
   margin-top: 0%;
@@ -6994,12 +6998,12 @@ a.visible-xs.contact_info {
   margin-top: -25%;
 }
 .logo {
-  margin-right: 0x;
+  margin-right: 25%;
   max-width: 450px;
   width: 60%;
-  float: none!important;
-  padding-left: 5%;
-  padding-top: 5%;
+  float: right;
+  padding: 5%;
+  margin-top: 20%;
 }
 /*treatments page*/
 .call_to_action_treatments {
@@ -7492,7 +7496,7 @@ a.visible-xs.contact_info {
     font-size: 1.2em;
     background-color: #242d64;
     color: #fff;
-    margin-top: 150px;
+    margin-top: 185px;
   }
   .nav > li > a:hover {
     text-decoration: none;
@@ -7539,6 +7543,8 @@ a.visible-xs.contact_info {
     max-width: 450px;
     width: 80%;
     float: none!important;
+    padding: 0%;
+    margin-top: 0%;
   }
   .nav_contact_info {
     position: absolute;
@@ -7559,7 +7565,7 @@ a.visible-xs.contact_info {
   }
   .call_to_action_buttons {
     position: absolute;
-    margin-top: -55px;
+    margin-top: -85px;
     padding: 0px;
   }
   .call_to_action_buttons a {
@@ -7573,6 +7579,30 @@ a.visible-xs.contact_info {
     background-color: #c3d6ee;
     height: 100px;
   }
+  /*login and register pages*/
+  .login_background {
+    background: rgba(255, 255, 255, 0.2);
+  }
+  .login_text_wrapper {
+    padding: 5px;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    text-align: center;
+  }
+  .login_form {
+    width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    color: #242d64;
+  }
+  .login_submit {
+    background-color: #fff !important;
+    background-image: none;
+    color: #242d64;
+    border-color: #242d64;
+    padding: 6px 50px 6px 50px;
+    margin-right: -8%;
+    float: right;
+  }
   /*default template background image */
   .background_image {
     position: fixed;
@@ -7585,7 +7615,7 @@ a.visible-xs.contact_info {
     background-size: 100%;
     z-index: -99;
     overflow: auto;
-    padding-bottom: 150px;
+    padding-bottom: 185px;
   }
   /*main home page /default controller*/
   .home_content {

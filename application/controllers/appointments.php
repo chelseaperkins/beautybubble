@@ -30,7 +30,6 @@ class Appointments extends CI_Controller {
         $this->load->model('User');
         $this->load->model('Appointment');
 
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
             $post_data = file_get_contents("php://input");
@@ -66,11 +65,11 @@ class Appointments extends CI_Controller {
                     $user = new User();
                     $match = reset($query->result());
                     $user->id = $match->id;
-                    $user->first_name = $match->firstName;
-                    $user->last_name = $match->lastName;
+                    $user->first_name = $match->first_name;
+                    $user->last_name = $match->last_name;
                     $user->email = $match->email;
-                    $user->ph_number = $match->phNumber;
-                    $user->mobile_number = $match->mobilePhone;
+                    $user->ph_number = $match->ph_number;
+                    $user->mobile_number = $match->mobile_number;
                     $user->is_admin = $match->is_admin;
                 } else {
                     // user does not exist so create
@@ -79,7 +78,7 @@ class Appointments extends CI_Controller {
                     $user->last_name = $request->lastName;
                     $user->email = $request->email;
                     $user->ph_number = isset($request->phNumber) ? $request->phNumber : null;
-                    $user->mobile_number = isset($request->mobilePhone) ? $request->mobilePhone : null;
+                    $user->mobile_number = isset($request->mobilePhone) ? $request->mobileNumber : null;
                     $user->is_admin = false;
                     $user->is_verified = false;
                     $user->save();
@@ -112,7 +111,7 @@ class Appointments extends CI_Controller {
                 // The JSON date from the postdata is in UTC 
                 // so no need to convert from local time to UTC before putting into the database
                 $appointment->date_time = $request->dateTime;
-                $this->sendemail($request);
+//                $this->sendemail($request);
                 $appointment->save();
             } else {
                 $success = false;

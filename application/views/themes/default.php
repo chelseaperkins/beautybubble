@@ -6,6 +6,8 @@
         <meta name="robots" content="all, index, follow"/>
         <meta name="googlebot" content="all, index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+        <meta charset="UTF-8">
+        <meta name="keywords" content="beauty,therapy,salon,treatments,waxing,tanning,facial,nails,eyes,body,electrolysis,appointment">
         <?php
         /** -- Copy from here -- */
         if (!empty($meta))
@@ -109,18 +111,16 @@
                         <span class="icon-bar"></span>
                     </button>
 
-
                     <a class="navbar-brand" href="<?php echo site_url(); ?>">
                         <img class="logo" src="<?php echo base_url(); ?>assets/themes/default/images/logo.png" alt="logo"/>
                     </a>
                     <div class="clear-div"></div>
                     <div class="nav_contact_info">
                         <p>
-
-                            <a class="visible-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><?php echo"Email"; ?></a>
+                            <a class="visible-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><span class="glyphicon glyphicon-envelope"></span> <?php echo"Email"; ?></a>
                             <a class="hidden-xs contact_info" href="mailto:karina@beautybubble.co.nz?subject=Enquirey"><?php echo"karina@beautybubble.co.nz"; ?></a> <br />
-                            <a class="contact_info" href="tel+6433442245"><?php echo"(03) 344 2245"; ?></a><br />
-                            <a class="contact_info" href="tel+64273810095"><?php echo"027 3810095"; ?></a>
+                            <a class="contact_info" href="tel+6433442245"><span class="glyphicon glyphicon-phone-alt"></span> <?php echo"(03) 344 2245"; ?></a><br />
+                            <a class="contact_info" href="tel+64273810095"><span class="glyphicon glyphicon-phone"></span> <?php echo"027 3810095"; ?></a>
                         </p>
                     </div>
 
@@ -149,17 +149,17 @@
         <!-- /container -->
         <footer class="container-fluid footer">
             <div class="row">
-                <article class="col-md-3">
+                <article class="col-sm-1 col-md-3">
                 
                 </article>
-                <article class="col-md-6 guarantee-para">
+                <article class="col-sm-1 col-md-6 guarantee-para">
                     <h3><?php echo"OUR GUARANTEE"; ?></h3>
                     <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
 Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
                     <div class="copyright-line">Copyright &copy; 2015 The Beauty Bubble Beauty Therapy | All rights reserved</div>
                 </article>
 
-                <article class="col-md-3 quick-links-menu">
+                <article class="col-sm-1 col-md-3 quick-links-menu">
                     <h3><?php echo"QUICK LINKS"; ?></h3>
                     <ul>
                         <li><a href="<?php echo site_url(); ?>">Home</a></li>

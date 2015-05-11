@@ -14,7 +14,8 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/beautybubble/';
+$config['base_url']	= '/beautybubble/';
+// $config['base_url']	= '_Assignments/WE06/public_html/Beauty-Bubble/beautybubble';
 
 /*
 |--------------------------------------------------------------------------

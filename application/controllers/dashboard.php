@@ -27,8 +27,7 @@ class Dashboard extends CI_Controller {
         if($this->session->userdata('first_name'))
         {
             // is logged in
-        
-        
+                
             $this->load->model('Appointment');
             $this->load->model('User');
     //        Set new model varible
@@ -54,8 +53,8 @@ class Dashboard extends CI_Controller {
                 // get the time string formated to ISO 8601
                 $value->dateTime = $local_date->format(DateTime::ISO8601);
 
-    //            $test = $local_date->format('Y-m-d H:i:s');
-            }
+               }
+//               get all users from db $pageModel varible to display users(clients) in dashboard
             $pageModel->clients = $this->User->get_all();
 
     //        view home_dashboard and array of values stored in the $pagemodel varible
@@ -83,10 +82,9 @@ class Dashboard extends CI_Controller {
             
             
            if($_SERVER['REQUEST_METHOD'] == 'POST') {
-            //$return = $_POST;
-                        
+            //$return = $_POST;         
             
-                $post_data = file_get_contents("php://input");
+            $post_data = file_get_contents("php://input");
 //            create varible to decode data to json and pass in user input data
             $request = json_decode($post_data);
             $appointment = $this->Appointment->get($request->id); 
@@ -99,8 +97,7 @@ class Dashboard extends CI_Controller {
             if(isset ($request->electrolysis)) {$appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);}
             $utc_date = new DateTime($request->dateTime, new DateTimeZone('GMT') );
             $appointment->date_time = $utc_date->format('Y-m-d H:i:s'); 
-            
-            
+    
             $success = $this->Appointment->update($appointment->id, $appointment);
             
             // send back json
@@ -124,27 +121,52 @@ class Dashboard extends CI_Controller {
                   
 //            create varible to decode data to json and pass in user input data
             $request = json_decode($post_data);
+            $success = true;
+            $message = "Saved";
+            // validate data
+            $isValid = true;
+            if($isValid && isset($request->firstName) == false || preg_match("/^[a-zA-Z]*$/", $request->firstName) == false) {
+                $isValid = false;
+                $message = "First name is invalid";
+            }
+            if($isValid && isset($request->lastName) == false || preg_match("/^[a-zA-Z]*$/", $request->lastName) == false) {
+                $isValid = false;
+                $message = "Last name is invalid";
+            }
+            if($isValid && isset($request->phNumber) == true && preg_match("/^[+0-9]*$/", $request->phNumber) == false) {
+                $isValid = false;
+                $message = "Phone number is invalid";
+            }
+            if($isValid && isset($request->mobilePhone) == true && preg_match("/^[+0-9]*$/", $request->mobilePhone) == false) {
+                $isValid = false;
+                $message = "Mobile number is invalid";
+            }
+//            if form is valid, input values into database
+            if($isValid) {
+            
+            
             $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
             if($query->num_rows > 0) {
                 // get the first row from the results
                 $user = new User();
                 $match = reset($query->result());
                 $user->id = $match->id;
-                $user->first_name = $match->first_name;
-                $user->last_name = $match->last_name;
+                $user->first_name = $match->firstName;
+                $user->last_name = $match->lastName;
                 $user->email = $match->email;
-                $user->ph_number = $match->ph_number;
-                $user->mobile_number = $match->mobile_number;
-                $user->is_admin = $match->is_admin;
+                $user->ph_number = $match->phNumber;
+                $user->mobile_number = $match->mobilePhone;
+                $user->is_admin = $match->isAdmin;
             }else {
                 // user does not exist so create
                 $user = new User();
                 $user->first_name = $request->firstName;
                 $user->last_name = $request->lastName;
                 $user->email = $request->email;
-                $user->ph_number = $request->phNumber;
-                $user->mobile_number = $request->mobilePhone;
+                $user->ph_number = isset($request->phNumber) ? $request->phNumber : null;
+                $user->mobile_number = isset($request->mobilePhone) ? $request->mobilePhone : null;
                 $user->is_admin = false;
+                $user->is_verified = false;
                 $user->save();
             }
               
@@ -160,7 +182,7 @@ class Dashboard extends CI_Controller {
             $appointment->date_time = $request->dateTime;
             $appointment->save();
             }
-                       
+             }         
           
             // send back json
             $this->output->set_header('Content-Type: application/json; charset=utf-8');

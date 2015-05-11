@@ -9,6 +9,16 @@
         <h2>Register</h2>
         <hr class="message_heading">
         <div class="form-group">
+            <?php echo form_label('First Name', 'first_name'); ?><span class='pull-right validation_error'><?php echo form_error('first_name'); ?></span>
+            <input type="text" name="first_name" for="first_name" value="" class="form-control"  required />
+        </div>
+        
+        <div class="form-group">
+            <?php echo form_label('Last Name', 'last_name'); ?><span class='pull-right validation_error'><?php echo form_error('last_name'); ?></span>
+            <input type="text" name="last_name" for="last_name" value="" class="form-control"  required />
+        </div>
+        
+        <div class="form-group">
             <?php echo form_label('Email Address', 'email'); ?><span class='pull-right validation_error'><?php echo form_error('email'); ?></span>
             <input type="text" name="email" for="email" value="" class="form-control"  required />
         </div>

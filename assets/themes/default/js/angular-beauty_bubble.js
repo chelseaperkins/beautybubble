@@ -70,14 +70,6 @@
                         });
             };
 
-//        /* debug */
-//        $scope.Model.firstName = "Chelsea";
-//        $scope.Model.lastName = "Perkins";
-//        $scope.Model.email = "chelseaperkins6@gmail.com";
-//        $scope.Model.phNumber = "033557789";
-//        $scope.Model.mobileNumber = "+642194579";
-//        $scope.Model.facialTreatments = ["Facial - 60 minutes for $50"];
-//        $scope.Model.eyeTreatments = ["Eyelash Tint for $15", "Eyelash Perm for $30"];
         }
     ]);
     /* End of Appointment controller */
@@ -287,6 +279,7 @@
                 
     });
     
+    //  Controller for add modal
     beautyBubbleApp.controller('ModalAddCtrl', function ($scope, $modalInstance, $timeout, $http, appointment) {
                
         $scope.ModelUrl = window.location.pathname+'/add';
@@ -352,56 +345,8 @@
             $(".chosen-select").chosen({width: "100%"});
         }, 200);
     });
-    
-    beautyBubbleApp.controller('ModalProfileCtrl', function ($scope, $modalInstance, $timeout, items) {
         
-        $scope.ModelUrl = window.location.pathname+'/profile';
-       
-        $scope.submitData = function () {
-            var now = new Date();
-//            var n = now.toLocaleDateString();
-            $scope.Model = {};
-            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
-            
-             // build the model
-                var data = $scope.Model;
-                $scope.isSaving = true;
-                $scope.sendPromise = $http.post($scope.ModelUrl, data)
-                        .success(function (data, status) {
-                            $scope.isSaving = false;
-                            if (data.success) {
-                                $scope.dataSent = true;
-                                $scope.dataSendErrorMessage = "";
-                            }
-                            else {
-                                $scope.dataSendErrorMessage = "Data saving error, Please try again.";
-                            }
-                        })
-                        .error(function (data, status) {
-                            $scope.isSaving = false;
-                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
-                        });
-                        
-            $modalInstance.close("saved");
-        };
-
-        $scope.ok = function () {
-            $modalInstance.close($scope.selected.item);
-        };
-
-        $scope.cancel = function () {
-            $modalInstance.dismiss('cancel');
-        };
-        
-        $scope.close = function (){
-            $modalInstance.close($scope.selected.item);
-        };
-        //   timer to allow chosen plugin set width 
-        $timeout(function () {
-            $(".chosen-select").chosen({width: "100%"});
-        }, 200);
-    });
-    
+    //  Controller for delete modal
     beautyBubbleApp.controller('ModalDeleteCtrl', function ($scope, $modalInstance, $timeout, $http, appointment) {
                $scope.ModelUrl = window.location.pathname+'/delete';
                $scope.appointment = appointment;
@@ -421,41 +366,6 @@
         }, 200);
     });
         /* End of Dashboard controller */      
-    
-     /* Directives */
- 
-    beautyBubbleApp.directive('minTime', function ($parse){ 
-    return {
-        require: 'ngModel',
-        restrict: 'A',
-        link: function(scope, elem, attrs, ctrl) {
-            var minTime = scope.minTime - 1;
-
-            scope.$watch(attrs.minTime, function(newVal) {
-                minTime = newVal;
-                validate();
-            });
-
-            scope.$watch(attrs.ngModel, validate);
-
-            function validate(value) {
-                if(value instanceof Date) {
-                    var modelHour = value.getHours();
-                    if(modelHour < minTime) {
-                        setTimeout(function(){
-                            scope.$apply(function() {
-                                value.setHours(minTime);
-                                var model = $parse(attrs.ngModel);
-                                model.assign(scope, value); // set the ng model value
-                            });
-                            //scope.$apply();
-                        }, 25);
-                    }
-                }
-                return value;
-            }
-        }
-    };
-    });
-        
+     
+            
 })(angular);

@@ -48,6 +48,8 @@ class Auth extends CI_controller {
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //        set validation rules
+            $this->form_validation->set_rules('first_name', 'First Name', 'required|alpha|xss_clean');
+            $this->form_validation->set_rules('last_name', 'Last Name', 'required|alpha|xss_clean');
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|xss_clean');
             $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|min_length[5]|max_length[20]|xss_clean');
             $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|xss_clean');

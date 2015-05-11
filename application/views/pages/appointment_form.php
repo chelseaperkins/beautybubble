@@ -14,44 +14,38 @@
             <div class="col-md-6">
 
                 <div class="appointment" ng-hide="isFormAccepted">
-                    <?php if (!empty($errors)): ?>
-                        <ul class="errors">
-                            <?php foreach ($errors as $error): ?>
-                                <?php /* @var $error Error */ ?>
-                                <li><?php echo $error->getMessage(); ?></li>
-                            <?php endforeach; ?>
-                        </ul>
-                    <?php endif; ?>
-
+                    
+                    
                     <form name="appointmentForm" novalidate ng-submit="sendData()">
-                        <code>appointmentForm.first_name.$valid = {{appointmentForm.first_name.$valid}}</code><br>
-                        <code>appointmentForm.last_name.$valid = {{appointmentForm.last_name.$valid}}</code><br>
-                        <code>appointmentForm.email.$valid = {{appointmentForm.email.$valid}}</code><br>
-                        
-                        <code>appointmentForm.$valid = {{appointmentForm.$valid}}</code><br>
+                       
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Contact details"; ?></strong></h3></label>
                         <hr class="appointment_heading">
 
                         <div class="form-group">
                             <label for="first_name"><?php echo"First Name"; ?></label>
-                            <span class="error" ng-show="!appointmentForm.first_name.$valid && appointmentForm.first_name.$touched">Required!</span>
+                            <span class="error" ng-show="!appointmentForm.first_name.$valid && appointmentForm.first_name.$touched">First name input error</span>
                             <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter First Name" ng-pattern="/^[a-zA-Z]*$/" required>
                         </div>
                         <div class="form-group">
                             <label for="last_name"><?php echo"Last Name"; ?></label>
+                            <span class="error" ng-show="!appointmentForm.last_name.$valid && appointmentForm.last_name.$touched">Last name input error</span>
                             <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter Last Name"  ng-pattern="/^[a-zA-Z]*$/" required>
                         </div>
                         <div class="form-group">
                             <label for="email"><?php echo"Email Address"; ?></label>
+                            <span class="error" ng-show="!appointmentForm.email.$valid && appointmentForm.email.$touched">Email input error</span>
                             <input type="email" ng-model="Model.email" class="form-control" name="email" placeholder="Enter email address" required>
                         </div>
                         <div class="form-group">
+                            
                             <label for="home_phone"><?php echo"Home Phone Number"; ?></label>
-                            <input type="text" ng-model="Model.phNumber" class="form-control" id="home_phone" placeholder="Enter Home Phone Number">
+                            <span class="error" ng-show="!appointmentForm.ph_number.$valid">Phone number input error</span>
+                            <input type="text" ng-model="Model.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Home Phone Number">
                         </div>
                         <div class="form-group">
                             <label for="mobile_phone"><?php echo"Mobile Phone Number"; ?></label>
-                            <input type="text" ng-model="Model.mobilePhone" class="form-control" id="mobile_phone" placeholder="Enter Mobile Phone Number">
+                            <span class="error" ng-show="!appointmentForm.mobile_number.$valid">Mobile input error</span>
+                            <input type="text" ng-model="Model.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Mobile Phone Number">
                         </div>
                         
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Appointment details"; ?></strong></h3></label>

@@ -158,12 +158,13 @@ hr.message_heading{
     padding: 20px 0px 0px 0px;
 }
 
-.call_to_action_buttons a {
-    margin: 20px;
+.call_to_action_buttons a {   
+    margin: 5%;
 }
 
 .call_to_action_buttons img {
-    vertical-align: 20%;
+    vertical-align: 5%;
+    margin-top:5%;
 }
 
 .call_to_action_line{
@@ -174,6 +175,22 @@ hr.message_heading{
 .call_to_action_wrap {
     background-color: @light-blue;
 }
+/*default template background image */
+
+.background_image{
+    position: fixed;
+    top: 6%;
+    height: 100%;
+    width: 100%;
+    background-color: @light-blue;
+    background-image: url('../images/beauty_bubble_background.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    z-index: -99;
+    overflow: auto;
+}
+
 
 /*Contact details/form on contact page*/
 .contact > h2{
@@ -350,17 +367,21 @@ input[type="date"]::-webkit-input-placeholder{
     padding: 10px 30px 10px 30px;
 }
 /*footer css*/
-
-.guarantee_para{
-    padding:30px;
+.guarantee-para {
+  padding: 5px 50px 30px 0px;
+  text-align: center;
 }
-.guarantee-para{
-    padding:30px;
+
+.guarantee-para p{
+    padding:5px 30px 30px 0px;
     text-align: center;
+}
+.copyright-line{
+    margin-top: 20%;
 }
 .quick-links-menu{
     text-align: left;
-    padding:30px;
+    padding:5px 30px 30px 0px;
 }
 .quick-links-menu li{
     text-decoration: none;
@@ -371,18 +392,9 @@ input[type="date"]::-webkit-input-placeholder{
     list-style-type: none;
     color: #fff;
 }
-.admin-menu{
-    padding:30px;
-    text-align: left;
-}
-.admin-menu li{
-    text-decoration: none;
-    list-style-type: none;
-}
-.admin-menu a:hover{
-    text-decoration: none;
-    list-style-type: none;
-    color: #fff;
+.login-dropup{
+    margin-top: 200px;
+    background-color: @light-blue!important;
 }
 
 .footer{
@@ -410,21 +422,6 @@ input[type="date"]::-webkit-input-placeholder{
     font-family: 'Caudex';
     text-align: center;
 }
-/*default template background image */
-
-.background_image{
-    position: fixed;
-    top: 9%;
-    height: 100%;
-    width: 100%;
-    background-image: url('../images/beauty_bubble_background.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    z-index: -99;
-    overflow: auto;
-}
-
 
 /*login and register pages*/
 .login_background{
@@ -466,13 +463,22 @@ span.pull-right.valadation_error p{
 .navbar-fixed-top .container, .navbar-fixed-bottom .container {
     width: 100%;
 }
+nav navbar-nav navbar-right{
+        position: absolute;
+        right: 10px;
+        margin-top: 30%;
+        margin-left: 0%;
+
+    }
 
 .navbar .nav >li > a {
+     
     padding: 9px 10px 9px 10px;
     font-family: 'Caudex';
     font-size: 1.2em;
     color: @dark-blue;
     background-color:#fff;
+    margin-top: 0px;
 }
 
 .nav>li>a:hover {
@@ -480,13 +486,6 @@ span.pull-right.valadation_error p{
     background: rgba(0,0,0,0);
     color: @light-blue;
 }
-
-.navbar-brand{
-    height: auto;
-    padding: 0px;
-    display: inline;
-    margin-top: -25%;
-} 
 
 .navbar-toggle .icon-bar {
     background-color:  #fff!important;
@@ -503,7 +502,6 @@ span.pull-right.valadation_error p{
 .nav_contact_info{
     font-size: 1.5em;
     text-align: center;
-
 }
 
 .nav_contact_info a{
@@ -522,14 +520,19 @@ a.visible-xs.contact_info {
 .clear-div{
     clear: both;
 }
-
+.navbar-brand{
+    height: auto;
+    padding: 0px;
+    display: inline;
+    margin-top: -25%;
+} 
 .logo{
     margin-right: 0x;
     max-width: 450px;
     width: 60%;
     float: none!important;
-    padding-left: 10%;
-    padding-top: 10%;
+    padding-left: 5%;
+    padding-top: 5%;
 }
 
 /*treatments page*/
@@ -590,7 +593,7 @@ a.visible-xs.contact_info {
 }
 
 /*Screens between 480px and 768px (tablets) */
-@media (min-width: 480px @screen-xs-min){
+@media (min-width: 30em @screen-xs-min){
 
     h1.home_welcome_text{
         font-size: 1.5em;
@@ -740,16 +743,13 @@ a.visible-xs.contact_info {
     } 
 
     /*Nav and contact info in header*/
+    
 
     nav navbar-nav navbar-right{
         position: absolute;
         right: 10px;
-
-    }
-
-    nav navbar-nav navbar-right{
-        position: absolute;
-        right: 10px;
+        margin-top: 40%;
+        margin-left: 0%;
 
     }
 
@@ -774,6 +774,7 @@ a.visible-xs.contact_info {
         font-size: 1.2em;
         background-color: @dark-blue;
         color:#fff;
+        margin-top: 50px;
     }
 
     .nav>li>a:hover {
@@ -857,9 +858,12 @@ a.visible-xs.contact_info {
         margin-top: -55px;
         padding: 0px;
     }
-
+    .call_to_action_buttons img {
+        vertical-align: 5%;
+        margin-top:0%;
+    }
     .call_to_action_buttons a{
-        margin: 0px;
+        margin: 0%;
     }
 
     .call_to_action_line{
@@ -872,9 +876,10 @@ a.visible-xs.contact_info {
         height: 100px;
     }
 
+    /*default template background image */
     .background_image{
         position: fixed;
-        top: 183px;
+        top: 15%;
         height: 100%;
         width: 100%;
         background-image: url('../images/beauty_bubble_background.jpg');
@@ -948,7 +953,7 @@ a.visible-xs.contact_info {
 
 
 /*Screens 768px or bigger (large screens) */
-@media (min-width: 768px) {
+@media (min-width: 48em) {
 
     h1.home_welcome_text{
         font-size: 1.5em;
@@ -1111,22 +1116,23 @@ a.visible-xs.contact_info {
     nav navbar-nav navbar-right{
         position: absolute;
         right: 10px;
+        
     }
-   
+
 
     .navbar-fixed-top .container, .navbar-fixed-bottom .container {
         width: 100%;
+        
     }
 
     .navbar .nav >li > a {
-        margin-top: 160px;
-        margin-left: 20px;
         margin-right: 0px;
         padding: 9px 10px 9px 10px;
         font-family: 'Caudex';
         font-size: 1.2em;
         background-color: @dark-blue;
         color:#fff;
+        margin-top: 150px;
     }
 
     .nav>li>a:hover {
@@ -1134,7 +1140,7 @@ a.visible-xs.contact_info {
         color: @light-blue;
     }
 
-    
+
 
     .navbar-toggle .icon-bar {
         background-color:  #fff!important;
@@ -1171,7 +1177,7 @@ a.visible-xs.contact_info {
         margin-right:0px;
         width: auto;
     }
-    
+
     .navbar-brand{
         height: auto;
         padding: 0px;
@@ -1228,7 +1234,7 @@ a.visible-xs.contact_info {
     /*default template background image */
     .background_image{
         position: fixed;
-        top: 183px;
+        top: 20%;
         height: 100%;
         width: 100%;
         background-image: url('../images/beauty_bubble_background.jpg');

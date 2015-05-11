@@ -149,51 +149,49 @@
         <!-- /container -->
         <footer class="container-fluid footer">
             <div class="row">
+                <article class="col-md-3">
+                
+                </article>
+                <article class="col-md-6 guarantee-para">
+                    <h3><?php echo"OUR GUARANTEE"; ?></h3>
+                    <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
+Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
+                    <div class="copyright-line">Copyright &copy; 2015 The Beauty Bubble Beauty Therapy | All rights reserved</div>
+                </article>
 
-                <article class="col-md-4 col-md-push-2 quick-links-menu">
+                <article class="col-md-3 quick-links-menu">
                     <h3><?php echo"QUICK LINKS"; ?></h3>
                     <ul>
                         <li><a href="<?php echo site_url(); ?>">Home</a></li>
                         <li><a href="<?php echo site_url('/site/about_us'); ?>">About Us</a></li>
                         <li><a href="<?php echo site_url('/site/contact'); ?>">Contact</a></li>
                     </ul>
-                </article>
-                <article class="col-md-4 guarantee-para">
-                    <h3><?php echo"OUR GUARANTEE"; ?></h3>
-                    <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
-Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
-                </article>
-
-                <article class="col-md-4 admin-menu">
-                    <div class="form-group">
-                    <h3><?php echo"ADMIN LOGIN"; ?></h3>
-                   
-                    <div class="dropdown">
-                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-                             Admin acess
+                    
+                    <div class="btn-group dropup login-dropup">
+                        <button type="button" class="btn btn-default"><?php echo"ADMIN LOGIN"; ?></button>
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
                         </button>
-                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+
+                        <ul class="dropdown-menu" role="menu">
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo site_url('/auth/login'); ?>">Log-in</a></li>
                             <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo site_url('/auth/register'); ?>">Register</a></li>
+                            <!-- Dropdown menu links -->
                         </ul>
-                    </div>
+
                     </div>
                 </article>
+                    
             </div>
+     
+    </footer>
 
-            <div class="row">
-                <div class="col-md-12">
-                    Copyright &copy; 2015 The Beauty Bubble Beauty Therapy | All rights reserved
-                </div>
-            </div>
-        </footer>
-
-        <div class="background_image">
+<div class="background_image">
 
 
-        </div>     
+</div>     
 
 
-    </body>
+</body>
 </html>

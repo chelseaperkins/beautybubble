@@ -152,23 +152,23 @@
                     <form name="appointmentForm" novalidate ng-submit="sendData()">
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.first_name.$valid">First name input error</span>
-                    <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter First Name" ng-pattern="/^[a-zA-Z]*$/">
+                    <input type="text" ng-model="appointment.firstName" class="form-control" name="first_name" placeholder="Enter First Name" ng-pattern="/^[a-zA-Z]*$/">
                     </div>
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.last_name.$valid">Last name input error</span>
-                    <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter Last Name"  ng-pattern="/^[a-zA-Z]*$/">
+                    <input type="text" ng-model="appointment.lastName" class="form-control" name="last_name" placeholder="Enter Last Name"  ng-pattern="/^[a-zA-Z]*$/">
                     </div>
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.email.$valid && appointmentForm.email.$touched">Email input error</span>
-                    <input type="email" ng-model="Model.email" class="form-control" name="email" placeholder="Enter email address" required>
+                    <input type="email" ng-model="appointment.email" class="form-control" name="email" placeholder="Enter email address" required>
                     </div>
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.ph_number.$valid">Phone number input error</span>
-                    <input type="text" ng-model="Model.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Home Phone Number">
+                    <input type="text" ng-model="appointment.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Home Phone Number">
                     </div>
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.mobile_number.$valid">Mobile input error</span>
-                    <input type="text" ng-model="Model.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Mobile Phone Number">
+                    <input type="text" ng-model="appointment.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Mobile Phone Number">
                     </div>
                     <div class="form-group">
                     <label for="facial_treatments">Facial Treatments</label>

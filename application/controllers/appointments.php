@@ -113,6 +113,7 @@ class Appointments extends CI_Controller {
                 $appointment->date_time = $request->dateTime;
 //                $this->sendemail($request);
                 $appointment->save();
+                $request->id = $appointment->id;
             } else {
                 $success = false;
             }

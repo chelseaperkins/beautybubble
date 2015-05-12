@@ -141,13 +141,16 @@ class Auth extends CI_controller {
                  
             } else {
                 // Otherwise show the login screen with an error message.
+                $login_error = "Log-in error please try again";
                 $this->load->view('pages/log_in', array(
-                    'login-error' => $login_error,
+                    'login_error' => $login_error,
                 ));
             }       
                 
         } else {
-            $this->load->view('pages/log_in');
+            $this->load->view('pages/log_in', array(
+                    'login_error' => "",
+                ));
         }
     }
 

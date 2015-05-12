@@ -51,7 +51,7 @@ class Appointments extends CI_Controller {
                 $isValid = false;
                 $message = "Phone number is invalid";
             }
-            if ($isValid && isset($request->mobilePhone) == true && preg_match("/^[+0-9]*$/", $request->mobilePhone) == false) {
+            if ($isValid && isset($request->mobileNumber) == true && preg_match("/^[+0-9]*$/", $request->mobileNumber) == false) {
                 $isValid = false;
                 $message = "Mobile number is invalid";
             }

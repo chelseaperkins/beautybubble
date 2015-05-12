@@ -40,12 +40,12 @@
                             
                             <label for="home_phone"><?php echo"Home Phone Number"; ?></label>
                             <span class="error" ng-show="!appointmentForm.ph_number.$valid">Phone number input error</span>
-                            <input type="text" ng-model="Model.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Home Phone Number">
+                            <input type="text" ng-model="Model.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="03-333-2222">
                         </div>
                         <div class="form-group">
                             <label for="mobile_phone"><?php echo"Mobile Phone Number"; ?></label>
                             <span class="error" ng-show="!appointmentForm.mobile_number.$valid">Mobile input error</span>
-                            <input type="text" ng-model="Model.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Mobile Phone Number">
+                            <input type="text" ng-model="Model.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="021-444-3333">
                         </div>
                         
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Appointment details"; ?></strong></h3></label>

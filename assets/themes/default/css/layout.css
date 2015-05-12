@@ -6857,18 +6857,17 @@ input[type="date"]::-webkit-input-placeholder {
 .guarantee-para {
   padding: 5px 50px 30px 0px;
   text-align: center;
-  float: right;
+  margin-top: 5%;
 }
 .guarantee-para p {
-  padding: 5px 30px 30px 0px;
+  padding: 5px 30px 30px 30px;
   text-align: center;
-}
-.copyright-line {
-  margin-top: 20%;
+  margin-left: 40px;
 }
 .quick-links-menu {
+  margin-top: 5%;
   text-align: left;
-  padding: 5px 30px 30px 0px;
+  padding: 5px 30px 30px 80px;
 }
 .quick-links-menu li {
   text-decoration: none;
@@ -6880,8 +6879,7 @@ input[type="date"]::-webkit-input-placeholder {
   color: #fff;
 }
 .login-dropup {
-  margin-top: 200px;
-  background-color: #c3d6ee !important;
+  margin-top: 95%;
 }
 .footer {
   background-color: #c3d6ee;

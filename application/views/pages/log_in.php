@@ -18,7 +18,7 @@
             <input type="password" name="password" value="<?php echo set_value('password'); ?>" class="form-control" required />
         </div> 
 
-        <div class="login_submit"><span><?phpif($login_error = true) echo $login_error ;?></span>
+        <div class="login_submit">
             <input name="submit" type="submit" value="Log in" class="btn btn-default login_submit">
 
         </div>         

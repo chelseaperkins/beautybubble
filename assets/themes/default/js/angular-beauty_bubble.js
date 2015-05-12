@@ -80,13 +80,16 @@
             $scope.ModelDeleteUrl = window.location.pathname+'/delete';
             var now = new Date();
             $scope.Model = pageModel;
-            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
-            
+            $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);            
+              
+//            displays the appointments of the selected client
             $scope.selectAppointments = function (user){
                 $scope.appointmentFilter = user.email;
-                $('#dash-tabs a[href="#appointments"]').tab('show') // Select tab by name
+//                opens appointment tab to show clients appointments
+                $('#dash-tabs a[href="#appointments"]').tab('show');
             };
-            
+                      
+        
 //            Opens edit modal and populates the appointment values from the database to allow edit functionality
             $scope.openEditModal = function (appointment) {
 
@@ -127,28 +130,7 @@
                 }, function () {
                     //$log.info('Modal dismissed at: ' + new Date());
                 });
-            };
-            
-//            Opens admin profile modal, create admin profile details
-            $scope.openProfileModal = function (size) {
-
-                var modalInstance = $modal.open({
-                    templateUrl: 'profileAppointmentModalContent.html',
-                    controller: 'ModalProfileCtrl',
-                    size: 'lg',
-                    resolve: {
-                        items: function () {
-                            return [];
-                        }
-                    }
-                });
-
-                modalInstance.result.then(function (selectedItem) {
-                    $scope.selected = selectedItem;
-                }, function () {
-                    //$log.info('Modal dismissed at: ' + new Date());
-                });
-            };
+            };    
             
  //            Opens delete message modal, deletes values           
             $scope.openDeleteModal = function (appointment) {
@@ -187,12 +169,12 @@
                             }
                         }
                         else {
-                            $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                            $scope.dataSendErrorMessage = "Deleting error, Please try again.";
                         }
                     })
                     .error(function (data, status) {
                         $scope.isSaving = false;
-                        $scope.dataSendErrorMessage = "Data saving error, Please try again.";
+                        $scope.dataSendErrorMessage = "Deleting error, Please try again.";
                     });
 
         };

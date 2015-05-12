@@ -33,8 +33,8 @@
                             </div> 
                             <br />
                             <div class="row">
-                                <!--displays html repeatedly for each appointment-->
-                                <div class="col-sm-4 col-md-4" ng-repeat="apptmt in Model.results| filter:appointmentFilter | orderBy:'date_time':false">
+                                <!--displays html repeatedly for each appointment/ create variable 'apptmt' to take values from model to match with db values /filters appointments for search input-->
+                                <div class="col-sm-4 col-md-4" ng-repeat="apptmt in Model.results| filter:appointmentFilter | orderBy:'date_time'">
                                     <div class="dash_appointment_cell">
                                         <a class="dash_dropdown_btn btn btn-white dropdown-toggle" data-toggle="dropdown"></a>
                                         <div class="class-tile-menu-toggle btn-group">

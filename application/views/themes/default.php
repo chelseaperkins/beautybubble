@@ -149,16 +149,6 @@
         <!-- /container -->
         <footer class="container-fluid footer">
             <div class="row">
-                <article class="col-sm-1 col-md-3">
-                
-                </article>
-                <article class="col-sm-1 col-md-6 guarantee-para">
-                    <h3><?php echo"OUR GUARANTEE"; ?></h3>
-                    <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
-Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
-                    <div class="copyright-line">Copyright &copy; 2015 The Beauty Bubble Beauty Therapy | All rights reserved</div>
-                </article>
-
                 <article class="col-sm-1 col-md-3 quick-links-menu">
                     <h3><?php echo"QUICK LINKS"; ?></h3>
                     <ul>
@@ -167,7 +157,15 @@ Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighte
                         <li><a href="<?php echo site_url('/site/contact'); ?>">Contact</a></li>
                     </ul>
                     
-                    <div class="btn-group dropup login-dropup">
+                </article>
+                <article class="col-sm-3 col-md-6 guarantee-para">
+                    <h3><?php echo"OUR GUARANTEE"; ?></h3>
+                    <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
+Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
+                   
+                </article>
+                <article class="col-sm-1 col-md-3">
+                <div class="btn-group dropup login-dropup">
                         <button type="button" class="btn btn-default"><?php echo"ADMIN LOGIN"; ?></button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                             <span class="caret"></span>
@@ -184,6 +182,11 @@ Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighte
                 </article>
                     
             </div>
+            <div class="row">
+                <div class="col-md-12">Copyright &copy; 2015 The Beauty Bubble Beauty Therapy | All rights reserved</div>
+                
+            </div>
+            
      
     </footer>
 

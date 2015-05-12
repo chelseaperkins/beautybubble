@@ -117,13 +117,14 @@ class Auth extends CI_controller {
 
 //    Login for admin
     public function login() {
+        $login_error = "log-in error please try again";
         
-        $login_error = 'log in error, please try again';
         //$return = $_POST;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //        set validation rules
             $this->form_validation->set_rules('email', 'Email', 'required|valid_email|xss_clean');
-            $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]|max_length[20]|xss_clean');
+            $this->form_validation->set_rules('password', 'Password','required|min_length[5]|max_length[20]|xss_clean');
+            
             if ($this->form_validation->run() == TRUE) {
                 // Load model
                 $this->load->model('user');
@@ -141,9 +142,10 @@ class Auth extends CI_controller {
             } else {
                 // Otherwise show the login screen with an error message.
                 $this->load->view('pages/log_in', array(
-                    'error' => $login_error,
+                    'login-error' => $login_error,
                 ));
-                }
+            }       
+                
         } else {
             $this->load->view('pages/log_in');
         }

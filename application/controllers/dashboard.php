@@ -137,7 +137,7 @@ class Dashboard extends CI_Controller {
                 $isValid = false;
                 $message = "Phone number is invalid";
             }
-            if($isValid && isset($request->mobilePhone) == true && preg_match("/^[+0-9]*$/", $request->mobilePhone) == false) {
+            if($isValid && isset($request->mobileNumber) == true && preg_match("/^[+0-9]*$/", $request->mobileNumber) == false) {
                 $isValid = false;
                 $message = "Mobile number is invalid";
             }
@@ -151,12 +151,12 @@ class Dashboard extends CI_Controller {
                 $user = new User();
                 $match = reset($query->result());
                 $user->id = $match->id;
-                $user->first_name = $match->firstName;
-                $user->last_name = $match->lastName;
+                $user->first_name = $match->first_name;
+                $user->last_name = $match->last_name;
                 $user->email = $match->email;
-                $user->ph_number = $match->phNumber;
-                $user->mobile_number = $match->mobilePhone;
-                $user->is_admin = $match->isAdmin;
+                $user->ph_number = $match->ph_number;
+                $user->mobile_number = $match->mobile_number;
+                $user->is_admin = $match->is_admin;
             }else {
                 // user does not exist so create
                 $user = new User();

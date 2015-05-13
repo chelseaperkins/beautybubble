@@ -69,7 +69,7 @@
 
     </head>
     <body>
-        <div class="dashbd_wrap" ng-app="beautyBubbleApp" ng-controller="DashboardCtrl">
+        <div class="dashbd_wrap">
             <header>
                 <nav class="navbar navbar-fixed-top">
                     <div class="container-fluid">

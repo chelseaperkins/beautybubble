@@ -6694,7 +6694,7 @@ hr.message_heading {
 /*default template background image */
 .background_image {
   position: fixed;
-  top: 0%;
+  top: 15%;
   height: 100%;
   width: 100%;
   background-color: #c3d6ee;
@@ -6725,7 +6725,7 @@ hr.message_heading {
   margin-top: 50px;
 }
 .contact_details {
-  margin-left: 23%;
+  margin-left: 5%;
 }
 .contact_content {
   color: #fff;
@@ -6895,12 +6895,13 @@ input[type="date"]::-webkit-input-placeholder {
 }
 .home_text_background {
   background: rgba(255, 255, 255, 0.2);
-  margin-top: 30%;
+  margin-top: 45%;
 }
 .home_welcome_text {
   padding: 5px;
   font-family: 'Caudex';
   text-align: center;
+  text-shadow: 2px 2px 4px #000000;
 }
 /*login and register pages*/
 .login_background {
@@ -7001,7 +7002,7 @@ a.visible-xs.contact_info {
   width: 60%;
   float: right;
   padding: 5%;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 /*treatments page*/
 .call_to_action_treatments {

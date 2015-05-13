@@ -102,7 +102,7 @@
                             <br />
                             <div class="row client-table" >
                                 
-                                <div class="col-md-8"></div>
+                                <div class="col-md-8"><p>Select client's details to view their appointments</p></div>
                                 <div class="col-md-4">
                                     <label><?php echo"Search client list:"; ?></label>
                                     <input class="form-control" ng-model="clientFilter" placeholder="Type to search">

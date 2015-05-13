@@ -117,7 +117,9 @@ class Auth extends CI_controller {
 
 //    Login for admin
     public function login() {
-        $login_error = "log-in error please try again";
+        $login_error = "log in error, please try again";
+        $email= "";
+        $user= "";
         
         //$return = $_POST;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {

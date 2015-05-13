@@ -81,7 +81,7 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a class="navbar-brand" href="<?php echo site_url('/dashboard/index'); ?>">
+                            <a class="navbar-brand" href="<?php echo site_url('/dashboard'); ?>">
                                 <img class="logo" src="<?php echo base_url(); ?>assets/themes/default/images/logo.png" alt="logo"/>
                             </a>
                         </div>
@@ -90,7 +90,7 @@
                                                             
                             <ul class="nav navbar-nav navbar-right">
                                 
-                                <li><a href="<?php echo site_url('/dashboard/index'); ?>" title="Dashboard"><span class="glyphicon glyphicon-tasks"></span></a></li>
+                                <li><a href="<?php echo site_url('/dashboard'); ?>" title="Dashboard"><span class="glyphicon glyphicon-tasks"></span></a></li>
                                 <li><a href="<?php echo site_url('dashboard/our_treatments'); ?>" title="Price List"><span class="glyphicon glyphicon-list-alt"></span></a></li>
                                 <li class="dropdown"><a href="#" title="Admin" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span> <?php echo 'Welcome'.' '.$this->session->userdata('first_name')  ;?> </a>
                                     <ul class="dropdown-menu">

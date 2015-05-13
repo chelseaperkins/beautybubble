@@ -47,11 +47,11 @@ class Appointments extends CI_Controller {
                 $isValid = false;
                 $message = "Last name is invalid";
             }
-            if ($isValid && isset($request->phNumber) == true && preg_match("/^[+0-9]*$/", $request->phNumber) == false) {
+            if ($isValid && isset($request->phNumber) == true && preg_match("/^[-+0-9]*$/", $request->phNumber) == false) {
                 $isValid = false;
                 $message = "Phone number is invalid";
             }
-            if ($isValid && isset($request->mobileNumber) == true && preg_match("/^[+0-9]*$/", $request->mobileNumber) == false) {
+            if ($isValid && isset($request->mobileNumber) == true && preg_match("/^[-+0-9]*$/", $request->mobileNumber) == false) {
                 $isValid = false;
                 $message = "Mobile number is invalid";
             }

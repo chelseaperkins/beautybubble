@@ -66,7 +66,7 @@ class Auth extends CI_controller {
                 $user->is_admin = true;
                 $user->is_verified = false;
                 $user->save();
-                $this->auth($user);
+                $this->authorise($user);
                 $this->load->view('pages/log_in', array(
                     'email' => $user,
                 ));
@@ -80,7 +80,7 @@ class Auth extends CI_controller {
         }
     }
 
-    private function auth($user) {
+    private function authorise($user) {
         $actlink = base_url('auth/verify'); // set this to the page url
         $encodedVerify = "?key="; // set this to your encoded string
         $auth_data = json_encode(array(
@@ -94,6 +94,7 @@ class Auth extends CI_controller {
         $this->email->to($user->email);
 
         $this->email->subject('Admin activation email');
+        
         $message = '
     <html>
     <body>
@@ -119,7 +120,7 @@ class Auth extends CI_controller {
     public function login() {
         $login_error = "log in error, please try again";
         $email= "";
-        $user= "";
+        $pass= "";
         
         //$return = $_POST;
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -156,7 +157,7 @@ class Auth extends CI_controller {
         }
     }
 
-    function validate_user($email, $pass) {
+   public function validate_user($email, $pass) {
 // Build a query to retrieve the user's details
 // based on the received username and password
         $this->db->from('users');
@@ -171,7 +172,7 @@ class Auth extends CI_controller {
             $this->details = $login[0];
 //            if($this->details->is_verified == true){
                 // Call set_session to set the user's session vars via CodeIgniter
-            $this->set_session();
+            $this->set_in_session();
             return true;
 //            }
 
@@ -181,7 +182,7 @@ class Auth extends CI_controller {
         
     }
 
-    function set_session() {
+    public function set_in_session() {
 // set the user data to the session
 $sess_array = array(
             'id' => $this->details->id,
@@ -198,19 +199,16 @@ $sess_array = array(
     public function logout() {
         
 // Removing session data
-        $sess_array = array(
+         $sess_array = array(
             'id' => '',
             'first_name' => '',
             'last_name' => '',
             'email' => '',
-            'is_Admin' => true,
+            'is_Admin' => '',
         );
-        
-
-        
+                
         $this->session->unset_userdata($sess_array);
-        
-        
+                
         redirect('auth/login', array(
             
            ));

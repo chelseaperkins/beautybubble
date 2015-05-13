@@ -34,31 +34,32 @@ class Dashboard extends CI_Controller {
             //        Set new model varible
             $pageModel = new PageModel();
             //      Get all appointments from the database
+            $pageModel->results = $this->Appointment->get_all();
             $date = date('Y-m-d 00:00:00');
             $pageModel->results = $this->Appointment->get_many_by('date_time > ', $date);
             //      loop results so that they display appointments by values from database
             foreach ($pageModel->results as $value) {
-
                 $user = $this->User->get($value->user_id);
-                $value->first_name = $user->first_name;
-                $value->last_name = $user->last_name;
-                $value->email = $user->email;
+                if ($user) {
+                    $value->first_name = $user->first_name;
+                    $value->last_name = $user->last_name;
+                    $value->email = $user->email;
 
-                $value->facialTreatments = isset($value->facial_treatments) ? explode(', ', $value->facial_treatments) : array();
-                $value->eyeTreatments = isset($value->eye_treatments) ? explode(', ', $value->eye_treatments) : array();
-                $value->bodyTreatments = isset($value->body_treatments) ? explode(', ', $value->body_treatments) : array();
-                $value->sprayTanning = isset($value->spray_tanning) ? explode(', ', $value->spray_tanning) : array();
-                $value->nailTreatments = isset($value->nail_treatments) ? explode(', ', $value->nail_treatments) : array();
-                $value->waxingTreatments = isset($value->waxing_treatments) ? explode(', ', $value->waxing_treatments) : array();
-                $value->electrolysis = isset($value->electrolysis) ? explode(', ', $value->electrolysis) : array();
-                $local_date = new DateTime($value->date_time, new DateTimeZone('GMT'));
-                $local_date->setTimeZone(new DateTimeZone('Pacific/Auckland'));
-                // get the time string formated to ISO 8601
-                $value->dateTime = $local_date->format(DateTime::ISO8601);
+                    $value->facialTreatments = isset($value->facial_treatments) ? explode(', ', $value->facial_treatments) : array();
+                    $value->eyeTreatments = isset($value->eye_treatments) ? explode(', ', $value->eye_treatments) : array();
+                    $value->bodyTreatments = isset($value->body_treatments) ? explode(', ', $value->body_treatments) : array();
+                    $value->sprayTanning = isset($value->spray_tanning) ? explode(', ', $value->spray_tanning) : array();
+                    $value->nailTreatments = isset($value->nail_treatments) ? explode(', ', $value->nail_treatments) : array();
+                    $value->waxingTreatments = isset($value->waxing_treatments) ? explode(', ', $value->waxing_treatments) : array();
+                    $value->electrolysis = isset($value->electrolysis) ? explode(', ', $value->electrolysis) : array();
+                    $local_date = new DateTime($value->date_time, new DateTimeZone('GMT'));
+                    $local_date->setTimeZone(new DateTimeZone('Pacific/Auckland'));
+                    // get the time string formated to ISO 8601
+                    $value->dateTime = $local_date->format(DateTime::ISO8601);
+                }
             }
 //               get all users from db $pageModel varible to display users(clients) in dashboard
-            $pageModel->clients = $this->User->get_all();
-
+           $pageModel->clients = $this->User->get_all();
             //        view home_dashboard and array of values stored in the $pagemodel varible
             $this->load->view('pages/home_dashboard', array(
                 'pageModel' => $pageModel,
@@ -144,11 +145,11 @@ class Dashboard extends CI_Controller {
                 $isValid = false;
                 $message = "Last name is invalid";
             }
-            if ($isValid && isset($request->phNumber) == true && preg_match("/^[+0-9]*$/", $request->phNumber) == false) {
+            if ($isValid && isset($request->phNumber) == true && preg_match("/^[-+0-9]*$/", $request->phNumber) == false) {
                 $isValid = false;
                 $message = "Phone number is invalid";
             }
-            if ($isValid && isset($request->mobileNumber) == true && preg_match("/^[+0-9]*$/", $request->mobileNumber) == false) {
+            if ($isValid && isset($request->mobileNumber) == true && preg_match("/^[-+0-9]*$/", $request->mobileNumber) == false) {
                 $isValid = false;
                 $message = "Mobile number is invalid";
             }

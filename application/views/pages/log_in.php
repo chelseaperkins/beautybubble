@@ -19,9 +19,8 @@
         </div> 
 
         <div class="login_submit">
-            <?php echo $login_error; ?>
+            <?phpif(isset($login_error)){ echo $login_error;}; ?>
             <input name="submit" type="submit" value="Log in" class="btn btn-default login_submit">
-
         </div>         
 
         <?php echo form_close(); ?>

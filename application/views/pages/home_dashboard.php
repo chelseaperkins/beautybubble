@@ -164,11 +164,11 @@
                     </div>
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.ph_number.$valid">Phone number input error</span>
-                    <input type="text" ng-model="appointment.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Home Phone Number">
+                    <input type="text" ng-model="appointment.phNumber" class="form-control" name="ph_number" ng-pattern="/^[+0-9]*$/" placeholder="03-333-5555">
                     </div>
                     <div class="form-group">
                     <span class="error" ng-show="!appointmentForm.mobile_number.$valid">Mobile input error</span>
-                    <input type="text" ng-model="appointment.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="Enter Mobile Phone Number">
+                    <input type="text" ng-model="appointment.mobileNumber" class="form-control" name="mobile_number" ng-pattern="/^[+0-9]*$/" placeholder="021-888-6666">
                     </div>
                     <div class="form-group">
                     <label for="facial_treatments">Facial Treatments</label>

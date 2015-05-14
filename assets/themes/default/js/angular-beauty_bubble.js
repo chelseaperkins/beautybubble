@@ -73,6 +73,15 @@
         }
     ]);
     /* End of Appointment controller */
+    
+    /* Template controller */
+    beautyBubbleApp.controller('RegisterCtrl', ['$scope', '$http', function ctrl($scope, $http) {
+            $scope.ModelUrl = window.location.pathname;
+            $scope.Model = pageModel;
+            
+        }
+    ]);
+    /* End of Template controller */
 
     /* Dashboard controller */
     beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal', function ctrl($scope, $http, $modal) {

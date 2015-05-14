@@ -44,7 +44,7 @@ class Auth extends CI_controller {
     }
 
     public function register() {
-        $error = '';
+        $reg_error = 'Registration error, please try again';
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 //        set validation rules
@@ -57,12 +57,12 @@ class Auth extends CI_controller {
             if ($this->form_validation->run() == TRUE) {
                 $this->load->model('User');
                 $user = new User();
-                $user->first_name = $this->input->post('firstName');
-                $user->last_name = $this->input->post('lastName');
+                $user->first_name = $this->input->post('first_name');
+                $user->last_name = $this->input->post('last_name');
                 $user->email = $this->input->post('email');
                 $user->password = sha1($this->input->post('password'));
-                $user->ph_number = $this->input->post('phNumber');
-                $user->mobile_number = $this->input->post('mobilePhone');
+                $user->ph_number = $this->input->post('ph_number');
+                $user->mobile_number = $this->input->post('mobile_number');
                 $user->is_admin = true;
                 $user->is_verified = false;
                 $user->save();
@@ -72,11 +72,13 @@ class Auth extends CI_controller {
                 ));
             } else {
                 $this->load->view('pages/register', array(
-                    'error' => "",
+                    'error' => $reg_error,
                 ));
             }
         } else {
-            $this->load->view('pages/register');
+            $this->load->view('pages/register', array(
+                    'error' => $reg_error,
+                ));
         }
     }
 
@@ -94,7 +96,6 @@ class Auth extends CI_controller {
         $this->email->to($user->email);
 
         $this->email->subject('Admin activation email');
-        
         $message = '
     <html>
     <body>
@@ -138,9 +139,7 @@ class Auth extends CI_controller {
             if ($email && $pass && $this->validate_user($email, $pass)) {
                 
                 // If the user is valid, redirect to the dashboard
-                 $login = redirect('dashboard', array(
-                    'login' => $login,
-                ));
+                 redirect('dashboard');
                  
             } else {
                 // Otherwise show the login screen with an error message.
@@ -152,7 +151,7 @@ class Auth extends CI_controller {
                 
         } else {
             $this->load->view('pages/log_in', array(
-                    'login_error' => "",
+                    'login_error' => $login_error,
                 ));
         }
     }

@@ -28,6 +28,7 @@
                                     <div class="col-md-4">
                                     <label><?php echo"Search appointments:"; ?></label>
                                     <input class="form-control" ng-model="appointmentFilter" placeholder="Type to search">
+                                    
                                 </div>
                                
                             </div> 

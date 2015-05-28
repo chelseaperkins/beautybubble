@@ -48,11 +48,29 @@
 $active_group = 'default';
 $active_record = TRUE;
 
+
 $db['default']['hostname'] = 'localhost';
 $db['default']['username'] = 'root';
 $db['default']['password'] = '';
 $db['default']['database'] = 'beauty_bubble';
 $db['default']['dbdriver'] = 'mysql';
+$db['default']['swap_pre'] = '';
+$db['default']['autoinit'] = TRUE;
+$db['default']['stricton'] = FALSE;
+$db['default']['dbprefix'] = '';
+$db['default']['pconnect'] = TRUE;
+$db['default']['db_debug'] = TRUE;
+$db['default']['cache_on'] = FALSE;
+$db['default']['cachedir'] = '';
+$db['default']['char_set'] = 'utf8';
+$db['default']['dbcollat'] = 'utf8_general_ci';
+
+/*
+$db['default']['hostname'] = 'sqlite:'.APPPATH.'sqlite/database.sqlite';
+$db['default']['username'] = '';
+$db['default']['password'] = '';
+$db['default']['database'] = '';
+$db['default']['dbdriver'] = 'pdo';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
 $db['default']['db_debug'] = TRUE;
@@ -64,6 +82,35 @@ $db['default']['swap_pre'] = '';
 $db['default']['autoinit'] = TRUE;
 $db['default']['stricton'] = FALSE;
 
+if(file_exists (APPPATH.'sqlite/database.sqlite') == false) {
+    $dbfile = new SQLite3(APPPATH.'sqlite/database.sqlite');
+    $dbfile->exec("CREATE TABLE `appointments` (
+            `id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+            `user_id`	INTEGER,
+            `facial_treatments`	TEXT,
+            `eye_treatments`	TEXT,
+            `body_treatments`	TEXT,
+            `spray_tanning`	TEXT,
+            `nail_treatments`	TEXT,
+            `waxing_treatments`	TEXT,
+            `electrolysis`	TEXT,
+            `date_time`	INTEGER,
+            `status`	INTEGER
+    );");
 
+    $dbfile->exec("CREATE TABLE `users` (
+            `id`	INTEGER PRIMARY KEY AUTOINCREMENT,
+            `first_name`	TEXT,
+            `last_name`	TEXT,
+            `email`	TEXT,
+            `password`	TEXT,
+            `ph_number`	TEXT,
+            `mobile_number`	TEXT,
+            `is_admin`	INTEGER,
+            `is_verified`	INTEGER
+    );");
+    $dbfile->close();
+}
+ */
 /* End of file database.php */
 /* Location: ./application/config/database.php */

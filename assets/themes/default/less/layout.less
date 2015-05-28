@@ -12,6 +12,7 @@ and open the template in the editor.
 @dark-blue: #242d64;
 @light-blue: #c3d6ee;
 @font-headings: 'Caudex';
+@error: #c10b0b;
 
 html, body{
     height: 100%;
@@ -100,7 +101,7 @@ hr.message_heading{
     height: 60%;
 }
 
-/*appoinment form page css*/
+/*request appoinment form page css*/
 
 .g-recaptcha {
     transform:scale(0.77);
@@ -148,7 +149,13 @@ hr.message_heading{
     color: @dark-blue;
     border-color: @dark-blue;
     padding: 6px 50px 6px 50px;
-    float: right;
+    
+}
+
+.error{
+     font-size: 12px;
+     color: @error;
+     float:right;
 }
 
 /*call to action for front-end pages*/
@@ -452,10 +459,7 @@ input[type="date"]::-webkit-input-placeholder{
     float: right;
 
 }
-span.pull-right.valadation_error p{
-    color: @brand-warning!important;
-    font-size: 8px!important;
-}    
+
 /*Nav bar*/
 
 .navbar .nav .active > a, .navbar .nav .active > a:hover{

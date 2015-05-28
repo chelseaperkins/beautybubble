@@ -6630,7 +6630,7 @@ hr.message_heading {
   padding-top: 10%;
   height: 60%;
 }
-/*appoinment form page css*/
+/*request appoinment form page css*/
 .g-recaptcha {
   transform: scale(0.77);
   transform-origin: 0 0;
@@ -6670,6 +6670,10 @@ hr.message_heading {
   color: #242d64;
   border-color: #242d64;
   padding: 6px 50px 6px 50px;
+}
+.error {
+  font-size: 12px;
+  color: #c10b0b;
   float: right;
 }
 /*call to action for front-end pages*/
@@ -6926,10 +6930,6 @@ input[type="date"]::-webkit-input-placeholder {
   padding: 6px 50px 6px 50px;
   margin-right: -8%;
   float: right;
-}
-span.pull-right.valadation_error p {
-  color: #f0ad4e !important;
-  font-size: 8px!important;
 }
 /*Nav bar*/
 .navbar .nav .active > a,

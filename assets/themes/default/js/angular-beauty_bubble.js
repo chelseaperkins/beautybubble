@@ -13,8 +13,11 @@
     beautyBubbleApp.controller('AppointmentCtrl', ['$scope', '$http', function ctrl($scope, $http) {
             $scope.ModelUrl = window.location.pathname;
 
-            var now = new Date();
             $scope.Model = {};
+            $scope.hideFields = false;
+
+            
+            var now = new Date();
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
 //       datepicker/make any day before the current day unselectable        
             $scope.toggleMin = function () {
@@ -33,6 +36,7 @@
                 $event.stopPropagation();
                 $scope.opened = true;
             };
+
             $scope.isVerified = false;
             $scope.isSending = false;
             $scope.isFormAccepted = false;
@@ -68,12 +72,12 @@
     ]);
     /* End of Appointment controller */
 
-    
+
     /* Dashboard controller */
     beautyBubbleApp.controller('DashboardCtrl', ['$scope', '$http', '$modal', function ctrl($scope, $http, $modal) {
             $scope.ModelUrl = window.location.pathname;
             $scope.ModelDeleteUrl = window.location.pathname + '/delete';
-            
+
             var now = new Date();
             $scope.Model = pageModel;
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);

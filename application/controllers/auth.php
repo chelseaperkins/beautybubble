@@ -67,7 +67,7 @@ class Auth extends CI_controller {
                 $user->is_verified = false;
                 $user->save();
                 
-                $query = $this->db->get_where('users', array('email' => $user->email), 1, 0);
+                //$query = $this->db->get_where('users', array('email' => $user->email), 1, 0);
                 
                 $this->authorise($user);
                 //$this->load->view('pages/log_in', array(
@@ -164,8 +164,8 @@ class Auth extends CI_controller {
 // Build a query to retrieve the user's details
 // based on the received username and password
         $this->db->from('users');
-        //$this->db->where('email', $email);
-        //$this->db->where('password', sha1($pass));
+        $this->db->where('email', $email);
+        $this->db->where('password', sha1($pass));
         $login = $this->db->get()->result();
 
 // The results of the query are stored in $login.

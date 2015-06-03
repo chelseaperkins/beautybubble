@@ -7,7 +7,7 @@
         <meta name="googlebot" content="all, index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
         <meta charset="UTF-8">
-        <meta name="keywords" content="beauty,therapy,salon,treatments,waxing,tanning,facial,nails,eyes,body,electrolysis,appointment">
+        <meta name="keywords" content="Cracroft, Cashmere, Hillmorton, Hoon Hay, Halswell, Christchurch, beauty,therapy,salon,treatments,waxing,tanning,facial,nails,eyes,body,electrolysis,appointment">
         <?php
         /** -- Copy from here -- */
         if (!empty($meta))

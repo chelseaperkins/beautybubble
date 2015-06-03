@@ -14,30 +14,14 @@
             <div class="col-md-6">
 
                 <div class="appointment" ng-hide="isFormAccepted">
-                    
-                    
-                    <form name="appointmentForm" novalidate ng-submit="sendData()">
-                       
-                        <label><h3 class="appointment_form_heading"><strong><?php echo"Contact details"; ?></strong></h3></label>
-                        <hr class="appointment_heading">                      
 
-                        <div class="form-group">
-                            <label for="first_name"><?php echo"First Name"; ?></label>
-                            <span ng-show="appointmentForm.first_name.$valid && !appointmentForm.first_name.$touched">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
-                            <span class="error" ng-show="!appointmentForm.first_name.$valid && appointmentForm.first_name.$touched">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct input required </span>
-                            <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter First Name" ng-pattern="/^[a-zA-Z]*$/" required>
-                            
-                        </div>
-                        <div class="form-group">
-                            <label for="last_name"><?php echo"Last Name"; ?></label>
-                            <span ng-show="appointmentForm.last_name.$valid && !appointmentForm.last_name.$touched">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
-                            <span class="error" ng-show="!appointmentForm.last_name.$valid && appointmentForm.last_name.$touched">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct input required</span>
-                            <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter Last Name"  ng-pattern="/^[a-zA-Z]*$/" required>
-                        </div>
+
+                    <form name="appointmentForm" novalidate ng-submit="sendData()">
+
+                        <label><h3 class="appointment_form_heading"><strong><?php echo"Contact details"; ?></strong></h3></label>
+                        <hr class="appointment_heading">     
+                        <input ng-model="hideFields" type="checkbox" name="currentClient" value=""> Tick here if you are an existing client<br>
+                        <br />
                         <div class="form-group">
                             <label for="email"><?php echo"Email Address"; ?></label>
                             <span ng-show="appointmentForm.email.$valid && !appointmentForm.email.$touched">
@@ -46,22 +30,42 @@
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct email input required</span>
                             <input type="email" ng-model="Model.email" class="form-control" name="email" placeholder="Enter email address" required>
                         </div>
-                        <div class="form-group">
-                            
-                            <label for="home_phone"><?php echo"Home Phone Number"; ?></label>
-                            <span ng-show="appointmentForm.ph_number.$valid">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
-                            <span class="error" ng-show="!appointmentForm.ph_number.$valid">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - number input required</span>
-                            <input type="text" ng-model="Model.phNumber" class="form-control" name="ph_number" ng-pattern="/^[-+0-9]*$/" placeholder="03-333-2222">
-                        </div>
-                        <div class="form-group">
-                            <label for="mobile_phone"><?php echo"Mobile Phone Number"; ?></label>
-                            <span class="error" ng-show="!appointmentForm.mobile_number.$valid">
-                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - number input required</span>
-                            <input type="text" ng-model="Model.mobilePhone" class="form-control" name="mobile_number" ng-pattern="/^[-+0-9]*$/" placeholder="021-444-3333">
-                        </div>
                         
+
+                        <div class="form-group" ng-hide="hideFields">
+                            <label for="first_name"><?php echo"First Name"; ?></label>
+                            <span ng-show="appointmentForm.first_name.$valid && !appointmentForm.first_name.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
+                            <span class="error" ng-show="!appointmentForm.first_name.$valid && appointmentForm.first_name.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct input required </span>
+                            <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter first name" ng-pattern="/^[a-zA-Z]*$/" required>
+
+                        </div>
+                        <div class="form-group" ng-hide="hideFields">
+                            <label for="last_name"><?php echo"Last Name"; ?></label>
+                            <span ng-show="appointmentForm.last_name.$valid && !appointmentForm.last_name.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
+                            <span class="error" ng-show="!appointmentForm.last_name.$valid && appointmentForm.last_name.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct input required</span>
+                            <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter last name"  ng-pattern="/^[a-zA-Z]*$/" required>
+                        </div>
+
+                        <div class="form-group" ng-hide="hideFields">
+
+                            <label for="home_phone"><?php echo"Home Phone Number"; ?></label>
+                            <span ng-show="appointmentForm.ph_number.$valid && !appointmentForm.ph_number.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
+                            <span class="error" ng-show="!appointmentForm.ph_number.$valid && appointmentForm.ph_number.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - number input required</span>
+                            <input type="text" ng-model="Model.phNumber" name="ph_number"  ng-required="!(Model.mobilePhone || Model.phNumber)" class="form-control"  ng-pattern="/^[-+0-9]*$/" placeholder="03-333-2222">
+                        </div>
+                        <div class="form-group" ng-hide="hideFields">
+                            <label for="mobile_phone"><?php echo"Mobile Phone Number"; ?></label>
+                            <span class="error" ng-show="!appointmentForm.mobile_number.$valid && appointmentForm.mobile_number.$touched">
+                                <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - number input required</span>
+                            <input type="text" name="mobile_number" ng-required="!(Model.mobilePhone || Model.phNumber)" class="form-control" ng-model="Model.mobilePhone"  ng-pattern="/^[-+0-9]*$/" placeholder="021-444-3333">
+                        </div>
+
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Appointment details"; ?></strong></h3></label>
                         <hr class="appointment_heading"> 
 
@@ -77,7 +81,7 @@
                         <div class="form-group">
                             <label for="eye_treatments"><?php echo"Eye Treatments"; ?></label>
 
-                            <select multiple ng-model="Model.eyeTreatments" chosen style="width:100%;">
+                            <select multiple ng-model="Model.eyeTreatments" chosen style="width:100%;" ng-required="!(fields.eyeTreatments.length || fields.bodyTreatments.length || fields.spray_tanning.length)">
                                 <option disabled="true" value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Eyelash Tint for $15"><?php echo"Eyelash Tint for $15"; ?></option>
                                 <option value="Eyebrow Tint for $10"><?php echo"Eyebrow Tint for $10"; ?></option>
@@ -153,10 +157,10 @@
                         <div class="form-group">
                             <label for="appointment_date"><?php echo"Appointment Date"; ?></label>
                             <p class="input-group">
-                            <input type="text" ng-model="Model.dateTime"  class="form-control" id="appointment_date" datepicker-popup="dd-MMMM-yyyy" is-open="opened" min-date="minDate" max-date="maxDate" close-text="Close" required>
-                            <span class="input-group-btn">
-                            <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                            </span>
+                                <input type="text" ng-model="Model.dateTime"  class="form-control" id="appointment_date" datepicker-popup="dd-MMMM-yyyy" is-open="opened" min-date="minDate" max-date="maxDate" close-text="Close" required>
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn btn-default" ng-click="datePickerOpened($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                </span>
                             </p>
                         </div>
 
@@ -166,10 +170,10 @@
                         </div>
 
                         <div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX"
-                        vc-recaptcha
-                        key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
-                        on-success="setResponse(response)"
-                        >  
+                             vc-recaptcha
+                             key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
+                             on-success="setResponse(response)"
+                             >  
                         </div>
 
                         <br />
@@ -182,39 +186,39 @@
                 <div class="appointmentsuccess" ng-show="isFormAccepted">
                     <h3>Thank you for your appointment request!</h3><br />
                     <p>Please remember that this is just a request for an appointment, and will need to be confirmed.<br /> We will be in touch with you shortly.</p><br />
-                    <p>Your requested appointment date and time is: {{Model.dateTime | date:'dd MMMM hh:mm a' }}</p>
+                    <p>Your requested appointment date and time is: {{Model.dateTime| date:'dd MMMM hh:mm a' }}</p>
                     <p>The treatments you requested are:</p>
                     <table class="appointmentsuccess">
-                    <tr ng-hide="Model.facialTreatments == null || Model.facialTreatments.length == 0">
-                        <td>Facial Treatments:</td>
-                        <td><div ng-repeat="treatment in Model.facialTreatments">{{treatment}}</div></td>
-                    </tr>
-                    <tr ng-hide="Model.eyeTreatments == null || Model.eyeTreatments.length == 0">
-                        <td>Eye Treatments:</td>
-                        <td><div ng-repeat="treatment in Model.eyeTreatments">{{treatment}}</div></td>
-                    </tr>
-                    <tr ng-hide="Model.bodyTreatments == null || Model.bodyTreatments.length == 0">
-                        <td>Body Treatments:</td>
-                        <td><div ng-repeat="treatment in Model.bodyTreatments">{{treatment}}</div></td>
-                    </tr>
-                    <tr ng-hide="Model.sprayTanning == null || Model.sprayTanning.length == 0">
-                        <td>Spray Tanning:</td>
-                        <td><div ng-repeat="treatment in Model.sprayTanning">{{treatment}}</div></td>
-                    </tr>
-                    <tr ng-hide="Model.nailTreatments == null || Model.nailTreatments.length == 0">
-                        <td>Nail Treatments:</td>
-                        <td><div ng-repeat="treatment in Model.nailTreatments">{{treatment}}</div></td>
-                    </tr>
-                    <tr ng-hide="Model.waxingTreatments == null || Model.waxingTreatments.length == 0">
-                        <td>Waxing Treatments:</td>
-                        <td><div ng-repeat="treatment in Model.waxingTreatments">{{treatment}}</div></td>
-                    </tr>
-                    <tr ng-hide="Model.electrolysis == null || Model.electrolysis.length == 0">
-                        <td>Electrolysis:</td>
-                        <td><div ng-repeat="treatment in Model.electrolysis">{{treatment}}</div></td>
-                    </tr>
+                        <tr ng-hide="Model.facialTreatments == null || Model.facialTreatments.length == 0">
+                            <td>Facial Treatments:</td>
+                            <td><div ng-repeat="treatment in Model.facialTreatments">{{treatment}}</div></td>
+                        </tr>
+                        <tr ng-hide="Model.eyeTreatments == null || Model.eyeTreatments.length == 0">
+                            <td>Eye Treatments:</td>
+                            <td><div ng-repeat="treatment in Model.eyeTreatments">{{treatment}}</div></td>
+                        </tr>
+                        <tr ng-hide="Model.bodyTreatments == null || Model.bodyTreatments.length == 0">
+                            <td>Body Treatments:</td>
+                            <td><div ng-repeat="treatment in Model.bodyTreatments">{{treatment}}</div></td>
+                        </tr>
+                        <tr ng-hide="Model.sprayTanning == null || Model.sprayTanning.length == 0">
+                            <td>Spray Tanning:</td>
+                            <td><div ng-repeat="treatment in Model.sprayTanning">{{treatment}}</div></td>
+                        </tr>
+                        <tr ng-hide="Model.nailTreatments == null || Model.nailTreatments.length == 0">
+                            <td>Nail Treatments:</td>
+                            <td><div ng-repeat="treatment in Model.nailTreatments">{{treatment}}</div></td>
+                        </tr>
+                        <tr ng-hide="Model.waxingTreatments == null || Model.waxingTreatments.length == 0">
+                            <td>Waxing Treatments:</td>
+                            <td><div ng-repeat="treatment in Model.waxingTreatments">{{treatment}}</div></td>
+                        </tr>
+                        <tr ng-hide="Model.electrolysis == null || Model.electrolysis.length == 0">
+                            <td>Electrolysis:</td>
+                            <td><div ng-repeat="treatment in Model.electrolysis">{{treatment}}</div></td>
+                        </tr>
 
-                </table>
+                    </table>
                 </div>
 
             </div>

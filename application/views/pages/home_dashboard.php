@@ -17,7 +17,7 @@
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="appointments">
-                            <div class="row"> <h3><?php echo"Todays appointments"; ?></h3>
+                            <div class="row"> <h3><?php echo"Current Appointments"; ?></h3>
                                 <hr>
                                 <br />
                                 
@@ -126,7 +126,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr ng-repeat="user in Model.clients| filter:clientFilter" ng-click="selectAppointments(user)">
+                                        <tr ng-repeat="user in Model.clients | orderBy:'first_name' | filter:clientFilter" ng-click="selectAppointments(user)">
                                             <td>{{user.first_name}}</td>
                                             <td>{{user.last_name}}</td>
                                             <td>{{user.email}}</td>

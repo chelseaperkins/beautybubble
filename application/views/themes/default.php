@@ -149,7 +149,7 @@
         <!-- /container -->
         <footer class="container-fluid footer">
             <div class="row">
-                <article class="col-sm-1 col-md-3 quick-links-menu">
+                <article class="col-md-3 quick-links-menu">
                     <h3><?php echo"QUICK LINKS"; ?></h3>
                     <ul>
                         <li><a href="<?php echo site_url(); ?>">Home</a></li>
@@ -158,13 +158,13 @@
                     </ul>
                     
                 </article>
-                <article class="col-sm-3 col-md-6 guarantee-para">
+                <article class="col-md-6 guarantee-para">
                     <h3><?php echo"OUR GUARANTEE"; ?></h3>
                     <p><?php echo'We all know it can sometimes be risky trying a salon for the first time, after all who knows how good the staff really are, and if the salon is clean and professional? 
 Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
                    
                 </article>
-                <article class="col-sm-1 col-md-3">
+                <article class="col-md-3">
                 <div class="btn-group dropup login-dropup">
                         <button type="button" class="btn btn-default"><?php echo"ADMIN LOGIN"; ?></button>
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">

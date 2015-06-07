@@ -68,6 +68,25 @@
                             $scope.emailSendErrorMessage = "We are sorry as there was an issue sending your message. Please try again.";
                         });
             };
+            
+            $scope.isAnyTreatmentSet = function () {
+                return $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.eyeTreatments);
+            };
+            
+            $scope.isTreatmentSet = function (treatment) {
+                return (treatment != null && treatment.length);
+            };
+            
+            $scope.showFormErrorMessage = function (form) {
+                var result = false;
+                
+                return $scope.isVerified && (form.$invalid || !$scope.isAnyTreatmentSet());
+            };
         }
     ]);
     /* End of Appointment controller */

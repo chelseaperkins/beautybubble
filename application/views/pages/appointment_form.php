@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label for="eye_treatments"><?php echo"Eye Treatments"; ?></label>
 
-                            <select multiple ng-model="Model.eyeTreatments" chosen style="width:100%;" ng-required="!(fields.eyeTreatments.length || fields.bodyTreatments.length || fields.spray_tanning.length)">
+                            <select multiple ng-model="Model.eyeTreatments" chosen style="width:100%;">
                                 <option disabled="true" value="Select one or multiple treatments"><?php echo"Select one or multiple treatments"; ?></option>
                                 <option value="Eyelash Tint for $15"><?php echo"Eyelash Tint for $15"; ?></option>
                                 <option value="Eyebrow Tint for $10"><?php echo"Eyebrow Tint for $10"; ?></option>
@@ -177,8 +177,8 @@
                         </div>
 
                         <br />
-                        <span class="error" ng-show="!appointmentForm.$valid">Please review form fields for errors</span>
-                        <input type="submit"  ng-disabled="!appointmentForm.$valid || isSending" value="Submit" class="btn btn-default form_submit">
+                        <span class="error" ng-show="showFormErrorMessage(appointmentForm)">Please review form fields for errors</span>
+                        <input type="submit"  ng-disabled="!appointmentForm.$valid || $scope.showFormErrorMessage() || isSending" value="Submit" class="btn btn-default form_submit">
                         {{emailSendErrorMessage}}
 
                     </form>

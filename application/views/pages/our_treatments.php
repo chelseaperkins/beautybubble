@@ -98,15 +98,14 @@ prepared and polished."; ?></span>
         </div>
 
     </div>
+</div>
     <div class="row">
-        <div class="call_to_action_wrap">
-            <div class="call_to_action_line"></div>
-            <div class="call_to_action_treatments">
-                <div class="call_to_action_buttons">
-                   
+    <div class="call_to_action_wrap">
+        <div class="call_to_action_line"></div>
+        <div class="call_to_action_background">
+            <div class="call_to_action_buttons treatments-request-button">
+               
                 <a href="<?php echo site_url('/appointments/request'); ?>"><img src="<?php echo base_url(); ?>assets/themes/default/images/request_appointment_button.png" alt="request appointment button"/></a>
-                    
-                </div>
             </div>
         </div>
     </div>

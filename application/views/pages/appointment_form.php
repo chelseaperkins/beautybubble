@@ -28,7 +28,7 @@
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
                             <span class="error" ng-show="!appointmentForm.email.$valid && appointmentForm.email.$touched">
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct email input required</span>
-                            <input type="email" ng-model="Model.email" class="form-control" name="email" placeholder="Enter email address" required>
+                            <input type="email" ng-model="Model.email" class="form-control" name="email" placeholder="Enter email address" ng-required="!hideFields">
                         </div>
                         
 
@@ -38,7 +38,7 @@
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
                             <span class="error" ng-show="!appointmentForm.first_name.$valid && appointmentForm.first_name.$touched">
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct input required </span>
-                            <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter first name" ng-pattern="/^[a-zA-Z]*$/" required>
+                            <input type="text" ng-model="Model.firstName" class="form-control" name="first_name" placeholder="Enter first name" ng-pattern="/^[a-zA-Z]*$/"  ng-required="!hideFields">
 
                         </div>
                         <div class="form-group" ng-hide="hideFields">
@@ -47,7 +47,7 @@
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
                             <span class="error" ng-show="!appointmentForm.last_name.$valid && appointmentForm.last_name.$touched">
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - correct input required</span>
-                            <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter last name"  ng-pattern="/^[a-zA-Z]*$/" required>
+                            <input type="text" ng-model="Model.lastName" class="form-control" name="last_name" placeholder="Enter last name"  ng-pattern="/^[a-zA-Z]*$/"  ng-required="!hideFields">
                         </div>
 
                         <div class="form-group" ng-hide="hideFields">
@@ -57,13 +57,13 @@
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Check.png" alt="Ticked"/></span>
                             <span class="error" ng-show="!appointmentForm.ph_number.$valid && appointmentForm.ph_number.$touched">
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - number input required</span>
-                            <input type="text" ng-model="Model.phNumber" name="ph_number"  ng-required="!(Model.mobilePhone || Model.phNumber)" class="form-control"  ng-pattern="/^[-+0-9]*$/" placeholder="03-333-2222">
+                            <input type="text" ng-model="Model.phNumber" name="ph_number" class="form-control"  ng-pattern="/^[-+0-9]*$/" placeholder="03-333-2222" ng-required="!hideFields && !(Model.mobilePhone || Model.phNumber)">
                         </div>
                         <div class="form-group" ng-hide="hideFields">
                             <label for="mobile_phone"><?php echo"Mobile Phone Number"; ?></label>
                             <span class="error" ng-show="!appointmentForm.mobile_number.$valid && appointmentForm.mobile_number.$touched">
                                 <img src="<?php echo base_url(); ?>assets/themes/default/images/Delete.png" alt="Error"/> Whoops - number input required</span>
-                            <input type="text" name="mobile_number" ng-required="!(Model.mobilePhone || Model.phNumber)" class="form-control" ng-model="Model.mobilePhone"  ng-pattern="/^[-+0-9]*$/" placeholder="021-444-3333">
+                            <input type="text" name="mobile_number" class="form-control" ng-model="Model.mobilePhone"  ng-pattern="/^[-+0-9]*$/" placeholder="021-444-3333" ng-required="!hideFields && !(Model.mobilePhone || Model.phNumber)">
                         </div>
 
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Appointment details"; ?></strong></h3></label>
@@ -166,7 +166,7 @@
 
                         <div class="form-group">
                             <label for="appointment_time"><?php echo"Appointment Time"; ?></label>                                                          
-                            <timepicker ng-model="Model.dateTime" hour-step="1" minute-step="15" show-meridian="true" mousewheel="true" required></timepicker>
+                            <timepicker ng-model="Model.dateTime" hour-step="1" minute-step="15" min-time="0800" show-meridian="true" mousewheel="true" required></timepicker>
                         </div>
 
                         <div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX"
@@ -178,7 +178,7 @@
 
                         <br />
                         <span class="error" ng-show="showFormErrorMessage(appointmentForm)">Please review form fields for errors</span>
-                        <input type="submit"  ng-disabled="!appointmentForm.$valid || $scope.showFormErrorMessage() || isSending" value="Submit" class="btn btn-default form_submit">
+                        <input type="submit"  ng-disabled="!canSubmit(appointmentForm)" value="Submit" class="btn btn-default form_submit">
                         {{emailSendErrorMessage}}
 
                     </form>

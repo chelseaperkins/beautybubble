@@ -71,11 +71,11 @@
             
             $scope.isAnyTreatmentSet = function () {
                 return $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
-                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
-                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
-                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
-                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
-                       $scope.isTreatmentSet($scope.Model.eyeTreatments);
+                       $scope.isTreatmentSet($scope.Model.bodyTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.sprayTanning) ||
+                       $scope.isTreatmentSet($scope.Model.nailTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.waxingTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.electrolysis);
             };
             
             $scope.isTreatmentSet = function (treatment) {
@@ -86,6 +86,10 @@
                 var result = false;
                 
                 return $scope.isVerified && (form.$invalid || !$scope.isAnyTreatmentSet());
+            };
+            
+            $scope.canSubmit = function (form) {
+                return form.$valid && $scope.isAnyTreatmentSet() && !$scope.isSending;
             };
         }
     ]);
@@ -326,5 +330,31 @@
     });
     /* End of Dashboard controller */
 
+    beautyBubbleApp.directive('minTime', function (){ 
+        return {
+            require: 'ngModel',
+            restrict: 'A',
+            link: function(scope, elem, attrs, ctrl) {
+                var minTime;
 
+                scope.$watch(attrs.minTime, function(newVal) {
+                    minTime = newVal;
+                    validate();
+                });
+
+                scope.$watch(attrs.ngModel, validate);
+
+                function validate(value) {
+                    if(ctrl.$modelValue instanceof Date){
+                        var minDate = new Date(ctrl.$modelValue);
+                        minDate.setHours(minTime / 100);
+                        var isValid = (minDate < ctrl.$modelValue);
+                        //ctrl.$setValidity('minTime', (minDate < ctrl.$modelValue));
+                        ctrl.$modelValue = isValid ? value : minDate;
+                    }
+                    return value;
+                }
+            }
+        };
+    })
 })(angular);

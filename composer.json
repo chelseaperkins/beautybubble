@@ -1,0 +1,13 @@
+{
+    "name": "vendor/beautybubble",
+    "description": "Description of project beautybubble.",
+    "authors": [
+        {
+            "name": "Ray",
+            "email": "your@email.here"
+        }
+    ],
+    "require": {
+        "google/apiclient": "dev-master"
+    }
+}

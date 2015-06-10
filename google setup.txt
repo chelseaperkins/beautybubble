@@ -1,0 +1,11 @@
+Refer: http://www.daimto.com/google-calendar-api-with-php-service-account/
+
+Service account 
+clientid: 176746812940-4r3cmc1ivfbsvceq77jl8cvtqq46r0g5.apps.googleusercontent.com
+email: 176746812940-4r3cmc1ivfbsvceq77jl8cvtqq46r0g5@developer.gserviceaccount.com
+
+Granting Access
+A service account doesn’t need to prompt a user for access because you have to set it up. Go to the Google Calendar  website.  
+Find the Calendar Settings , then go to the Calendars tab,find the calendar you want to access and click on  “Shared: Edit settings”  
+add the service account email address like you would a persons email address.      
+This will give the service account the same access as if you where sharing it with any other user.

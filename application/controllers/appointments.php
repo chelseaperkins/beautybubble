@@ -5,6 +5,8 @@ if (!defined('BASEPATH'))
 
 class Appointments extends CI_Controller {
 
+    
+    
     function __construct() {
         parent::__construct();
 
@@ -26,10 +28,6 @@ class Appointments extends CI_Controller {
     public function request($id = NULL) {
         $page_model = "";
         $this->load->helper('date');
-
-        $this->load->model('User');
-        $this->load->model('Appointment');
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
             $post_data = file_get_contents("php://input");
@@ -57,64 +55,10 @@ class Appointments extends CI_Controller {
             }
 //            if form is valid, input values into database
             if ($isValid) {
-
-                //Check email address in database to check if user exsists. 
-                $query = $this->db->get_where('users', array('email' => $request->email), 1, 0);
-                if ($query->num_rows > 0) {
-                    // get the first row from the results
-                    $user = new User();
-                    $match = reset($query->result());
-                    $user->id = $match->id;
-                    $user->first_name = $match->first_name;
-                    $user->last_name = $match->last_name;
-                    $user->email = $match->email;
-                    $user->ph_number = $match->ph_number;
-                    $user->mobile_number = $match->mobile_number;
-                    $user->is_admin = $match->is_admin;
-                } else {
-                    // user does not exist so create
-                    $user = new User();
-                    $user->first_name = $request->firstName;
-                    $user->last_name = $request->lastName;
-                    $user->email = $request->email;
-                    $user->ph_number = isset($request->phNumber) ? $request->phNumber : null;
-                    $user->mobile_number = isset($request->mobilePhone) ? $request->mobileNumber : null;
-                    $user->is_admin = false;
-                    $user->is_verified = false;
-                    $user->save();
-                }
-
-                $appointment = new Appointment();
-                $appointment->user_id = $user->id;
-
-                if (isset($request->facialTreatments)) {
-                    $appointment->facial_treatments = $this->implodeNonNull(", ", $request->facialTreatments);
-                }
-                if (isset($request->bodyTreatments)) {
-                    $appointment->body_treatments = $this->implodeNonNull(", ", $request->bodyTreatments);
-                }
-                if (isset($request->eyeTreatments)) {
-                    $appointment->eye_treatments = $this->implodeNonNull(", ", $request->eyeTreatments);
-                }
-                if (isset($request->sprayTanning)) {
-                    $appointment->spray_tanning = $this->implodeNonNull(", ", $request->sprayTanning);
-                }
-                if (isset($request->nailTreatments)) {
-                    $appointment->nail_treatments = $this->implodeNonNull(", ", $request->nailTreatments);
-                }
-                if (isset($request->waxingTreatments)) {
-                    $appointment->waxing_treatments = $this->implodeNonNull(", ", $request->waxingTreatments);
-                }
-                if (isset($request->electrolysis)) {
-                    $appointment->electrolysis = $this->implodeNonNull(", ", $request->electrolysis);
-                }
-                // The JSON date from the postdata is in UTC 
-                // so no need to convert from local time to UTC before putting into the database
-                $appointment->date_time = $request->dateTime;
-//                $this->sendemail($request);
-                $appointment->save();
-                $request->id = $appointment->id;
+                $success = $this->sendemail($request);
+                $message = "Request sent";
             } else {
+                $message = "There was an error while sending your request, please try again";
                 $success = false;
             }
 
@@ -131,8 +75,8 @@ class Appointments extends CI_Controller {
     }
 
     public function sendemail($request) {
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $sent = false;
+        if ($request != null) {
             //$return = $_POST;
             $this->load->library('email');
             $this->email->set_newline("\r\n");
@@ -155,9 +99,9 @@ class Appointments extends CI_Controller {
             $waxing_treatments = isset($request->waxingTreatments) ? $this->implodeNonNull(",  ", $request->waxingTreatments) : "";
             $electrolysis = isset($request->electrolysis) ? $this->implodeNonNull(",  ", $request->electrolysis) : "";
 
-
+            $emailTo = $this->config->item('email_to_address', 'email');
             $this->email->from($sender_email, $sender_first_name . ' ' . $sender_last_name);
-            $this->email->to('chelseaperkins6@gmail.com', 'Chelsea');
+            $this->email->to($emailTo);
             $this->email->subject('An appointment has been requested');
             $message = '
             <html>
@@ -249,8 +193,13 @@ class Appointments extends CI_Controller {
             ';
             $this->email->message($message);
 
-            $this->email->send();
+            try {
+                $sent = $this->email->send();
+            } catch (Exception $e) {
+                $sent = false;
+            }
         }
+        return $sent;
     }
 
     private function implodeNonNull($sep, $arr) {

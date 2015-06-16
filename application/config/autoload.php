@@ -52,7 +52,7 @@ $autoload['packages'] = array();
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'session', 'email', 'form_validation','encrypt');
+$autoload['libraries'] = array('email', 'form_validation','encrypt');
 
 
 /*

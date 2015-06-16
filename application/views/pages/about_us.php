@@ -1,8 +1,8 @@
 <div class="under_nav_line"></div>
-<div class="wrap">
+<div class="wrap"></div>
 
-    <div class="row about_content about_background">
-<div class="about_text">
+<div class="row about_content about_background">
+    <div class="about_text">
                 <h2 class="page_heading"><strong><?php echo"About Us"; ?></strong></h2>
                 <hr class="page_title">
                 <br />
@@ -31,8 +31,8 @@ It is my aspiration to make you feel you are in confident, experienced and safe 
         </div>
 
 
-    </div>
 </div>
+
 <div class="row">
     <div class="call_to_action_wrap">
         <div class="call_to_action_line"></div>

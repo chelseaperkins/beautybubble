@@ -1,4 +1,4 @@
-<div class="wrap">
+<div class="wrap"></div> 
     <div class="row home_content">
         <div class="home_text_background">
             <div class="home_welcome_text">
@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-</div>       
+      
 <div class="row">
     <div class="call_to_action_wrap">
         <div class="call_to_action_line"></div>

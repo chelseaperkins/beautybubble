@@ -17,6 +17,9 @@
 $config['base_url']	= 'http://localhost/beautybubble/';
 // $config['base_url'] = 'http://chelsea.perkins.yoobee.net.nz/_Assignments/WE06/public_html/Beauty-Bubble/beautybubble';
 
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Index File

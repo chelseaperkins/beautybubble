@@ -20,7 +20,6 @@
 
                         <label><h3 class="appointment_form_heading"><strong><?php echo"Contact details"; ?></strong></h3></label>
                         <hr class="appointment_heading">     
-                        <input ng-model="hideFields" type="checkbox" name="currentClient" value=""> Tick here if you are an existing client<br>
                         <br />
                         <div class="form-group">
                             <label for="email"><?php echo"Email Address"; ?></label>
@@ -230,16 +229,7 @@
         </div>
     </div>
 </div>
-<div class="row">
-    <div class="call_to_action_wrap">
-        <div class="call_to_action_line"></div>
-        <div class="call_to_action_background">
-            <div class="call_to_action_buttons">
 
-            </div> 
-        </div>
-    </div>
-</div>
 
 
 

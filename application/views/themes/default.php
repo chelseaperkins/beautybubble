@@ -50,6 +50,7 @@
         <!-- Latest compiled and minified Jquery -->
 
         <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-1.11.2.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular.min.js"></script> 
 
         <!-- Latest compiled and minified JavaScript -->
@@ -65,8 +66,8 @@
         <script src="https://www.google.com/recaptcha/api.js?onload=vcRecaptchaApiLoaded&render=explicit" async defer></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-recaptcha.min.js"></script>
         <script src="<?php echo base_url(); ?>assets/themes/default/js/angular-beauty_bubble.js"></script>
-<!--<script src="<?php echo base_url(); ?>assets/themes/default/js/script.js"></script>-->
-        <script src="<?php echo base_url(); ?>assets/themes/default/js/jquery-ui-1.8.16.custom.min.js"></script>-->
+
+
 
 
         <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -131,7 +132,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="<?php echo site_url(); ?>">Home</a></li>
                         <li><a href="<?php echo site_url('/site/about_us'); ?>">About Us</a></li>
-                        <li><a href="<?php echo site_url('site/our_treatments'); ?>">Our Treatments</a></li>
+                        <li><a href="<?php echo site_url('/site/our_treatments'); ?>">Our Treatments</a></li>
                         <li><a href="<?php echo site_url('/appointments/request'); ?>">Request Appointment</a></li>
                         <li><a href="<?php echo site_url('/site/contact'); ?>">Contact</a></li>
                     </ul>
@@ -141,7 +142,7 @@
         </header>    
 
 
-        <div class="container-fluid">
+        <div class="container-fluid background_image">
 
             <?php echo $output; ?>
 
@@ -164,22 +165,6 @@
 Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighted with your appointment and the results, we will re-do it FREE within 5 days of treatment*'; ?></p>
                    
                 </article>
-                <article class="col-md-3">
-                <div class="btn-group dropup login-dropup">
-                        <button type="button" class="btn btn-default"><?php echo"ADMIN LOGIN"; ?></button>
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            <span class="caret"></span>
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-
-                        <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo site_url('/auth/login'); ?>">Log-in</a></li>
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="<?php echo site_url('/auth/register'); ?>">Register</a></li>
-                            <!-- Dropdown menu links -->
-                        </ul>
-
-                    </div>
-                </article>
                     
             </div>
             <div class="row">
@@ -190,10 +175,7 @@ Visiting The Beauty Bubble is totally risk free, If you aren\'t totally delighte
      
     </footer>
 
-<div class="background_image">
-
-
-</div>     
+    
 
 
 </body>

@@ -38,15 +38,17 @@ class Site extends CI_controller {
         
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             //$return = $_POST;
+            
+            $this->config->load('email', TRUE);
+            $emailTo = $this->config->item('email_to_address', 'email');
             $this->load->library('email');
             $this->email->set_newline("\r\n");
-            
             $sender_email = $this->input->post('email_address');
             $sender_first_name = $this->input->post('first_name');
             $sender_last_name = $this->input->post('last_name');
             $details = $this->input->post('comments');
             $this->email->from($sender_email, $sender_first_name .' '. $sender_last_name);
-            $this->email->to('chelseaperkins6@gmail.com', 'Chelsea');
+            $this->email->to($emailTo);
             $this->email->subject('A message from The Beauty Bubble Beauty Therapy website');
             $message = '
             <html>
@@ -72,7 +74,13 @@ class Site extends CI_controller {
             ';
             $this->email->message($message);
             
-            $sent = $this->email->send();
+            try {
+                $sent = $this->email->send();
+            } catch (Exception $e) {
+                $sent = false;
+            }
+            
+            
         }
         $this->load->view('pages/contact',  array(
                'sent' => $sent,

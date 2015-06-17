@@ -55,10 +55,16 @@ class Appointments extends CI_Controller {
             }
 //            if form is valid, input values into database
             if ($isValid) {
-                $success = $this->sendemail($request);
-                $message = "Request sent";
-            } else {
-                $message = "There was an error while sending your request, please try again";
+                if($this->sendemail($request) == true) {
+                    $success = true;
+                    $message = "Request sent";
+                } else {
+                    $message = "There was an error while sending your request, please try again";
+                    $success = false;
+                }
+            }
+            else {
+                $message = "Your information iis invalid, please check the fields";
                 $success = false;
             }
 
@@ -99,6 +105,7 @@ class Appointments extends CI_Controller {
             $waxing_treatments = isset($request->waxingTreatments) ? $this->implodeNonNull(",  ", $request->waxingTreatments) : "";
             $electrolysis = isset($request->electrolysis) ? $this->implodeNonNull(",  ", $request->electrolysis) : "";
 
+            $this->config->load('email', TRUE);
             $emailTo = $this->config->item('email_to_address', 'email');
             $this->email->from($sender_email, $sender_first_name . ' ' . $sender_last_name);
             $this->email->to($emailTo);

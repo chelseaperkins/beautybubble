@@ -15,20 +15,25 @@
 
             $scope.Model = {};
             $scope.hideFields = false;
-
-            
+            $scope.isVerified = false;
+            $scope.isSending = false;
+            $scope.isFormAccepted = false;
+            $scope.emailSendErrorMessage = "";
+            $scope.submitText = "Send";
             var now = new Date();
             $scope.Model.dateTime = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 9, 0);
 //       datepicker/make any day before the current day unselectable        
             $scope.toggleMin = function () {
                 $scope.minDate = $scope.minDate ? null : new Date();
             };
-            $scope.toggleMin();
+            
 //       datepicker/set dates unselectable up to a year
             $scope.toggleMax = function () {
                 var date = new Date();
                 $scope.maxDate = date.setDate((new Date()).getDate() + 365);
             };
+            
+            $scope.toggleMin();
             $scope.toggleMax();
 //            open datepicker
             $scope.datePickerOpened = function ($event) {
@@ -37,24 +42,29 @@
                 $scope.opened = true;
             };
 
-            $scope.isVerified = false;
-            $scope.isSending = false;
-            $scope.isFormAccepted = false;
-            $scope.emailSendErrorMessage = "";
+            
             $scope.setResponse = function (response) {
                 $scope.isVerified = true;
                 // send the `response` to server for verification.
             };
             $scope.sendData = function () {
-                // build the model
+                // build the model               
                 var data = $scope.Model;
+                $scope.submitText = "Sending...";
                 $scope.isSending = true;
                 $scope.sendPromise = $http.post($scope.ModelUrl, data)
                         .success(function (data, status) {
                             $scope.isSending = false;
+                            $scope.submitText = "Send";
                             if (data.success) {
                                 $scope.isFormAccepted = true;
                                 $scope.emailSendErrorMessage = "";
+                                
+                                // scroll up
+                                $('html, body').animate({
+                                    scrollTop: $('#appointmentcontentblock').offset().top - 200 + 'px'
+                                }, 'fast');
+                                
                             } else if (!data.success) {
                                 $scope.isFormAccepted = false;
                                 $scope.emailSendErrorMessage = data.message;
@@ -64,13 +74,15 @@
                             }
                         })
                         .error(function (data, status) {
+                            $scope.submitText = "Send";
                             $scope.isSending = false;
                             $scope.emailSendErrorMessage = "We are sorry as there was an issue sending your message. Please try again.";
                         });
             };
             
             $scope.isAnyTreatmentSet = function () {
-                return $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
+                return $scope.isTreatmentSet($scope.Model.facialTreatments) ||
+                       $scope.isTreatmentSet($scope.Model.eyeTreatments) ||
                        $scope.isTreatmentSet($scope.Model.bodyTreatments) ||
                        $scope.isTreatmentSet($scope.Model.sprayTanning) ||
                        $scope.isTreatmentSet($scope.Model.nailTreatments) ||
@@ -83,8 +95,6 @@
             };
             
             $scope.showFormErrorMessage = function (form) {
-                var result = false;
-                
                 return $scope.isVerified && (form.$invalid || !$scope.isAnyTreatmentSet());
             };
             
@@ -95,31 +105,14 @@
     ]);
     /* End of Appointment controller */
 
-    beautyBubbleApp.directive('minTime', function (){ 
+    beautyBubbleApp.directive('datepickerPopup', function (){
         return {
+            restrict: 'EAC',
             require: 'ngModel',
-            restrict: 'A',
-            link: function(scope, elem, attrs, ctrl) {
-                var minTime;
-
-                scope.$watch(attrs.minTime, function(newVal) {
-                    minTime = newVal;
-                    validate();
-                });
-
-                scope.$watch(attrs.ngModel, validate);
-
-                function validate(value) {
-                    if(ctrl.$modelValue instanceof Date){
-                        var minDate = new Date(ctrl.$modelValue);
-                        minDate.setHours(minTime / 100);
-                        var isValid = (minDate < ctrl.$modelValue);
-                        //ctrl.$setValidity('minTime', (minDate < ctrl.$modelValue));
-                        ctrl.$modelValue = isValid ? value : minDate;
-                    }
-                    return value;
-                }
-            }
-        };
-    })
+            link: function(scope, element, attr, controller) {
+          //remove the default formatter from the input directive to prevent conflict
+          controller.$formatters.shift();
+      }
+    }
+    });
 })(angular);

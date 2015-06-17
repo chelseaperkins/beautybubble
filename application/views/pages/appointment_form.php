@@ -2,7 +2,7 @@
 <div ng-app="beautyBubbleApp" ng-controller="AppointmentCtrl" class="wrap">
 
 
-    <div class="row appointment_content appointment_background">
+    <div id="appointmentcontentblock" class="row appointment_content appointment_background">
         <div class="appointment_text">
 
             <h2 class="page_heading"><strong><?php echo"Request Appointment"; ?></strong></h2>
@@ -177,8 +177,8 @@
 
                         <br />
                         <span class="error" ng-show="showFormErrorMessage(appointmentForm)">Please review form fields for errors</span>
-                        <input type="submit"  ng-disabled="!canSubmit(appointmentForm)" value="Submit" class="btn btn-default form_submit">
-                        {{emailSendErrorMessage}}
+                        <input type="submit"  ng-disabled="!canSubmit(appointmentForm)" value="{{submitText}}" class="btn btn-default form_submit">
+                        
 
                     </form>
                 </div>

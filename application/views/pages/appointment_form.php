@@ -1,7 +1,5 @@
 <div class="under_nav_line"></div>
 <div ng-app="beautyBubbleApp" ng-controller="AppointmentCtrl" class="wrap">
-
-
     <div id="appointmentcontentblock" class="row appointment_content appointment_background">
         <div class="appointment_text">
 

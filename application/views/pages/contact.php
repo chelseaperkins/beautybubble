@@ -1,7 +1,7 @@
 <div class="under_nav_line"></div>
 <div class="wrap"></div> 
 
-<div class="row contact_content contact_background">
+<div class="row contact_content contact_background" ng-app="beautyBubbleApp" ng-controller="ContactCtrl">
     <div class="contact_text">
 
         <h2 class="page_heading"><strong><?php echo"Contact"; ?></strong></h2>
@@ -44,6 +44,7 @@
 
             <div class="row contact_us_form">
 
+                
                 <div class="col-sm-0 col-md-3"></div>
                 <div class="col-sm-2 col-md-3">
                 <?php if (!$sent) : ?>
@@ -63,8 +64,8 @@
 
                         </div>
                         <div class="form-group">
-                            <?php echo form_label('Email Address', 'email_address'); ?>
-                            <?php echo form_input('email_address', set_value('email_address'), 'class=form-control', 'required'); ?>
+                            <label for="email_address">Email Address</label>
+                            <input type="text" name="email_address" value="" class="form-control" required>
 
                         </div>
 
@@ -73,8 +74,15 @@
                             <?php echo form_label('Comments', 'comments'); ?>
                             <textarea type="text" name="comments" class="form-control" rows="5" placeholder="Your Message" required></textarea><br />
                         </div>
-
-                        <button type="submit" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 
+                        <div class="form-group">
+                            <div class="g-recaptcha" data-theme="light" data-sitekey="XXXXXXXXXXXXX"
+                                 vc-recaptcha
+                                 key="'6LeSoAUTAAAAAO8g18bu-iyKnFnZATMhj-oa-Q6q'"
+                                 on-success="setResponse(response)"
+                                 >  
+                            </div>
+                        </div>
+                        <button type="submit" ng-disabled="!isVerified" class="btn btn-default form_submit"><?php echo"Submit"; ?></button> 
                         <?php echo form_close(); ?>
                     </div>
                 <?php elseif ($sent) : ?>

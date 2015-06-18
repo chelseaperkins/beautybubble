@@ -104,6 +104,18 @@
         }
     ]);
     /* End of Appointment controller */
+    
+    /* Template controller */
+    beautyBubbleApp.controller('ContactCtrl', ['$scope', '$http', function ctrl($scope, $http) {
+            $scope.isVerified = false;
+            
+            $scope.setResponse = function (response) {
+                $scope.isVerified = true;
+                // send the `response` to server for verification.
+            };
+        }
+    ]);
+    /* End of Template controller */
 
     beautyBubbleApp.directive('datepickerPopup', function (){
         return {
@@ -113,6 +125,6 @@
           //remove the default formatter from the input directive to prevent conflict
           controller.$formatters.shift();
       }
-    }
+    };
     });
 })(angular);
